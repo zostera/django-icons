@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+include HISTORY.rst
+recursive-include django_icons/static *
+recursive-include django_icons/templates *
+recursive-include docs *
