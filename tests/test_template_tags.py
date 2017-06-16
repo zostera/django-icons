@@ -19,25 +19,57 @@ class TemplateTagsTest(TestCase):
     """
 
     def test_load_icons(self):
-        self.assertHTMLEqual(
+        # Loading the template should not generate an error
+        self.assertEqual(
             render_template(''),
             '',
         )
 
     def test_icons(self):
-        self.assertHTMLEqual(
+        """
+        Note the ICON settings in test/app/settings.py
+        """
+
+        # FontAwesome without a mapping
+        self.assertEqual(
             render_template('{%icon "user" %}'),
             '<i class="fa fa-user"></i>',
         )
-        self.assertHTMLEqual(
+
+        # FontAwesome without a mapping, with extra class
+        self.assertEqual(
             render_template('{%icon "user" "fa-big" %}'),
             '<i class="fa fa-user fa-big"></i>',
         )
-        self.assertHTMLEqual(
+
+        # FontAwesome with a mapping
+        self.assertEqual(
             render_template('{%icon "delete" %}'),
             '<i class="fa fa-trash"></i>',
         )
-        self.assertHTMLEqual(
+
+        # FontAwesome with a mapping, with extra class
+        self.assertEqual(
+            render_template('{%icon "delete" "foo bar" "end" %}'),
+            '<i class="fa fa-trash foo bar end"></i>',
+        )
+
+        # FontAwesome with a mapping to a dict with a `title`
+        self.assertEqual(
             render_template('{%icon "edit" %}'),
-            '<i class="fa fa-pencil"></i>',
+            '<i class="fa fa-pencil" title="Edit"></i>',
+        )
+
+        # FontAwesome with a mapping to a dict with a `title`, overwriting the `title` and testing UTF-8 char escaping
+        self.assertEqual(
+            render_template('{%icon "edit" title="Edit\'" %}'),
+            '<i class="fa fa-pencil" title="Edit&#39;"></i>',
+        )
+        self.assertEqual(
+            render_template("{%icon 'edit' title='Edit\"' %}"),
+            '<i class="fa fa-pencil" title="Edit&quot;"></i>',
+        )
+        self.assertEqual(
+            render_template('{%icon "edit" title="<Edit>" %}'),
+            '<i class="fa fa-pencil" title="&lt;Edit&gt;"></i>',
         )

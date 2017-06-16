@@ -1,12 +1,16 @@
 from django.forms.utils import flatatt
 from django.utils.encoding import force_text
-from django.utils.html import format_html
+from django.utils.html import format_html, escape
 from django.utils.safestring import mark_safe
 
 from django_icons.css import merge_css_list
 
 
 class BaseRenderer(object):
+    """
+    Basic renderer to i tag with a few attributes
+    """
+
     def __init__(self, name, **kwargs):
         self.name = name
         self.kwargs = kwargs
@@ -26,11 +30,19 @@ class BaseRenderer(object):
 
     def get_attrs(self):
         attrs = {}
+        # The `title` attribute is a string
         try:
-            attrs['title']=self.kwargs['title']
+            attrs['title'] = self.kwargs['title']
         except KeyError:
             pass
         return attrs
+
+    def clean_attrs(self, attrs):
+        """
+        Takes a dict of attrs and cleans it
+        NOTE: This applies `escape` to everything except `id` and `class` per HTML 5 spec
+        """
+        return {k: escape(v) if k not in ('id', 'class') else v for k, v in attrs.items()}
 
     def get_content(self):
         return ''
@@ -43,6 +55,7 @@ class BaseRenderer(object):
         tag = self.get_tag()
         attrs = self.get_attrs()
         attrs['class'] = self.get_css_classes()
+        attrs = self.clean_attrs(attrs)
         content = self.get_content()
         return format_html(
             builder,

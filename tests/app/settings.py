@@ -98,5 +98,5 @@ STATIC_URL = '/static/'
 
 ICONS = {
     'delete': 'trash',
-    'edit': {'name': 'pencil'},
+    'edit': {'name': 'pencil', 'title': 'Edit'},
 }

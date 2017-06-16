@@ -63,7 +63,7 @@ class CSSTest(TestCase):
                 'foo\nbar\tend',
                 ['foo', ['bar', 'bar', ['foo bar end']]],
                 '\n\t foo Foo',
-                [[],[],[['Foo-Bar-End']]],
+                [[], [], [['Foo-Bar-End']]],
                 ('end', 'bar', 'foo', 'Foo'),
             ),
             ['foo', 'bar', 'end', 'Foo', 'Foo-Bar-End'],
