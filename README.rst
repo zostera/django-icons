@@ -15,13 +15,10 @@ Supports Font Awesome out of the box, easily adaptable for other icon libraries.
 
 The basic usage is
 
-   .. code:: Django
+.. code:: Django
 
-    {% load icons %}
-
-    {# Display an icon #}
-
-    {% icon 'edit' %}
+   {% load icons %}
+   {% icon 'edit' %}
 
 
 Requirements
@@ -35,15 +32,15 @@ Running the tests
 
 The test suite uses `tox`. Run the complete test suite like this:
 
-    .. code:: bash
+.. code:: bash
 
-    tox
+   tox
 
 Run the tests only for the current environment like this:
 
-    .. code:: bash
+.. code:: bash
 
-    python manage.py test
+   python manage.py test
 
 
 Origin
