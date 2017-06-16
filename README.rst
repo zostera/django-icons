@@ -43,8 +43,8 @@ Run the tests only for the current environment like this:
     python manage.py test
 
 
-Origins
-=======
+Origin
+======
 
 Our plans at Zostera for an icon tool originate in https://github.com/dyve/django-bootstrap3.
 We isolated this into a Font Awesome tool in https://github.com/zostera/django-fa.

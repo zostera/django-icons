@@ -95,3 +95,8 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+ICONS = {
+    'delete': 'trash',
+    'edit': {'name': 'pencil'},
+}

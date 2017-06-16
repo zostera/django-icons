@@ -33,3 +33,11 @@ class TemplateTagsTest(TestCase):
             render_template('{%icon "user" "fa-big" %}'),
             '<i class="fa fa-user fa-big"></i>',
         )
+        self.assertHTMLEqual(
+            render_template('{%icon "delete" %}'),
+            '<i class="fa fa-trash"></i>',
+        )
+        self.assertHTMLEqual(
+            render_template('{%icon "edit" %}'),
+            '<i class="fa fa-pencil"></i>',
+        )
