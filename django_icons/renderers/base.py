@@ -61,5 +61,5 @@ class BaseRenderer(object):
             builder,
             tag=tag,
             attrs=mark_safe(flatatt(attrs)) if attrs else '',
-            content=force_text(content) if content else '',
+            content=mark_safe(force_text(content) if content else ''),
         )

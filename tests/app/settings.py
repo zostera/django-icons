@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'example.wsgi.application'
+WSGI_APPLICATION = 'tests.app.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -94,9 +94,35 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Static URL
 STATIC_URL = '/static/'
 
+
+# Hack to disable migrations
+# Based on: https://simpleisbetterthancomplex.com/tips/2016/08/19/django-tip-12-disabling-migrations-to-speed-up-unit-tests.html
+class DisableMigrations(object):
+    def __contains__(self, item):
+        return True
+
+    def __getitem__(self, item):
+        import django
+        return None if not django.get_version().startswith('1.8') else 'notmigrations'
+
+
+MIGRATION_MODULES = DisableMigrations()
+
+# Icon settings
 ICONS = {
+
     'delete': 'trash',
-    'edit': {'name': 'pencil', 'title': 'Edit'},
+    'edit': {
+        'name': 'pencil',
+        'title': 'Edit',
+    },
+    'feather': {
+        'renderer': 'tests.app.renderers.CustomSvgRenderer',
+    },
+    'paperplane': {
+        'renderer': 'tests.app.renderers.CustomSvgRenderer',
+    }
 }

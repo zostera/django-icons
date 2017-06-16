@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load icons %}
+
+{% block content %}
+
+    <p>
+        user: {% icon 'user' %}
+    </p>
+
+    <p>
+        delete: {% icon 'delete' size='lg' %}
+    </p>
+
+    <p>
+        paperplane: {% filter force_escape %}{% icon 'paperplane' %}{% endfilter %}
+    </p>
+
+    <p>
+        paperplane: {% icon 'paperplane' %}
+    </p>
+
+{% endblock %}

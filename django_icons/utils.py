@@ -47,4 +47,12 @@ def get_icon_renderer(renderer):
     """
     Default to Font Awesome
     """
+    if renderer:
+        parts = renderer.split('.')
+        renderer_class_name = parts.pop()
+        path_to_module = '.'.join(parts)
+        import importlib
+        module = importlib.import_module(path_to_module)
+        renderer_class = getattr(module, renderer_class_name)
+        return renderer_class
     return FontAwesomeRenderer
