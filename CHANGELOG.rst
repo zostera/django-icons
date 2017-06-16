@@ -1,5 +1,5 @@
-HISTORY
--------
+Changelog
+---------
 
 Log of changes to `django-icons`
 

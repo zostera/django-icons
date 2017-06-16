@@ -13,7 +13,7 @@ class BaseRenderer(object):
         tag = self.get_tag()
         format_string = '<' + tag + ' class="{css_classes}"></' + tag + '>'
         name = 'fa-{name}'.format(name=self.name)
-        fa_args = ['fa', name]
+        fa_args = filter(None, ['fa', name, self.kwargs.get('extra_classes', None)])
         return format_html(
             format_string,
             css_classes=u' '.join(fa_args),

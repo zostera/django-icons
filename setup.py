@@ -17,8 +17,8 @@ version = django_icons.__version__
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme_file:
     readme = readme_file.read()
 
-with open(os.path.join(os.path.dirname(__file__), 'HISTORY.rst')) as history_file:
-    history = history_file.read().replace('.. :changelog:', '')
+with open(os.path.join(os.path.dirname(__file__), 'CHANGELOG.rst')) as changelog_file:
+    changelog = changelog_file.read().replace('.. :changelog:', '')
 
 if sys.argv[-1] == 'publish':
     os.system('cd docs && make html')
@@ -38,7 +38,7 @@ setup(
     name='django-icons',
     version=version,
     description="""Icons for Django""",
-    long_description=readme + '\n\n' + history,
+    long_description=readme + '\n\n' + changelog,
     author='Dylan Verheul',
     author_email='dylan@zostera.nl',
     url='https://github.com/zostera/django-icons',

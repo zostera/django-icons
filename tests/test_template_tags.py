@@ -1,8 +1,9 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from django.template import Template, Context, TemplateSyntaxError
+from django.template import Template, Context
 from django.test import TestCase
+
 
 def render_template(content, **context_args):
     """

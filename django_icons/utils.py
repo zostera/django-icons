@@ -13,6 +13,13 @@ def get_css_classes(classes_list, extra_classes=None):
 
 
 def get_icon_kwargs(name, *args, **kwargs):
+    """
+    Build the kwargs for the icon function baed on args and kwargs of the template tag
+    :param name:
+    :param args:
+    :param kwargs:
+    :return:
+    """
     icon_kwargs = dict()
     icon_kwargs.update(kwargs)
     icon_kwargs['extra_classes'] = get_css_classes(args, kwargs.get('extra_classes', ''))
