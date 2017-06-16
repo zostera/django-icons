@@ -1,10 +1,10 @@
 django-icons
 ------------
 
-.. image:: https://coveralls.io/repos/github/zostera/django-icons/badge.svg?branch=develop
-:target: https://coveralls.io/github/zostera/django-icons?branch=develop
-
 Icons for Django
+
+.. image:: https://coveralls.io/repos/github/zostera/django-icons/badge.svg?branch=develop
+   :target: https://coveralls.io/github/zostera/django-icons?branch=develop
 
 
 Features
