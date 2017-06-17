@@ -99,7 +99,7 @@ STATIC_URL = '/static/'
 
 
 # Hack to disable migrations
-# Based on: https://simpleisbetterthancomplex.com/tips/2016/08/19/django-tip-12-disabling-migrations-to-speed-up-unit-tests.html
+# Based on: https://simpleisbetterthancomplex.com/tips/2016/08/19/django-tip-12-disabling-migrations-to-speed-up-unit-tests.html  # NOQA
 class DisableMigrations(object):
     def __contains__(self, item):
         return True
