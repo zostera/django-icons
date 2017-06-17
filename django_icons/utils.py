@@ -1,3 +1,5 @@
+import importlib
+
 from django.conf import settings
 from django.utils import six
 
@@ -51,7 +53,8 @@ def get_icon_renderer(renderer):
         parts = renderer.split('.')
         renderer_class_name = parts.pop()
         path_to_module = '.'.join(parts)
-        import importlib
+        if not path_to_module:
+            path_to_module = 'django_icons.renderers'
         module = importlib.import_module(path_to_module)
         renderer_class = getattr(module, renderer_class_name)
         return renderer_class
