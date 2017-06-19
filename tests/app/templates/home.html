@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load icons %}
+
+{% block content %}
+
+    <p>
+        {% icon 'user' %}
+        The `user` icon from FontAwesome
+    </p>
+
+    <p>
+        {% icon 'delete' size='lg' %}
+        The `trash` icon from FontAwesome in a larger size, connected to the `delete` name in `settings.py`.
+    </p>
+
+    <p>
+        {% icon 'star' renderer='Bootstrap3Renderer' %}
+        The `star` icon from Bootstrap3, with the renderer explicitly set
+    </p>
+
+    <p>
+        {% icon 'paperplane' %}
+        A `paperplane` icon that is uncluded in the source as SVG
+    </p>
+
+    <p>
+        {% icon 'feather' 'svg-icon-o' %}
+        A `feather` icon that is uncluded in the source as SVG, with an extra class to render the outline
+    </p>
+
+
+{% endblock %}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>django-icons - {% block title %}no title{% endblock %}</title>
+
+    <!-- Bootstrap 3 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous"
+    >
+
+    <!-- Custom SVG CSS -->
+    <style>
+        .svg-sprite {
+            display: none
+        }
+
+        .svg-icon {
+            fill: currentColor;
+            width: 1em;
+            height: 1em;
+        }
+
+        .svg-icon-o {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+    </style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    {% block extra_head %}{% endblock %}
+
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>django-icons demo</h1>
+
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+<!-- SVG icons from https://kartikprabhu.com/static/demo/sprites.svg#icon-feather -->
+
+<svg version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="80"
+     height="32"
+     viewBox="0 0 80 32"
+     class="svg-sprite"
+>
+    <defs>
+        <symbol id="icon-paperplane">
+            <title>paperplane</title>
+            <path class="path1"
+                  d="M29.91 4.216c-0.549 0.194-27.714 9.765-28.248 9.954-0.454 0.16-0.557 0.552-0.016 0.766 0.642 0.258 6.074 2.434 6.074 2.434h-0.002l3.602 1.443c0 0 17.339-12.734 17.574-12.906 0.235-0.173 0.509 0.152 0.338 0.338-0.171 0.187-12.594 13.622-12.594 13.622-0.002 0-0.002 0-0.002 0l-0.723 0.806 0.958 0.515c0 0 7.44 4.005 7.97 4.291 0.464 0.25 1.069 0.042 1.203-0.536 0.158-0.682 4.552-19.619 4.65-20.038 0.128-0.549-0.234-0.883-0.784-0.69zM11.288 27.459c0 0.395 0.222 0.504 0.53 0.226 0.4-0.365 4.558-4.096 4.558-4.096l-5.088-2.634v6.504z"></path>
+        </symbol>
+        <symbol id="icon-feather">
+            <title>feather</title>
+            <path class="path1"
+                  d="M6.806 31.619c0.49-1.602 1.232-3.858 2.226-7.122 4.33-0.699 6.122 0.558 8.872-4.454-2.232 0.698-4.923-1.294-4.778-2.157 0.144-0.864 6.261 0.622 10.264-5.181-5.046 1.134-6.662-1.365-6.011-1.742 1.502-0.872 5.963-0.362 8.341-2.725 1.226-1.216 1.798-4.174 1.301-5.23-0.6-1.274-4.251-3.174-6.264-2.997-2.013 0.179-5.17 7.822-6.106 7.762s-1.123-3.422 0.51-6.549c-1.723 0.778-4.88 3.198-5.87 5.267-1.845 3.85 0.173 12.677-0.474 12.992-0.648 0.314-2.826-4.053-3.475-6.032-0.888 3.034-0.909 6.074 1.686 10.112-0.979 2.65-1.514 5.699-1.595 7.25-0.038 1.242 1.157 1.507 1.373 0.806z"></path>
+        </symbol>
+    </defs>
+
+    <g fill="#000000">
+        <use xlink:href="#icon-paperplane" transform="translate(0 0)"></use>
+        <use xlink:href="#icon-feather" transform="translate(48 0)"></use>
+    </g>
+
+</svg>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Bootstrap 3 JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+</body>
