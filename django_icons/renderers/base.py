@@ -1,3 +1,4 @@
+from django.forms import MediaDefiningClass
 from django.forms.utils import flatatt
 from django.utils.encoding import force_text
 from django.utils.html import format_html, escape
@@ -12,6 +13,7 @@ class BaseRenderer(object):
     """
 
     def __init__(self, name, **kwargs):
+        super(BaseRenderer, self).__init__()
         self.name = name
         self.kwargs = kwargs
 

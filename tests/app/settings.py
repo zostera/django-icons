@@ -111,18 +111,34 @@ class DisableMigrations(object):
 
 MIGRATION_MODULES = DisableMigrations()
 
-# Icon settings
-ICONS = {
+# Settings for django-icons
+DJANGO_ICONS = {
 
-    'delete': 'trash',
-    'edit': {
-        'name': 'pencil',
-        'title': 'Edit',
+    'DEFAULTS': {
+        'renderer': 'fontawesome',
+        'attrs': {
+            'aria-hidden': True
+        }
     },
-    'feather': {
-        'renderer': 'tests.app.renderers.CustomSvgRenderer',
+
+    'RENDERERS': {
+        'fontawesome': 'FontAwesomeRenderer',
+        'bootstrap3': 'Bootstrap3Renderer',
     },
-    'paperplane': {
-        'renderer': 'tests.app.renderers.CustomSvgRenderer',
-    }
+
+    'ICONS': {
+
+        'delete': 'trash',
+        'edit': {
+            'name': 'pencil',
+            'title': 'Edit',
+        },
+        'feather': {
+            'renderer': 'tests.app.renderers.CustomSvgRenderer',
+        },
+        'paperplane': {
+            'renderer': 'tests.app.renderers.CustomSvgRenderer',
+        }
+    },
+
 }
