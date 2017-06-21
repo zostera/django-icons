@@ -14,7 +14,7 @@ def _get_setting(section, name, default=None):
     try:
         # Read from settings
         setting = settings.DJANGO_ICONS[section][name]
-    except (AttributeError, KeyError):
+    except (AttributeError, KeyError, TypeError):
         # Set to default
         setting = default
     return setting

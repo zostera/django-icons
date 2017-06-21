@@ -14,6 +14,6 @@ class FontAwesomeTest(TestCase):
 
     def test_icons(self):
         self.assertEqual(
-            render_template('{%icon "user" size="lg" %}'),
+            render_template('{% icon "user" size="lg" %}'),
             '<i class="fa fa-user fa-lg"></i>',
         )
