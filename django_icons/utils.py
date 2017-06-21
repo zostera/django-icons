@@ -1,7 +1,6 @@
-import importlib
-
 from django.conf import settings
 from django.utils import six
+from django.utils.module_loading import import_string
 
 from django_icons.css import merge_css_list
 from django_icons.renderers import FontAwesomeRenderer, BaseRenderer
@@ -46,41 +45,36 @@ def get_icon_kwargs(name, *args, **kwargs):
     # Update with kwargs
     icon_kwargs.update(kwargs)
     # Merge args with extra_classes
-    icon_kwargs['extra_classes'] = merge_css_list(args, kwargs.get('extra_classes', ''))
+    extra_classes = merge_css_list(args, kwargs.get('extra_classes', ''))
+    if extra_classes:
+        icon_kwargs['extra_classes'] = extra_classes
     # Check the name
     assert icon_kwargs['name'] == remember_name, 'Overwriting the icon name is not allowed'
     # Return the dict
     return icon_kwargs
 
 
-def get_default_icon_renderer():
-    """
-    Get the default icon renderer
-    """
-    return _get_setting('DEFAULTS', 'renderer', FontAwesomeRenderer)
-
-
-def get_icon_renderer(renderer):
+def get_icon_renderer(renderer=None):
     """
     Default to Font Awesome
     """
 
-    # Get the default if no renderer is given
-    renderer_class = renderer if renderer else get_default_icon_renderer()
+    # Renderer from parameter or default renderer
+    renderer_class = renderer if renderer else _get_setting('DEFAULTS', 'renderer', FontAwesomeRenderer)
 
-    # Translate a name to a class
-    renderer_class = _get_setting('RENDERERS', renderer_class, renderer_class)
+    # Translate a name to a full path
+    if isinstance(renderer_class, six.string_types):
 
-    # If this is not an actual BaseRenderer, it
-    # must be a string with the path to the class
-    if not isinstance(renderer_class, BaseRenderer):
-        parts = '{}'.format(renderer_class).split('.')
-        renderer_class_name = parts.pop()
-        path_to_module = '.'.join(parts)
-        if not path_to_module:
-            path_to_module = 'django_icons.renderers'
-        module = importlib.import_module(path_to_module)
-        renderer_class = getattr(module, renderer_class_name)
+        # Note that a dotted path remains a dotted path if it is not a name
+        renderer_class = _get_setting('RENDERERS', renderer_class, renderer_class)
 
-    # Return the result
+        # If we still have a string, it has to be a dotted path to the class
+        if isinstance(renderer_class, six.string_types):
+            # Be kind to our own Renderers
+            if '.' not in renderer_class:
+                renderer_class = 'django_icons.renderers.{}'.format(renderer_class)
+            # Import the class with a Django shortcut
+            renderer_class = import_string(renderer_class)
+
+    # Done
     return renderer_class
