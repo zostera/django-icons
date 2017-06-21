@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
-from django_icons.css import merge_css_list
+from django_icons.css import merge_css_list, merge_css_text
 
 
 class CSSTest(TestCase):
@@ -67,4 +67,14 @@ class CSSTest(TestCase):
                 ('end', 'bar', 'foo', 'Foo'),
             ),
             ['foo', 'bar', 'end', 'Foo', 'Foo-Bar-End'],
+        )
+        self.assertEqual(
+            merge_css_text(
+                'foo\nbar\tend',
+                ['foo', ['bar', 'bar', ['foo bar end']]],
+                '\n\t foo Foo',
+                [[], [], [['Foo-Bar-End']]],
+                ('end', 'bar', 'foo', 'Foo'),
+            ),
+            'foo bar end Foo Foo-Bar-End',
         )

@@ -1,10 +1,9 @@
-from django.forms import MediaDefiningClass
 from django.forms.utils import flatatt
 from django.utils.encoding import force_text
 from django.utils.html import format_html, escape
 from django.utils.safestring import mark_safe
 
-from django_icons.css import merge_css_list
+from django_icons.css import merge_css_text, merge_css_list
 
 
 class BaseRenderer(object):
@@ -13,24 +12,41 @@ class BaseRenderer(object):
     """
 
     def __init__(self, name, **kwargs):
+        """
+        Set name and kwargs
+        """
         super(BaseRenderer, self).__init__()
         self.name = name
         self.kwargs = kwargs
 
     def get_tag(self):
+        """
+        Default tag for HTML builder
+        """
         return 'i'
 
     def get_class(self):
+        """
+        First class, usually defines the icon
+        """
         return self.name
 
     def get_extra_classes(self):
-        return self.kwargs.get('extra_classes', None)
+        """
+        List of other classes
+        """
+        return merge_css_list(self.kwargs.get('extra_classes', None))
 
     def get_css_classes(self):
-        css_classes = merge_css_list(self.get_class(), self.get_extra_classes())
-        return ' '.join(css_classes)
+        """
+        List of class and extra classes
+        """
+        return merge_css_list(self.get_class(), self.get_extra_classes())
 
     def get_attrs(self):
+        """
+        HTML attributes
+        """
         attrs = {}
         # The `title` attribute is a string
         try:
@@ -47,6 +63,9 @@ class BaseRenderer(object):
         return {k: escape(v) if k not in ('id', 'class') else v for k, v in attrs.items()}
 
     def get_content(self):
+        """
+        Tag content
+        """
         return ''
 
     def render(self):
@@ -56,7 +75,7 @@ class BaseRenderer(object):
         builder = '<{tag}{attrs}>{content}</{tag}>'
         tag = self.get_tag()
         attrs = self.get_attrs()
-        attrs['class'] = self.get_css_classes()
+        attrs['class'] = merge_css_text(self.get_css_classes())
         attrs = self.clean_attrs(attrs)
         content = self.get_content()
         return format_html(
