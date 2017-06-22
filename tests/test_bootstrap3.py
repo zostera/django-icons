@@ -14,6 +14,6 @@ class FontAwesomeTest(TestCase):
 
     def test_icons(self):
         self.assertEqual(
-            render_template('{%icon "user" renderer="Bootstrap3Renderer" %}'),
+            render_template('{% icon "user" renderer="Bootstrap3Renderer" %}'),
             '<i class="glyphicon glyphicon-user"></i>',
         )

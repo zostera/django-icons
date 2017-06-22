@@ -3,8 +3,15 @@ django-icons
 
 Icons for Django
 
+.. image:: https://travis-ci.org/zostera/django-icons.svg?branch=develop
+    :target: https://travis-ci.org/zostera/django-icons
+
 .. image:: https://coveralls.io/repos/github/zostera/django-icons/badge.svg?branch=develop
    :target: https://coveralls.io/github/zostera/django-icons?branch=develop
+
+.. image:: https://img.shields.io/pypi/v/django-icons.svg
+    :target: https://pypi.python.org/pypi/django-icons
+    :alt: Latest PyPI version
 
 
 Warning
