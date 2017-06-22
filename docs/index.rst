@@ -9,5 +9,7 @@ Icons for Django
 
    installation
    quickstart
+   example
+   demo
    templatetags
    settings

@@ -1,12 +1,11 @@
 Changelog
 ---------
 
-Log of changes to `django-icons`
-
 
 0.0.4 - in development
 ======================
 
+- Autogenerate docs for ``icon`` template tag
 - Fix typo in README
 
 
@@ -27,7 +26,7 @@ Log of changes to `django-icons`
 - New structure for settings dict
 - First documentation, linked to ReadTheDocs
 - First tests
-- Introducing the `icon` template tag
+- Introducing the ``icon`` template tag
 
 
 0.0.1 - 2017-06-15
