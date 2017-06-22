@@ -4,7 +4,13 @@ Changelog
 Log of changes to `django-icons`
 
 
-0.0.2 - 2017-06-22
+0.0.4 - in development
+======================
+
+- Fix typo in README
+
+
+0.0.3 - 2017-06-22
 ==================
 
 - Bug fixes
