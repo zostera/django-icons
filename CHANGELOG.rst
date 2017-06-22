@@ -2,8 +2,8 @@ Changelog
 ---------
 
 
-0.0.4 - in development
-======================
+0.0.4 - 2017-06-22
+==================
 
 - Autogenerate docs for ``icon`` template tag
 - Fix typo in README
