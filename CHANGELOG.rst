@@ -2,8 +2,8 @@ Changelog
 ---------
 
 
-0.0.5 - development
-===================
+0.0.5 - 2017-12-21
+==================
 
 - Fix typo's
 - Adjust tox matrix to currently supported Django versions
