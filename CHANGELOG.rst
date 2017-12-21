@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+0.0.6 - in progress
+===================
+
+- set default branch to master
+
 
 0.0.5 - 2017-12-21
 ==================
