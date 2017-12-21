@@ -2,6 +2,15 @@ Changelog
 ---------
 
 
+0.0.5 - 2017-12-21
+==================
+
+- Fix typo's
+- Adjust tox matrix to currently supported Django versions
+- Fixed names of tests
+- Add tests for BaseRenderer
+
+
 0.0.4 - 2017-06-22
 ==================
 

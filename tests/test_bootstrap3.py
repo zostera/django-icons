@@ -7,7 +7,7 @@ from django.test import TestCase
 from .test_template_tags import render_template
 
 
-class FontAwesomeTest(TestCase):
+class Bootstrap3Test(TestCase):
     """
     Test the Font Awesome Renderer
     """
