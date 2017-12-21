@@ -127,7 +127,6 @@ DJANGO_ICONS = {
     },
 
     'ICONS': {
-
         'delete': 'trash',
         'edit': {
             'name': 'pencil',

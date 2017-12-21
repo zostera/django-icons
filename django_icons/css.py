@@ -33,7 +33,7 @@ def merge_css_list(*args):
     css_list = _merge_css_list(*args)
     # There may be strings with multiple classes in the array, so combine the values into a string ...
     css_string = ' '.join(css_list)
-    # ... and plit the string back to a list, also takes care of all whitespace, including tabs and newlines
+    # ... and split the string back to a list, also takes care of all whitespace, including tabs and newlines
     css_list = css_string.split()
     # Remove empty values from the list
     css_list = filter(None, css_list)
