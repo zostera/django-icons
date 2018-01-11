@@ -1,10 +1,9 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
+import re
 import os
 import sys
-
-import django_icons
 
 from setuptools import setup, setuptools
 
@@ -12,7 +11,8 @@ from setuptools import setup, setuptools
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 # Read version from app
-version = django_icons.__version__
+with open('django_icons/__init__.py', 'rb') as f:
+    VERSION = str(re.search('__version__ = \'(.+?)\'', f.read().decode('utf-8')).group(1))
 
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme_file:
     readme = readme_file.read()
@@ -24,7 +24,7 @@ if sys.argv[-1] == 'publish':
     os.system('cd docs && make html')
     os.system('python setup.py sdist upload')
     print("You probably want to also tag the version now:")
-    print("  git tag -a %s -m 'version %s'" % (version, version))
+    print("  git tag -a %s -m 'version %s'" % (VERSION, VERSION))
     print("  git push --tags")
     sys.exit()
 
@@ -36,7 +36,7 @@ if sys.argv[-1] == 'test':
 
 setup(
     name='django-icons',
-    version=version,
+    version=VERSION,
     description="""Icons for Django""",
     long_description=readme + '\n\n' + changelog,
     author='Dylan Verheul',
