@@ -1,10 +1,12 @@
 Changelog
 ---------
 
-0.0.6 - in progress
+0.1.0 - in progress
 ===================
 
-- set default branch to master
+- Set default branch to master
+- Make ``icon`` function available as import from django_icons (fixes)
+- Add ``MaterialRenderer`` for Material icons (http://google.github.io/material-design-icons/)
 
 
 0.0.5 - 2017-12-21
@@ -13,7 +15,7 @@ Changelog
 - Fix typo's
 - Adjust tox matrix to currently supported Django versions
 - Fixed names of tests
-- Add tests for BaseRenderer
+- Add tests for ``BaseRenderer``
 
 
 0.0.4 - 2017-06-22

@@ -4,10 +4,12 @@ from django.utils.module_loading import import_string
 
 from django_icons.css import merge_css_list
 from django_icons.renderers import FontAwesomeRenderer, Bootstrap3Renderer
+from django_icons.renderers.material import MaterialRenderer
 
 DEFAULT_RENDERERS = {
     'fontawesome': FontAwesomeRenderer,
     'bootstrap3': Bootstrap3Renderer,
+    'material': MaterialRenderer,
 }
 
 
@@ -34,7 +36,7 @@ def get_icon_kwargs_from_settings(name):
     # Read dict from settings, default is an empty dict
     kwargs_from_settings = _get_setting('ICONS', name, {})
 
-    # Settings might return dingle string, convert to dict with key `name`
+    # Settings might return single string, convert to dict with key `name`
     if isinstance(kwargs_from_settings, six.string_types):
         kwargs_from_settings = {'name': kwargs_from_settings}
 

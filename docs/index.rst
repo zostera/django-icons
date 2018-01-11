@@ -11,5 +11,6 @@ Icons for Django
    quickstart
    example
    demo
+   api
    templatetags
    settings

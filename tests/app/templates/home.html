@@ -4,6 +4,12 @@
 
 {% block content %}
 
+    <style>
+        .md-inherit {
+            font-size: inherit;
+        }
+    </style>
+
     <p>
         {% icon 'user' %}
         The `user` icon from FontAwesome
@@ -20,13 +26,18 @@
     </p>
 
     <p>
+        {% icon 'face' 'md-inherit' renderer='MaterialRenderer' %}
+        The `face` icon from Material, with the renderer explicitly set and an extra class to set the size
+    </p>
+
+    <p>
         {% icon 'paperplane' %}
-        A `paperplane` icon that is uncluded in the source as SVG
+        A `paperplane` icon that is included in the source as SVG
     </p>
 
     <p>
         {% icon 'feather' 'svg-icon-o' %}
-        A `feather` icon that is uncluded in the source as SVG, with an extra class to render the outline
+        A `feather` icon that is included in the source as SVG, with an extra class to render the outline
     </p>
 
 

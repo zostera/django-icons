@@ -17,6 +17,7 @@ class BaseRenderer(object):
         """
         super(BaseRenderer, self).__init__()
         self.name = name
+        self.content = ''
         self.kwargs = kwargs
 
     def get_tag(self):
@@ -66,7 +67,7 @@ class BaseRenderer(object):
         """
         Tag content
         """
-        return ''
+        return self.content
 
     def render(self):
         """

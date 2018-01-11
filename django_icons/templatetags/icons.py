@@ -3,15 +3,17 @@ from __future__ import unicode_literals
 
 from django import template
 
-from ..utils import get_icon_kwargs, get_icon_renderer
+from .. import icon
 
 register = template.Library()
 
 
-@register.simple_tag
-def icon(name, *args, **kwargs):
+@register.simple_tag(name='icon')
+def do_icon(name, *args, **kwargs):
     """
     Render an icon
+
+    This template is an interface to the `icon` function from `django_icons`
 
     **Tag name**::
 
@@ -39,9 +41,7 @@ def icon(name, *args, **kwargs):
     **Example**::
 
         {% icon 'pencil' %}
+        {% icon 'pencil' 'fa-big' %}
         {% icon 'trash' title='Delete' %}
     """
-    icon_kwargs = get_icon_kwargs(name, *args, **kwargs)
-    renderer_class = get_icon_renderer(icon_kwargs.get('renderer', None))
-    renderer = renderer_class(**icon_kwargs)
-    return renderer.render()
+    return icon(name, *args, **kwargs)
