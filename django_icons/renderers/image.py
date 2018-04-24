@@ -1,5 +1,5 @@
 import os
-
+from django.conf import settings
 from django.forms.utils import flatatt
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -12,7 +12,7 @@ class ImageRenderer(BaseRenderer):
     """
     Render an icon from a local file
 
-    <img src="{% static 'path/to/icon' %}">
+    <img src="/static/icons/icon.png' %}">
     """
 
     def get_icon_prefix(self):
@@ -33,13 +33,13 @@ class ImageRenderer(BaseRenderer):
         if self.get_size():
             filename += '-' + str(self.get_size())
         filename += '.' + self.get_format()
-        return os.path.join(basename, filename)
+        return os.path.join(settings.STATIC_URL, basename, filename)
 
     def render(self):
         """
         Render the icon
         """
-        builder = '<img src="\{% static \'{path}\' %\}"{attrs}>'
+        builder = '<img src="{path}"{attrs}>'
         attrs = self.get_attrs()
         attrs['class'] = merge_css_text(self.get_css_classes())
         attrs = self.clean_attrs(attrs)
