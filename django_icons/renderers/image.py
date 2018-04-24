@@ -39,7 +39,7 @@ class ImageRenderer(BaseRenderer):
         """
         Render the icon
         """
-        builder = '<img src="{% static \'{path}\' %}"{attrs}>'
+        builder = '<img src="\{% static \'{path}\' %\}"{attrs}>'
         attrs = self.get_attrs()
         attrs['class'] = merge_css_text(self.get_css_classes())
         attrs = self.clean_attrs(attrs)
