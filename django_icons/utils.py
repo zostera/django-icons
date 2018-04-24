@@ -5,11 +5,13 @@ from django.utils.module_loading import import_string
 from django_icons.css import merge_css_list
 from django_icons.renderers import FontAwesomeRenderer, Bootstrap3Renderer
 from django_icons.renderers.material import MaterialRenderer
+from django_icons.renderers import ImageRenderer
 
 DEFAULT_RENDERERS = {
     'fontawesome': FontAwesomeRenderer,
     'bootstrap3': Bootstrap3Renderer,
     'material': MaterialRenderer,
+    'image': ImageRenderer,
 }
 
 

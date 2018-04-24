@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load static %}
 {% load icons %}
 
 {% block content %}
@@ -28,6 +29,11 @@
     <p>
         {% icon 'face' 'md-inherit' renderer='MaterialRenderer' %}
         The `face` icon from Material, with the renderer explicitly set and an extra class to set the size
+    </p>
+
+    <p>
+        {% icon 'icons8-icons8-48' renderer='ImageRenderer' %}
+        The `icons8` icon from Icons8, with the renderer explicitly set
     </p>
 
     <p>
