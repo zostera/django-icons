@@ -14,5 +14,5 @@ class ImageTest(TestCase):
     def test_icons(self):
         self.assertEqual(
             render_template('{% icon "icons8-icons8-48" renderer="ImageRenderer" %}'),
-            '<img src="/static/icons/icons8-icons8-48.png">',
+            '<img src="/static/icons/icons8-icons8-48.png" class="icon icon-icons8-icons8-48">',
         )

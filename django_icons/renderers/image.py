@@ -1,4 +1,5 @@
 import os
+
 from django.conf import settings
 from django.forms.utils import flatatt
 from django.utils.html import format_html
@@ -14,6 +15,12 @@ class ImageRenderer(BaseRenderer):
 
     <img src="/static/icons/icon.png' %}">
     """
+
+    def get_class(self):
+        """
+        First class, usually defines the icon
+        """
+        return 'icon icon-{name}'.format(name=self.name)
 
     def get_icon_prefix(self):
         return ''
