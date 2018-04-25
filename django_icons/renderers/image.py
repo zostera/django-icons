@@ -13,7 +13,7 @@ class ImageRenderer(BaseRenderer):
     """
     Render an icon from a local file
 
-    <img src="/static/icons/icon.png' %}">
+    <img src="/static/icons/icon.png'" class="icon icon-{name}" %}">
     """
 
     def get_class(self):
@@ -23,18 +23,34 @@ class ImageRenderer(BaseRenderer):
         return 'icon icon-{name}'.format(name=self.name)
 
     def get_icon_prefix(self):
+        """
+        Filename prefix. For example, Icons8 icons are all prefixed with `icons8-`, so that you can call your icons
+        without repeating the prefix in the name.
+        """
         return ''
 
     def get_prefix(self):
+        """
+        Path prefix
+        """
         return 'icons'
 
     def get_size(self):
+        """
+        Icon sizem, in case several sizes are available (assumed postfixed with `-XX` where XX is the size)
+        """
         return None
 
     def get_format(self):
+        """
+        Icon format, without extension
+        """
         return 'png'
 
     def get_path(self):
+        """
+        Relative path to the icon
+        """
         basename = self.get_prefix()
         filename = self.get_icon_prefix() + self.name
         if self.get_size():
