@@ -1,7 +1,5 @@
-import os
-
-from django.conf import settings
 from django.forms.utils import flatatt
+from django.templatetags.static import static
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
@@ -11,9 +9,14 @@ from django_icons.renderers.base import BaseRenderer
 
 class ImageRenderer(BaseRenderer):
     """
-    Render an icon from a local file
+    Render an icon from a local file.
 
-    <img src="/static/icons/icon.png'" class="icon icon-{name}" %}">
+    For example, calling in a template:
+        {% icons 'myicon' %}
+
+    will produce the following tag:
+        <img src="/static/icons/myicon.png'" class="icon icon-myicon" %}">
+
     """
 
     def get_class(self):
@@ -29,21 +32,23 @@ class ImageRenderer(BaseRenderer):
         """
         return ''
 
-    def get_prefix(self):
+    def get_icons_dirname(self):
         """
-        Path prefix
+        Relative path to the icons folder, starting from the static folder. Do not include the trailing '/'.
         """
         return 'icons'
 
     def get_size(self):
         """
-        Icon sizem, in case several sizes are available (assumed postfixed with `-XX` where XX is the size)
+        Icon size, in case several sizes are available (assumed postfixed with `-XX` where XX is the size)
         """
         return None
 
     def get_format(self):
         """
-        Icon format, without extension
+        Icon format, without dot
+
+        For example: 'png'.
         """
         return 'png'
 
@@ -51,12 +56,12 @@ class ImageRenderer(BaseRenderer):
         """
         Relative path to the icon
         """
-        basename = self.get_prefix()
+        dirname = self.get_icons_dirname()
         filename = self.get_icon_prefix() + self.name
         if self.get_size():
             filename += '-' + str(self.get_size())
         filename += '.' + self.get_format()
-        return os.path.join(settings.STATIC_URL, basename, filename)
+        return static('{}/{}'.format(dirname, filename))
 
     def render(self):
         """

@@ -8,7 +8,7 @@ from .test_template_tags import render_template
 
 class ImageTest(TestCase):
     """
-    Test the Material Design Renderer
+    Test the Image Renderer
     """
 
     def test_icons(self):
