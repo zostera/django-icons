@@ -14,13 +14,6 @@ Icons for Django
     :alt: Latest PyPI version
 
 
-Warning
-=======
-
-While version < 1 (0.x.y), this project will not be fit for production use, and not adhere to semver.
-From 1.0.0 on, `django-icons` will be deemed product ready and semantic versioning will be respected.
-
-
 Features
 ========
 

@@ -1,8 +1,8 @@
 Changelog
 ---------
 
-0.1.0 - in progress
-===================
+0.1.0 - 2018-01-11
+==================
 
 - Set default branch to master
 - Make ``icon`` function available as import from django_icons (fixes)
