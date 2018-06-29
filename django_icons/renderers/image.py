@@ -1,4 +1,5 @@
 import re
+from collections import namedtuple
 
 from django.forms.utils import flatatt
 from django.templatetags.static import static
@@ -39,16 +40,20 @@ class ImageRenderer(BaseRenderer):
 
     """
 
-    from collections import namedtuple
-
-    VariantPattern = namedtuple('VariantPattern', ['key', 'pattern'])
-    _variant_patterns = dict()
+    """
+    The pattern must contain a named grouped, where the name must be specified as `{}` as it will be injected from the 
+    key. That is, the pattern used here to match a color specification looks like `-c:(?P<{}>\w+)`, where `-c:` is 
+    arbitrary, `<{}>` represents the matching group name and `\w+` matches for at least one alphanumeric character 
+    (color code be a name or a code).
+    """
+    VariantAttributePattern = namedtuple('VariantAttributePattern', ['key', 'pattern'])
+    _variant_attributes_regex = dict()  # Used to store the compiled regexes of the individual variant attributes
 
     def __init__(self, *args, **kwargs):
         super(ImageRenderer, self).__init__(*args, **kwargs)
         # 'alt' is a mandatory tag attribute
         self.kwargs.setdefault('alt', _('{} icon'.format(self.name.title())))
-        self.variant = dict()
+        self.variant = dict()  # Used to stored the variant attributes extracted from icon name
 
     @classmethod
     def get_image_root(cls):
@@ -71,14 +76,16 @@ class ImageRenderer(BaseRenderer):
         return ''
 
     @classmethod
-    def get_image_variant_patterns(cls):
+    def get_image_variant_attributes_pattern(cls):
         """
 
         Returns
         -------
+        list
+            Contains the patterns to match the available variant attributes.
 
         """
-        return [cls.VariantPattern('color', '-c:(?P<{}>\w+)'), cls.VariantPattern('size', '-s:(?P<{}>\w+)')]
+        return [cls.VariantAttributePattern('color', '-c:(?P<{}>\w+)'), cls.VariantAttributePattern('size', '-s:(?P<{}>\w+)')]
 
     @classmethod
     def get_image_format(cls):
@@ -90,35 +97,37 @@ class ImageRenderer(BaseRenderer):
         return 'png'
 
     @classmethod
-    def _get_image_v_p_regex(cls):
+    def _get_image_variant_attributes_regex(cls):
         """
-        Compile the variant regular expression patterns into a regular expression object
+        Compile the regular expression pattern of the variant attributes into regular expression objects
 
         Returns
         -------
-        Regular expression object
+        dict
+            Key is the variant attribute name and value is compiled regex.
 
         """
 
-        if not cls._variant_patterns:
-            for v in cls.get_image_variant_patterns():
-                cls._variant_patterns[v.key] = re.compile(v.pattern.format(v.key))
-        return cls._variant_patterns
+        if not cls._variant_attributes_regex:
+            for v in cls.get_image_variant_attributes_pattern():
+                cls._variant_attributes_regex[v.key] = re.compile(v.pattern.format(v.key))
+        return cls._variant_attributes_regex
 
     def get_variant(self):
         """
 
         Returns
         -------
-        dict : dict containing the variant values
+        dict
+            Contains the variant attributes.
 
         """
         if not self.variant:
-            for key, pattern in self._get_image_v_p_regex().items():
+            for key, pattern in self._get_image_variant_attributes_regex().items():
                 variant = pattern.search(self.name)
                 if variant:
-                    self.variant[key] = variant.group(key)
-                    self.name = pattern.sub('', self.name)
+                    self.variant[key] = variant.group(key)  # We fetch the matched group by its name
+                    self.name = pattern.sub('', self.name)  # Remove the parsed variant specifier from the icon name
         return self.variant
 
     def render_variant(self):
@@ -126,14 +135,15 @@ class ImageRenderer(BaseRenderer):
 
         Returns
         -------
-        str : The string representing the variant to be appended to the icon name to build the path to the file in the
-                file system
+        str
+            String representing the variant to be appended to the icon name to build the path to the file in the file
+            system.
 
         """
         variant = self.get_variant()
         v_s = ''
         if variant:
-            for v in self.get_image_variant_patterns():
+            for v in self.get_image_variant_attributes_pattern():
                 if v.key in variant:
                     v_s += '-{}'.format(variant[v.key])
         return v_s
@@ -157,7 +167,7 @@ class ImageRenderer(BaseRenderer):
         css_classes = 'icon'
         if self.get_image_prefix():
             css_classes += ' icon-{prefix}'.format(prefix=self.name)
-        for v_p in self.get_image_variant_patterns():
+        for v_p in self.get_image_variant_attributes_pattern():
             if v_p.key in self.get_variant():
                 css_classes += ' icon-{variant}-{value}'.format(variant=v_p.key, value=self.get_variant()[v_p.key])
         css_classes += ' icon-{name}'.format(name=self.name)
@@ -165,7 +175,7 @@ class ImageRenderer(BaseRenderer):
 
     def render(self):
         """
-        Render the icon
+        Render the icon.
         """
         builder = '<img src="{path}"{attrs}>'
         attrs = self.get_attrs()
