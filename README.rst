@@ -34,6 +34,18 @@ Requirements
 Django >= 1.11 and a matching Python version. Using Python 3 is strongly recommended.
 
 
+Running the demo
+================
+
+You can run the small demo app that is part of the test suite.
+This requires Django, so you may have to `pip install django` in your environment.
+To run the demo, from the root of the project (where you can find `manage.py`, run:
+
+.. code:: bash
+
+   python manage.py runserver
+
+
 Running the tests
 =================
 
