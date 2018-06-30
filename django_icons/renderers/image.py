@@ -65,10 +65,14 @@ class ImageRenderer(BaseRenderer):
         )
         # If variant attributes are set by keyword arguments, they are set here
         # Using keyword arguments supersedes the parsing from the icon name
-        for vap in self.get_image_variant_attributes_pattern():
-            k = vap.key
-            if k in kwargs:
-                self.variant_attributes[k] = kwargs[k]
+        vapatterns = self.get_image_variant_attributes_pattern()
+        if True in [vap.key in self.kwargs for vap in vapatterns]:
+            for vap in vapatterns:
+                k = vap.key
+                if k in kwargs:
+                    self.variant_attributes[k] = kwargs[k]
+                elif vap.default:
+                    self.variant_attributes[k] = vap.default
 
     @classmethod
     def get_image_root(cls):
@@ -230,4 +234,3 @@ class ImageRenderer(BaseRenderer):
             path=src,
             attrs=mark_safe(flatatt(attrs)) if attrs else "",
         )
-
