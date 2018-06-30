@@ -69,8 +69,6 @@ class ImageRenderer(BaseRenderer):
             k = vap.key
             if k in kwargs:
                 self.variant_attributes[k] = kwargs[k]
-            elif vap.default:
-                self.variant_attributes[k] = vap.default
 
     @classmethod
     def get_image_root(cls):
@@ -232,3 +230,4 @@ class ImageRenderer(BaseRenderer):
             path=src,
             attrs=mark_safe(flatatt(attrs)) if attrs else "",
         )
+
