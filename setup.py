@@ -23,7 +23,7 @@ with open(os.path.join(os.path.dirname(__file__), "CHANGELOG.rst")) as changelog
 if sys.argv[-1] == "publish":
     os.system("cd docs && make html")
     os.system("python setup.py sdist")
-    os.system("twine upload dist/django-bootstrap4-{}.tar.gz".format(VERSION))
+    os.system("twine upload dist/django-icons-{}.tar.gz".format(VERSION))
     message = "\nreleased [{version}](https://pypi.python.org/pypi/django-icons/{version})"
     print(message.format(version=VERSION))
     print("You probably want to also tag the version now:")
