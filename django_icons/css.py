@@ -9,7 +9,7 @@ def _merge_css_item(item):
     if isinstance(item, (list, tuple)):
         return _merge_css_list(*item)
     # Cast to string, be sure to cast falsy values to ''
-    item = '{}'.format(item) if item else ''
+    item = "{}".format(item) if item else ""
     # Return as a list
     return [item]
 
@@ -32,7 +32,7 @@ def merge_css_list(*args):
     # Combine args into a single list
     css_list = _merge_css_list(*args)
     # There may be strings with multiple classes in the array, so combine the values into a string ...
-    css_string = ' '.join(css_list)
+    css_string = " ".join(css_list)
     # ... and split the string back to a list, also takes care of all whitespace, including tabs and newlines
     css_list = css_string.split()
     # Remove empty values from the list
@@ -48,4 +48,4 @@ def merge_css_text(*args):
     Takes a series of strings and lists and combines them into one space separated string of unique CSS classes.
     Removes duplicates. Gives precedence to first class encountered.
     """
-    return ' '.join(merge_css_list(*args))
+    return " ".join(merge_css_list(*args))

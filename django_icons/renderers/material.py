@@ -12,4 +12,4 @@ class MaterialRenderer(BaseRenderer):
         return self.name
 
     def get_class(self):
-        return 'material-icons'
+        return "material-icons"

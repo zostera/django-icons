@@ -10,4 +10,4 @@ class Bootstrap3Renderer(BaseRenderer):
         """
         Return the primary CSS class for the icon
         """
-        return 'glyphicon glyphicon-{name}'.format(name=self.name)
+        return "glyphicon glyphicon-{name}".format(name=self.name)

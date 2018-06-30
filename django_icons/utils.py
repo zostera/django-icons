@@ -8,10 +8,10 @@ from django_icons.renderers.material import MaterialRenderer
 from django_icons.renderers import ImageRenderer
 
 DEFAULT_RENDERERS = {
-    'fontawesome': FontAwesomeRenderer,
-    'bootstrap3': Bootstrap3Renderer,
-    'material': MaterialRenderer,
-    'image': ImageRenderer,
+    "fontawesome": FontAwesomeRenderer,
+    "bootstrap3": Bootstrap3Renderer,
+    "material": MaterialRenderer,
+    "image": ImageRenderer,
 }
 
 
@@ -36,14 +36,14 @@ def get_icon_kwargs_from_settings(name):
     """
 
     # Read dict from settings, default is an empty dict
-    kwargs_from_settings = _get_setting('ICONS', name, {})
+    kwargs_from_settings = _get_setting("ICONS", name, {})
 
     # Settings might return single string, convert to dict with key `name`
     if isinstance(kwargs_from_settings, six.string_types):
-        kwargs_from_settings = {'name': kwargs_from_settings}
+        kwargs_from_settings = {"name": kwargs_from_settings}
 
     # If no name is set, set the name
-    kwargs_from_settings.setdefault('name', name)
+    kwargs_from_settings.setdefault("name", name)
 
     # Return the dict
     return kwargs_from_settings
@@ -58,18 +58,20 @@ def get_icon_kwargs(name, *args, **kwargs):
     icon_kwargs = get_icon_kwargs_from_settings(name)
 
     # Remember the name, we do not allow this to be overwritten
-    remember_name = icon_kwargs['name']
+    remember_name = icon_kwargs["name"]
 
     # Update with kwargs
     icon_kwargs.update(kwargs)
 
     # Merge args with extra_classes
-    extra_classes = merge_css_list(args, kwargs.get('extra_classes', ''))
+    extra_classes = merge_css_list(args, kwargs.get("extra_classes", ""))
     if extra_classes:
-        icon_kwargs['extra_classes'] = extra_classes
+        icon_kwargs["extra_classes"] = extra_classes
 
     # Check the name
-    assert icon_kwargs['name'] == remember_name, 'Overwriting the icon name is not allowed'
+    assert (
+        icon_kwargs["name"] == remember_name
+    ), "Overwriting the icon name is not allowed"
 
     # Return the dict
     return icon_kwargs
@@ -84,7 +86,7 @@ def _get_icon_renderer_by_name(name):
     default = DEFAULT_RENDERERS.get(name, None)
 
     # Fetch the value from the settings dict
-    renderer_class = _get_setting('RENDERERS', name, default)
+    renderer_class = _get_setting("RENDERERS", name, default)
 
     # If no result is found, return the original argument
     if renderer_class is None:
@@ -100,7 +102,11 @@ def get_icon_renderer(renderer=None):
     """
 
     # Renderer from parameter or default renderer
-    renderer_class = renderer if renderer else _get_setting('DEFAULTS', 'renderer', FontAwesomeRenderer)
+    renderer_class = (
+        renderer
+        if renderer
+        else _get_setting("DEFAULTS", "renderer", FontAwesomeRenderer)
+    )
 
     # Translate a name to a full path
     if isinstance(renderer_class, six.string_types):
@@ -111,8 +117,8 @@ def get_icon_renderer(renderer=None):
         # If we still have a string, it has to be a dotted path to the class
         if isinstance(renderer_class, six.string_types):
             # Be kind to our own Renderers
-            if '.' not in renderer_class:
-                renderer_class = 'django_icons.renderers.{}'.format(renderer_class)
+            if "." not in renderer_class:
+                renderer_class = "django_icons.renderers.{}".format(renderer_class)
             # Import the class with a Django shortcut
             renderer_class = import_string(renderer_class)
 

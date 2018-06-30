@@ -17,14 +17,14 @@ class BaseRenderer(object):
         """
         super(BaseRenderer, self).__init__()
         self.name = name
-        self.content = ''
+        self.content = ""
         self.kwargs = kwargs
 
     def get_tag(self):
         """
         Default tag for HTML builder
         """
-        return 'i'
+        return "i"
 
     def get_class(self):
         """
@@ -36,7 +36,7 @@ class BaseRenderer(object):
         """
         List of other classes
         """
-        return merge_css_list(self.kwargs.get('extra_classes', None))
+        return merge_css_list(self.kwargs.get("extra_classes", None))
 
     def get_css_classes(self):
         """
@@ -51,7 +51,7 @@ class BaseRenderer(object):
         attrs = {}
         # The `title` attribute is a string
         try:
-            attrs['title'] = self.kwargs['title']
+            attrs["title"] = self.kwargs["title"]
         except KeyError:
             pass
         return attrs
@@ -61,7 +61,9 @@ class BaseRenderer(object):
         Takes a dict of attrs and cleans it
         NOTE: This applies `escape` to everything except `id` and `class` per HTML 5 spec
         """
-        return {k: escape(v) if k not in ('id', 'class') else v for k, v in attrs.items()}
+        return {
+            k: escape(v) if k not in ("id", "class") else v for k, v in attrs.items()
+        }
 
     def get_content(self):
         """
@@ -73,15 +75,15 @@ class BaseRenderer(object):
         """
         Render the icon
         """
-        builder = '<{tag}{attrs}>{content}</{tag}>'
+        builder = "<{tag}{attrs}>{content}</{tag}>"
         tag = self.get_tag()
         attrs = self.get_attrs()
-        attrs['class'] = merge_css_text(self.get_css_classes())
+        attrs["class"] = merge_css_text(self.get_css_classes())
         attrs = self.clean_attrs(attrs)
         content = self.get_content()
         return format_html(
             builder,
             tag=tag,
-            attrs=mark_safe(flatatt(attrs)) if attrs else '',
-            content=mark_safe(force_text(content) if content else ''),
+            attrs=mark_safe(flatatt(attrs)) if attrs else "",
+            content=mark_safe(force_text(content) if content else ""),
         )

@@ -8,7 +8,7 @@ from .. import icon
 register = template.Library()
 
 
-@register.simple_tag(name='icon')
+@register.simple_tag(name="icon")
 def do_icon(name, *args, **kwargs):
     """
     Render an icon

@@ -20,10 +20,7 @@ class TemplateTagsTest(TestCase):
 
     def test_load_icons(self):
         # Loading the template should not generate an error
-        self.assertEqual(
-            render_template(''),
-            '',
-        )
+        self.assertEqual(render_template(""), "")
 
     def test_icons(self):
         """
@@ -32,8 +29,7 @@ class TemplateTagsTest(TestCase):
 
         # FontAwesome without a mapping
         self.assertEqual(
-            render_template('{% icon "user" %}'),
-            '<i class="fa fa-user"></i>',
+            render_template('{% icon "user" %}'), '<i class="fa fa-user"></i>'
         )
 
         # FontAwesome without a mapping, with extra class
@@ -44,8 +40,7 @@ class TemplateTagsTest(TestCase):
 
         # FontAwesome with a mapping
         self.assertEqual(
-            render_template('{% icon "delete" %}'),
-            '<i class="fa fa-trash"></i>',
+            render_template('{% icon "delete" %}'), '<i class="fa fa-trash"></i>'
         )
 
         # FontAwesome with a mapping, with extra class

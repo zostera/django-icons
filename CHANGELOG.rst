@@ -5,7 +5,7 @@ In development
 ==============
 
 - Add icons from images, contribution by @mbourqui
-
+- Adopt black code style (https://github.com/ambv/black)
 
 0.1.0 - 2018-01-11
 ==================

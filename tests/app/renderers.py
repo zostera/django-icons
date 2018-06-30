@@ -7,14 +7,14 @@ class CustomSvgRenderer(BaseRenderer):
     """
 
     def get_tag(self):
-        return 'svg'
+        return "svg"
 
     def get_class(self):
-        return 'svg-icon'
+        return "svg-icon"
 
     def get_attrs(self):
         attrs = super(CustomSvgRenderer, self).get_attrs()
-        attrs['viewBox'] = '0 0 32 32'
+        attrs["viewBox"] = "0 0 32 32"
         return attrs
 
     def get_content(self):
