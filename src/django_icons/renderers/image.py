@@ -225,3 +225,57 @@ class ImageRenderer(BaseRenderer):
         attrs["class"] = merge_css_text(self.get_css_classes())
         attrs = self.clean_attrs(attrs)
         return format_html(builder, path=src, attrs=mark_safe(flatatt(attrs)) if attrs else "")
+
+
+class Icons8PngCdnRenderer(ImageRenderer):
+    """
+
+    When using this Renderer, please cite the source according to https://icons8.com/license
+
+    """
+
+    @classmethod
+    def get_image_root(cls):
+        """
+        The root path to the images folder. By default, returns the path to a 'icons' folder inside the static folder.
+
+        Returns
+        -------
+        str or callable
+
+        """
+        return "https://png.icons8.com/"
+
+    @classmethod
+    def get_image_variant_attributes_pattern(cls):
+        """
+
+        Returns
+        -------
+        list
+            Contains the patterns to match the available variant attributes.
+
+        """
+        return [cls.VariantAttributePattern("style", "-y:(?P<{}>\w+)", "color"),
+                cls.VariantAttributePattern("size", "-s:(?P<{}>\w+)", None),
+                cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)", None)]
+
+    def get_path(self):
+        """
+        Relative path to the icon.
+
+        By default, the icon filename is built as '{name}.{format}' where '-{color}' '-{size}'
+        and '-{variantX}'s are only added if there are defined (if several are defined, they are added in that order).
+        """
+        variant = self.render_variant()
+        filename = self.name + "." + self.get_image_format()
+        return self.get_image_root() + variant + filename
+
+    def render_variant(self):
+        variant_attributes = self.get_variant_attributes()
+        variant = ""
+        if variant_attributes:
+            for v in self.get_image_variant_attributes_pattern():
+                if v.key in variant_attributes:
+                    variant += "{}/".format(variant_attributes[v.key])
+        return variant

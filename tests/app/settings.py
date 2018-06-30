@@ -50,6 +50,7 @@ DJANGO_ICONS = {
         "bootstrap3": "Bootstrap3Renderer",
         "material": "MaterialRenderer",
         "image": "ImageRenderer",
+        "icons8pngcdn": "Icons8PngCdnRenderer",
     },
     "ICONS": {
         "delete": "trash",
