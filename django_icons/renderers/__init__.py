@@ -2,3 +2,4 @@ from .base import BaseRenderer
 from .bootstrap3 import Bootstrap3Renderer
 from .fontawesome import FontAwesomeRenderer
 from .material import MaterialRenderer
+from .image import ImageRenderer

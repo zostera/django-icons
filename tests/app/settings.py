@@ -125,6 +125,7 @@ DJANGO_ICONS = {
         'fontawesome': 'FontAwesomeRenderer',
         'bootstrap3': 'Bootstrap3Renderer',
         'material': 'MaterialRenderer',
+        'image': 'ImageRenderer',
     },
 
     'ICONS': {

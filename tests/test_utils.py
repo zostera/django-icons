@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
-from django_icons.renderers import FontAwesomeRenderer, Bootstrap3Renderer
+from django_icons.renderers import FontAwesomeRenderer, Bootstrap3Renderer, ImageRenderer
 from django_icons.utils import _get_setting, get_icon_kwargs_from_settings, get_icon_kwargs, \
     get_icon_renderer
 
@@ -49,6 +49,7 @@ class UtilsTest(TestCase):
             self.assertEqual(get_icon_renderer(), FontAwesomeRenderer)
             self.assertEqual(get_icon_renderer('fontawesome'), FontAwesomeRenderer)
             self.assertEqual(get_icon_renderer('bootstrap3'), Bootstrap3Renderer)
+            self.assertEqual(get_icon_renderer('image'), ImageRenderer)
             self.assertEqual(
                 get_icon_renderer('django_icons.renderers.Bootstrap3Renderer'),
                 Bootstrap3Renderer
