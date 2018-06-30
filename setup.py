@@ -1,8 +1,8 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
-import re
 import os
+import re
 import sys
 
 from setuptools import setup, setuptools
@@ -22,7 +22,10 @@ with open(os.path.join(os.path.dirname(__file__), "CHANGELOG.rst")) as changelog
 
 if sys.argv[-1] == "publish":
     os.system("cd docs && make html")
-    os.system("python setup.py sdist upload")
+    os.system("python setup.py sdist")
+    os.system("twine upload dist/django-bootstrap4-{}.tar.gz".format(VERSION))
+    message = "\nreleased [{version}](https://pypi.python.org/pypi/django-icons/{version})"
+    print(message.format(version=VERSION))
     print("You probably want to also tag the version now:")
     print("  git tag -a %s -m 'version %s'" % (VERSION, VERSION))
     print("  git push --tags")
