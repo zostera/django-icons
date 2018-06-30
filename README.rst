@@ -3,7 +3,7 @@ django-icons
 
 Icons for Django
 
-.. image:: https://travis-ci.org/zostera/django-icons.svg?branch=develop
+.. image:: https://travis-ci.org/zostera/django-icons.svg?branch=master
     :target: https://travis-ci.org/zostera/django-icons
 
 .. image:: https://coveralls.io/repos/github/zostera/django-icons/badge.svg?branch=develop
