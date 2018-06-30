@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+In development
+==============
+
+- Add icons from images, contribution by @mbourqui
+
+
 0.1.0 - 2018-01-11
 ==================
 

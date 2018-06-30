@@ -41,9 +41,9 @@ class ImageRenderer(BaseRenderer):
     """
 
     """
-    The pattern must contain a named grouped, where the name must be specified as `{}` as it will be injected from the 
-    key. That is, the pattern used here to match a color specification looks like `-c:(?P<{}>\w+)`, where `-c:` is 
-    arbitrary, `<{}>` represents the matching group name and `\w+` matches for at least one alphanumeric character 
+    The pattern must contain a named grouped, where the name must be specified as `{}` as it will be injected from the
+    key. That is, the pattern used here to match a color specification looks like `-c:(?P<{}>\w+)`, where `-c:` is
+    arbitrary, `<{}>` represents the matching group name and `\w+` matches for at least one alphanumeric character
     (color code be a name or a code).
     """
     VariantAttributePattern = namedtuple('VariantAttributePattern', ['key', 'pattern'])
@@ -85,7 +85,8 @@ class ImageRenderer(BaseRenderer):
             Contains the patterns to match the available variant attributes.
 
         """
-        return [cls.VariantAttributePattern('color', '-c:(?P<{}>\w+)'), cls.VariantAttributePattern('size', '-s:(?P<{}>\w+)')]
+        return [cls.VariantAttributePattern('color', '-c:(?P<{}>\w+)'),
+                cls.VariantAttributePattern('size', '-s:(?P<{}>\w+)')]
 
     @classmethod
     def get_image_format(cls):
