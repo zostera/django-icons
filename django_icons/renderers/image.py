@@ -38,6 +38,12 @@ class ImageRenderer(BaseRenderer):
     To customize the default behaviours, create you own ImageRenderer by subclassing this one and override the methods
     to suit you needs.
 
+    The template tag supports settings keyword parameters the define the variant attributes and/or set the format. The
+    keyword must be the key of the variant attribute. Please note that using keyword parameters will supersede the
+    parsing of the name. That is, the variant attributes are set from the keyword parameters and the file name is not
+    parsed.
+    The format can be defined by the 'format' keyword parameter without altering the definition of variant attributes.
+
     """
 
     """
@@ -46,18 +52,27 @@ class ImageRenderer(BaseRenderer):
     arbitrary, `<{}>` represents the matching group name and `\w+` matches for at least one alphanumeric character
     (color code be a name or a code).
     """
-    VariantAttributePattern = namedtuple("VariantAttributePattern", ["key", "pattern"])
+    VariantAttributePattern = namedtuple("VariantAttributePattern", ["key", "pattern", "default"])
     _variant_attributes_regex = (
         dict()
     )  # Used to store the compiled regexes of the individual variant attributes
 
     def __init__(self, *args, **kwargs):
         super(ImageRenderer, self).__init__(*args, **kwargs)
-        # 'alt' is a mandatory tag attribute
-        self.kwargs.setdefault("alt", _("{} icon".format(self.name.title())))
-        self.variant = (
+        # Dict used to store the variant attributes extracted from icon name
+        self.variant_attributes = (
             dict()
-        )  # Used to stored the variant attributes extracted from icon name
+        )
+        # If variant attributes are set by keyword arguments, they are set here
+        # Using keyword arguments supersedes the parsing from the icon name
+        vapatterns = self.get_image_variant_attributes_pattern()
+        if True in [vap.key in self.kwargs for vap in vapatterns]:
+            for vap in vapatterns:
+                k = vap.key
+                if k in kwargs:
+                    self.variant_attributes[k] = kwargs[k]
+                elif vap.default:
+                    self.variant_attributes[k] = vap.default
 
     @classmethod
     def get_image_root(cls):
@@ -90,8 +105,8 @@ class ImageRenderer(BaseRenderer):
 
         """
         return [
-            cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)"),
-            cls.VariantAttributePattern("size", "-s:(?P<{}>\w+)"),
+            cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)", None),
+            cls.VariantAttributePattern("size", "-s:(?P<{}>\w+)", None),
         ]
 
     @classmethod
@@ -111,18 +126,18 @@ class ImageRenderer(BaseRenderer):
         Returns
         -------
         dict
-            Key is the variant attribute name and value is compiled regex.
+            Key is the variant attribute name and value is a tuple of compiled regex and default value
 
         """
 
         if not cls._variant_attributes_regex:
             for v in cls.get_image_variant_attributes_pattern():
-                cls._variant_attributes_regex[v.key] = re.compile(
+                cls._variant_attributes_regex[v.key] = (re.compile(
                     v.pattern.format(v.key)
-                )
+                ), v.default)
         return cls._variant_attributes_regex
 
-    def get_variant(self):
+    def get_variant_attributes(self):
         """
 
         Returns
@@ -131,20 +146,24 @@ class ImageRenderer(BaseRenderer):
             Contains the variant attributes.
 
         """
-        if not self.variant:
+        if not self.variant_attributes:
             for key, pattern in self._get_image_variant_attributes_regex().items():
-                variant = pattern.search(self.name)
+                regex, default = pattern
+                variant = regex.search(self.name)
                 if variant:
-                    self.variant[key] = variant.group(
+                    self.variant_attributes[key] = variant.group(
                         key
                     )  # We fetch the matched group by its name
-                    self.name = pattern.sub(
+                    self.name = regex.sub(
                         "", self.name
                     )  # Remove the parsed variant specifier from the icon name
-        return self.variant
+                elif default:
+                    self.variant_attributes[key] = default
+        return self.variant_attributes
 
     def render_variant(self):
         """
+        This will alter the name [of the icon] by removing the variant attribute definitions.
 
         Returns
         -------
@@ -153,13 +172,13 @@ class ImageRenderer(BaseRenderer):
             system.
 
         """
-        variant = self.get_variant()
-        v_s = ""
-        if variant:
+        variant_attributes = self.get_variant_attributes()
+        variant = ""
+        if variant_attributes:
             for v in self.get_image_variant_attributes_pattern():
-                if v.key in variant:
-                    v_s += "-{}".format(variant[v.key])
-        return v_s
+                if v.key in variant_attributes:
+                    variant += "-{}".format(variant_attributes[v.key])
+        return variant
 
     def get_path(self):
         """
@@ -168,12 +187,13 @@ class ImageRenderer(BaseRenderer):
         By default, the icon filename is built as '{name}[-{color}][-{size}][-{variantX}]' where '-{color}' '-{size}'
         and '-{variantX}'s are only added if there are defined (if several are defined, they are added in that order).
         """
+        variant = self.render_variant()  # Alters the name
         filename = (
             self.get_image_prefix()
             + self.name
-            + self.render_variant()
+            + variant
             + "."
-            + self.get_image_format()
+            + (self.kwargs.get("format", None) or self.get_image_format())
         )
         return "{}/{}".format(self.get_image_root(), filename)
 
@@ -187,23 +207,30 @@ class ImageRenderer(BaseRenderer):
         if self.get_image_prefix():
             css_classes += " icon-{prefix}".format(prefix=self.name)
         for v_p in self.get_image_variant_attributes_pattern():
-            if v_p.key in self.get_variant():
+            if v_p.key in self.get_variant_attributes():
                 css_classes += " icon-{variant}-{value}".format(
-                    variant=v_p.key, value=self.get_variant()[v_p.key]
+                    variant=v_p.key, value=self.get_variant_attributes()[v_p.key]
                 )
         css_classes += " icon-{name}".format(name=self.name)
         return css_classes
+
+    def get_attrs(self):
+        attrs = super(ImageRenderer, self).get_attrs()
+        # 'alt' is a mandatory img tag attribute
+        attrs["alt"] = self.kwargs.get("alt", _("Icon of ") + "{}".format(self.name.replace('-', ' ').replace('_', ' ').title()))
+        return attrs
 
     def render(self):
         """
         Render the icon.
         """
         builder = '<img src="{path}"{attrs}>'
+        src = self.get_path()  # Alters the name
         attrs = self.get_attrs()
         attrs["class"] = merge_css_text(self.get_css_classes())
         attrs = self.clean_attrs(attrs)
         return format_html(
             builder,
-            path=self.get_path(),
+            path=src,
             attrs=mark_safe(flatatt(attrs)) if attrs else "",
         )
