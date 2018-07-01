@@ -1,13 +1,13 @@
 Changelog
 ---------
 
-0.2.1 2018-07-01
+0.2.1 - 2018-07-01
 ==================
 
 - Bug fixes and improvements to ``ImageRenderer`` (@mbourqui)
 
 
-0.2.0 2018-06-30
+0.2.0 - 2018-06-30
 ==================
 
 - Add icons from images, contribution by @mbourqui
