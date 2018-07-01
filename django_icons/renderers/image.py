@@ -52,7 +52,9 @@ class ImageRenderer(BaseRenderer):
     arbitrary, `<{}>` represents the matching group name and `\w+` matches for at least one alphanumeric character
     (color code be a name or a code).
     """
-    VariantAttributePattern = namedtuple("VariantAttributePattern", ["key", "pattern", "default"])
+    VariantAttributePattern = namedtuple(
+        "VariantAttributePattern", ["key", "pattern", "default"]
+    )
     _variant_attributes_regex = (
         dict()
     )  # Used to store the compiled regexes of the individual variant attributes
@@ -60,9 +62,7 @@ class ImageRenderer(BaseRenderer):
     def __init__(self, *args, **kwargs):
         super(ImageRenderer, self).__init__(*args, **kwargs)
         # Dict used to store the variant attributes extracted from icon name
-        self.variant_attributes = (
-            dict()
-        )
+        self.variant_attributes = dict()
         # If variant attributes are set by keyword arguments, they are set here
         # Using keyword arguments supersedes the parsing from the icon name
         vapatterns = self.get_image_variant_attributes_pattern()
@@ -132,9 +132,10 @@ class ImageRenderer(BaseRenderer):
 
         if not cls._variant_attributes_regex:
             for v in cls.get_image_variant_attributes_pattern():
-                cls._variant_attributes_regex[v.key] = (re.compile(
-                    v.pattern.format(v.key)
-                ), v.default)
+                cls._variant_attributes_regex[v.key] = (
+                    re.compile(v.pattern.format(v.key)),
+                    v.default,
+                )
         return cls._variant_attributes_regex
 
     def get_variant_attributes(self):
@@ -217,7 +218,11 @@ class ImageRenderer(BaseRenderer):
     def get_attrs(self):
         attrs = super(ImageRenderer, self).get_attrs()
         # 'alt' is a mandatory img tag attribute
-        attrs["alt"] = self.kwargs.get("alt", _("Icon of ") + "{}".format(self.name.replace('-', ' ').replace('_', ' ').title()))
+        attrs["alt"] = self.kwargs.get(
+            "alt",
+            _("Icon of ")
+            + "{}".format(self.name.replace("-", " ").replace("_", " ").title()),
+        )
         return attrs
 
     def render(self):
@@ -230,7 +235,5 @@ class ImageRenderer(BaseRenderer):
         attrs["class"] = merge_css_text(self.get_css_classes())
         attrs = self.clean_attrs(attrs)
         return format_html(
-            builder,
-            path=src,
-            attrs=mark_safe(flatatt(attrs)) if attrs else "",
+            builder, path=src, attrs=mark_safe(flatatt(attrs)) if attrs else ""
         )
