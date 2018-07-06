@@ -84,7 +84,7 @@ class ImageRenderer(BaseRenderer):
         str or callable
 
         """
-        return static("icons")
+        return "icons"
 
     @classmethod
     def get_image_prefix(cls):
@@ -196,7 +196,7 @@ class ImageRenderer(BaseRenderer):
             + "."
             + (self.kwargs.get("format", None) or self.get_image_format())
         )
-        return "{}/{}".format(self.get_image_root(), filename)
+        return static("{}/{}".format(self.get_image_root(), filename))
 
     def get_class(self):
         """
