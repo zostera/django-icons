@@ -196,7 +196,7 @@ class ImageRenderer(BaseRenderer):
             + "."
             + (self.kwargs.get("format", None) or self.get_image_format())
         )
-        return static("{}/{}".format(self.get_image_root(), filename))
+        return "{}/{}".format(static(self.get_image_root()), filename)
 
     def get_class(self):
         """
