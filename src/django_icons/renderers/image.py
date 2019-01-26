@@ -183,11 +183,11 @@ class ImageRenderer(BaseRenderer):
         """
         variant = self.render_variant()  # Alters the name
         filename = (
-                self.get_image_prefix()
-                + self.name
-                + variant
-                + "."
-                + (self.kwargs.get("format", None) or self.get_image_format())
+            self.get_image_prefix()
+            + self.name
+            + variant
+            + "."
+            + (self.kwargs.get("format", None) or self.get_image_format())
         )
         return "{}/{}".format(static(self.get_image_root()), filename)
 
@@ -260,9 +260,11 @@ class Icons8PngCdnRenderer(ImageRenderer):
             Contains the patterns to match the available variant attributes.
 
         """
-        return [cls.VariantAttributePattern("theme", "-t:(?P<{}>\w+)", "color"),
-                cls.VariantAttributePattern("size", "-s:(?P<{}>\w+)", None),
-                cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)", None)]
+        return [
+            cls.VariantAttributePattern("theme", "-t:(?P<{}>\w+)", "color"),
+            cls.VariantAttributePattern("size", "-s:(?P<{}>\w+)", None),
+            cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)", None),
+        ]
 
     def get_path(self):
         """
@@ -287,13 +289,25 @@ class Icons8PngCdnRenderer(ImageRenderer):
     def render_copyright(self):
         from django_icons import icon
         from django_icons.css import merge_css_list
-        icotag = icon('icons8-logo', alt=_("Icons8 icon logo"), style="vertical-align:middle; width:1.5rem",
-                      extra_classes="icon-copyright",
-                      renderer=Icons8PngCdnRenderer)
-        attrs = {'class': merge_css_text(merge_css_list(self.get_extra_classes(), 'icons8-copyright'))}
+
+        icotag = icon(
+            "icons8-logo",
+            alt=_("Icons8 icon logo"),
+            style="vertical-align:middle; width:1.5rem",
+            extra_classes="icon-copyright",
+            renderer=Icons8PngCdnRenderer,
+        )
+        attrs = {
+            "class": merge_css_text(
+                merge_css_list(self.get_extra_classes(), "icons8-copyright")
+            )
+        }
         attrs = self.clean_attrs(attrs)
         return format_html(
             '<div{attrs}>{label}&nbsp;<a href="https://icons8.com/">'
             '<span>{icon}<span style="margin-left:0.25rem">Icons8</span></span>'
-            '</a></div>',
-            attrs=mark_safe(flatatt(attrs)) if attrs else "", label=_('Icons by'), icon=icotag)
+            "</a></div>",
+            attrs=mark_safe(flatatt(attrs)) if attrs else "",
+            label=_("Icons by"),
+            icon=icotag,
+        )

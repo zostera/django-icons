@@ -60,11 +60,7 @@ class ImageTest(TestCase):
             '<img src="/static/icons/icons8-48.png" alt="Icon of Icons8 48" class="icon icon-icons8-48">',
             render_template('{% icon "icons8-48" renderer="ImageRenderer" %}'),
         )
-        self.assertEqual(
-            '',
-            render_template(
-                '{% icon-copyright "image" %}'),
-        )
+        self.assertEqual("", render_template('{% icon-copyright "image" %}'))
 
     @override_settings(DEBUG=False, STATIC_URL="http://static.example.com/")
     def test_path_deploy(self):
