@@ -241,7 +241,7 @@ class Icons8PngCdnRenderer(ImageRenderer):
     @classmethod
     def get_image_root(cls):
         """
-        The root path to the images folder. By default, returns the path to a 'icons' folder inside the static folder.
+        The root path to the images folder. By default, returns the path to an 'icons' folder inside the static folder.
 
         Returns
         -------
