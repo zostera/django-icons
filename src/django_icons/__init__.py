@@ -36,3 +36,30 @@ def icon(name, *args, **kwargs):
     renderer_class = get_icon_renderer(icon_kwargs.get("renderer", None))
     renderer = renderer_class(**icon_kwargs)
     return renderer.render()
+
+
+def icon_copyright(renderer=None, *args, **kwargs):
+    """
+    Render a copyright text
+
+    **Parameters**:
+
+        renderer
+            The renderer for which to generate a copyright text
+
+            :default: The default renderer as per ``settings.py``, or ultimately `FontAwesomeRenderer`.
+
+    **Usage**::
+
+        icon_copyright(renderer)
+
+    **Example**::
+
+        icon_copyright()
+        icon_copyright('Icons8PngCdnRenderer')
+        icon_copyright('Icons8PngCdnRenderer', extra_classes='my-css')
+    """
+    renderer_class = get_icon_renderer(renderer)
+    tag_kwargs = get_icon_kwargs(renderer_class.__name__, *args, **kwargs)
+    renderer = renderer_class(**tag_kwargs)
+    return renderer.render_copyright()

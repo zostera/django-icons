@@ -20,12 +20,20 @@ Features
 ========
 
 Use simple template tags to generate icons in your web application.
-Supports *Font Awesome* out of the box, easily adaptable for other icon libraries.
+Supports *Font Awesome* and *Icons8* out of the box, easily adaptable for other icon libraries.
 
 The basic usage in a Django template::
 
    {% load icons %}
    {% icon 'edit' %}
+
+
+Some libraries may require that you set a link to them. For that, you can use the following:
+
+.. code:: Django
+
+    {% load icons %}
+    {% icon-copyright %}
 
 
 Requirements

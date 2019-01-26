@@ -72,3 +72,6 @@ class BaseRenderer(object):
             attrs=mark_safe(flatatt(attrs)) if attrs else "",
             content=mark_safe(force_str(content) if content else ""),
         )
+
+    def render_copyright(self):
+        return ""

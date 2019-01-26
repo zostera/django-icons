@@ -1,6 +1,6 @@
 from django import template
 
-from .. import icon
+from .. import icon, icon_copyright
 
 register = template.Library()
 
@@ -42,3 +42,31 @@ def do_icon(name, *args, **kwargs):
         {% icon 'trash' title='Delete' %}
     """
     return icon(name, *args, **kwargs)
+
+
+@register.simple_tag(name="icon-copyright")
+def do_icon_copyright(renderer=None, **kwargs):
+    """
+    Render a copyright text
+
+    This template is an interface to the `icon_copyright` function from `django_icons`
+
+
+    **Parameters**:
+
+        renderer
+            The renderer for which to generate a copyright text
+
+            :default: The default renderer as per ``settings.py``, or ultimately `FontAwesomeRenderer`.
+
+    **Usage**::
+
+        {% icon-copyright renderer %}
+
+    **Example**::
+
+        {% icon-copyright %}
+        {% icon-copyright 'Icons8PngCdnRenderer' %}
+        {% icon-copyright 'Icons8PngCdnRenderer' extra_classes='my-css' %}
+    """
+    return icon_copyright(renderer, **kwargs)
