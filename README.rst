@@ -20,7 +20,15 @@ Features
 ========
 
 Use simple template tags to generate icons in your web application.
-Supports *Font Awesome* and *Icons8* out of the box, easily adaptable for other icon libraries.
+Supports out of the box:
+
+- `Font Awesome 4`_
+- `Bootstrap 3`_
+- `Material`_
+- `Icons8`_
+- Local files
+
+Can easily be adapted for other icon libraries.
 
 The basic usage in a Django template::
 
@@ -80,3 +88,8 @@ to think of a library that
 - And could easily be extended by users
 
 This is how we came to write and use `django-icons`.
+
+.. _Font Awesome 4: https://fontawesome.com/v4.7.0/
+.. _Bootstrap 3: https://getbootstrap.com/docs/3.3/components/#glyphicons
+.. _Material: https://material.io/tools/icons/?style=baseline
+.. _Icons8: https://icons8.com/
