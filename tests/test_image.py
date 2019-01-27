@@ -1,7 +1,8 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from django.test import TestCase
+from django.conf import settings
+from django.test import TestCase, override_settings
 
 from .test_template_tags import render_template
 
@@ -59,4 +60,30 @@ class ImageTest(TestCase):
             render_template(
                 '{% icon "icons8-s:48-c:b" renderer="ImageRenderer" size="48" color="b" format="jpg" %}'
             ),
+        )
+
+    @override_settings()
+    def test_path_dev(self):
+        self.assertEqual(
+            '<img src="'
+            + settings.STATIC_URL
+            + 'icons/icons8-48.png" alt="Icon of Icons8 48" class="icon icon-icons8-48">',
+            render_template('{% icon "icons8-48" renderer="ImageRenderer" %}'),
+        )
+        self.assertEqual(
+            '<img src="/static/icons/icons8-48.png" alt="Icon of Icons8 48" class="icon icon-icons8-48">',
+            render_template('{% icon "icons8-48" renderer="ImageRenderer" %}'),
+        )
+
+    @override_settings(DEBUG=False, STATIC_URL="http://static.example.com/")
+    def test_path_deploy(self):
+        self.assertEqual(
+            '<img src="'
+            + settings.STATIC_URL
+            + 'icons/icons8-48.png" alt="Icon of Icons8 48" class="icon icon-icons8-48">',
+            render_template('{% icon "icons8-48" renderer="ImageRenderer" %}'),
+        )
+        self.assertEqual(
+            '<img src="http://static.example.com/icons/icons8-48.png" alt="Icon of Icons8 48" class="icon icon-icons8-48">',
+            render_template('{% icon "icons8-48" renderer="ImageRenderer" %}'),
         )
