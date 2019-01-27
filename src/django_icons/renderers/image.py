@@ -7,8 +7,8 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from django_icons.css import merge_css_text
-from django_icons.renderers.base import BaseRenderer
+from ..css import merge_css_text
+from ..renderers.base import BaseRenderer
 
 
 class ImageRenderer(BaseRenderer):
@@ -287,8 +287,8 @@ class Icons8PngCdnRenderer(ImageRenderer):
         return variant
 
     def render_copyright(self):
-        from django_icons import icon
-        from django_icons.css import merge_css_list
+        from .. import icon
+        from ..css import merge_css_list
 
         icotag = icon(
             "icons8-logo",
