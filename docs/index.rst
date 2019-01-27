@@ -13,4 +13,5 @@ Icons for Django
    demo
    api
    templatetags
+   renderers
    settings
