@@ -51,6 +51,11 @@ This package requires a Python 3.6 or newer and Django 2.2 or newer.
 
 The combination must be supported by the Django Project. See "Supported Versions" on https://www.djangoproject.com/download/.
 
+Documentation
+=============
+
+See https://django-icons.readthedocs.io/ for complete documentation.
+
 Running the demo
 ================
 
