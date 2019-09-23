@@ -62,7 +62,6 @@ class ImageTest(TestCase):
             ),
         )
 
-    @override_settings()
     def test_path_dev(self):
         self.assertEqual(
             '<img src="'
@@ -87,3 +86,25 @@ class ImageTest(TestCase):
             '<img src="http://static.example.com/icons/icons8-48.png" alt="Icon of Icons8 48" class="icon icon-icons8-48">',
             render_template('{% icon "icons8-48" renderer="ImageRenderer" %}'),
         )
+
+    def test_custom_renderer(self):
+        DJANGO_ICONS = {
+            "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
+            "RENDERERS": {
+                "image": "ImageRenderer",
+                "hd-image": "tests.app.renderers.CustomImageRenderer",
+            },
+            "ICONS": {
+                "edit": {"renderer": "image"},
+                "feather": {"renderer": "hd-image"},
+            },
+        }
+        with override_settings(DJANGO_ICONS=DJANGO_ICONS):
+            self.assertEqual(
+                render_template("{% icon 'edit' %}"),
+                '<img src="/static/icons/edit.png" alt="Icon of Edit" class="icon icon-edit">',
+            )
+            self.assertEqual(
+                render_template("{% icon 'feather' %}"),
+                '<img src="/static/hd-icons/feather.png" alt="Icon of Feather" class="icon icon-feather">',
+            )
