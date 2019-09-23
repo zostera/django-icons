@@ -1,11 +1,12 @@
+import sys
+
 from django.conf import settings
-from django.utils import six
 from django.utils.module_loading import import_string
 
 from django_icons.css import merge_css_list
-from django_icons.renderers import FontAwesomeRenderer, Bootstrap3Renderer
+from django_icons.renderers import (Bootstrap3Renderer, FontAwesomeRenderer,
+                                    ImageRenderer)
 from django_icons.renderers.material import MaterialRenderer
-from django_icons.renderers import ImageRenderer
 
 DEFAULT_RENDERERS = {
     "fontawesome": FontAwesomeRenderer,
@@ -39,7 +40,7 @@ def get_icon_kwargs_from_settings(name):
     kwargs_from_settings = _get_setting("ICONS", name, {})
 
     # Settings might return single string, convert to dict with key `name`
-    if isinstance(kwargs_from_settings, six.string_types):
+    if isinstance(kwargs_from_settings, str):
         kwargs_from_settings = {"name": kwargs_from_settings}
 
     # If no name is set, set the name
@@ -109,13 +110,13 @@ def get_icon_renderer(renderer=None):
     )
 
     # Translate a name to a full path
-    if isinstance(renderer_class, six.string_types):
+    if isinstance(renderer_class, str):
 
         # Note that a dotted path remains a dotted path if it is not a name
         renderer_class = _get_icon_renderer_by_name(renderer_class)
 
         # If we still have a string, it has to be a dotted path to the class
-        if isinstance(renderer_class, six.string_types):
+        if isinstance(renderer_class, str):
             # Be kind to our own Renderers
             if "." not in renderer_class:
                 renderer_class = "django_icons.renderers.{}".format(renderer_class)

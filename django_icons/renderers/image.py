@@ -13,10 +13,10 @@ from django_icons.renderers.base import BaseRenderer
 
 class ImageRenderer(BaseRenderer):
     """
-    Render an icon from a local file, each icon being a single file. The icon will be rendered using an <img> tag.
+    Render an icon from a local file, each icon being a single file rendered with an <img> tag.
 
     All the icons must have the same extensions. Variants of an icon can be saved under variants (color, size) of the
-    filename, following a pre-defined pattern (customizable).
+    filename, following a pre-defined pattern.
 
     For each rendered icon, the default CSS classes will be 'icon' and a composed name class 'icon-{name}' where
     {name} is the name of the icon.
@@ -35,21 +35,36 @@ class ImageRenderer(BaseRenderer):
     will produce the following tag:
         <img src="/static/icons/myicon.png'" class="icon icon-myicon" %}">
 
-    To customize the default behaviours, create you own ImageRenderer by subclassing this one and override the methods
-    to suit you needs.
+    To customize the default behaviour, create a custom ``ImageRenderer``::
 
-    The template tag supports settings keyword parameters the define the variant attributes and/or set the format. The
+        # app/renderers.py
+        from django_icons.renderers import ImageRenderer
+
+        class CustomImageRenderer(ImageRenderer):
+            def get_image_root(cls):
+                return "special-icons"
+
+        DJANGO_ICONS = {
+            "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
+            "RENDERERS": {
+                "image": "app.renderers.CustomImageRenderer",
+            },
+            "ICONS": {
+                "edit": {"renderer": "image"},
+            }
+        }
+
+    The template tag supports settings keyword parameters to define the variant attributes and/or set the format. The
     keyword must be the key of the variant attribute. Please note that using keyword parameters will supersede the
     parsing of the name. That is, the variant attributes are set from the keyword parameters and the file name is not
     parsed.
     The format can be defined by the 'format' keyword parameter without altering the definition of variant attributes.
-
     """
 
     """
-    The pattern must contain a named grouped, where the name must be specified as `{}` as it will be injected from the
-    key. That is, the pattern used here to match a color specification looks like `-c:(?P<{}>\w+)`, where `-c:` is
-    arbitrary, `<{}>` represents the matching group name and `\w+` matches for at least one alphanumeric character
+    The VariantAttributePattern must contain a named grouped, where the name must be specified as `{}` as it will be injected from the
+    key. That is, the pattern used here to match a color specification looks like `-c:(?P<{}>\\w+)`, where `-c:` is
+    arbitrary, `<{}>` represents the matching group name and `\\w+` matches for at least one alphanumeric character
     (color code be a name or a code).
     """
     VariantAttributePattern = namedtuple(
@@ -60,7 +75,7 @@ class ImageRenderer(BaseRenderer):
     )  # Used to store the compiled regexes of the individual variant attributes
 
     def __init__(self, *args, **kwargs):
-        super(ImageRenderer, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         # Dict used to store the variant attributes extracted from icon name
         self.variant_attributes = dict()
         # If variant attributes are set by keyword arguments, they are set here
@@ -105,8 +120,8 @@ class ImageRenderer(BaseRenderer):
 
         """
         return [
-            cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)", None),
-            cls.VariantAttributePattern("size", "-s:(?P<{}>\w+)", None),
+            cls.VariantAttributePattern("color", r"-c:(?P<{}>\w+)", None),
+            cls.VariantAttributePattern("size", r"-s:(?P<{}>\w+)", None),
         ]
 
     @classmethod
@@ -218,11 +233,8 @@ class ImageRenderer(BaseRenderer):
     def get_attrs(self):
         attrs = super(ImageRenderer, self).get_attrs()
         # 'alt' is a mandatory img tag attribute
-        attrs["alt"] = self.kwargs.get(
-            "alt",
-            _("Icon of ")
-            + "{}".format(self.name.replace("-", " ").replace("_", " ").title()),
-        )
+        cleaned_name = self.name.replace("-", " ").replace("_", " ").title()
+        attrs["alt"] = self.kwargs.get("alt", _("Icon of {}").format(cleaned_name))
         return attrs
 
     def render(self):
