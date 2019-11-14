@@ -24,9 +24,7 @@ if sys.argv[-1] == "publish":
     os.system("cd docs && make html")
     os.system("python setup.py sdist")
     os.system("twine upload dist/django-icons-{}.tar.gz".format(VERSION))
-    message = (
-        "\nreleased [{version}](https://pypi.python.org/pypi/django-icons/{version})"
-    )
+    message = "\nreleased [{version}](https://pypi.python.org/pypi/django-icons/{version})"
     print(message.format(version=VERSION))
     print("You probably want to also tag the version now:")
     print("  git tag -a %s -m 'version %s'" % (VERSION, VERSION))

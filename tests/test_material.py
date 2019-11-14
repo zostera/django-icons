@@ -13,6 +13,5 @@ class MaterialTest(TestCase):
 
     def test_icons(self):
         self.assertEqual(
-            render_template('{% icon "user" renderer="MaterialRenderer" %}'),
-            '<i class="material-icons">user</i>',
+            render_template('{% icon "user" renderer="MaterialRenderer" %}'), '<i class="material-icons">user</i>',
         )

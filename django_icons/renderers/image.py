@@ -52,12 +52,8 @@ class ImageRenderer(BaseRenderer):
     arbitrary, `<{}>` represents the matching group name and `\w+` matches for at least one alphanumeric character
     (color code be a name or a code).
     """
-    VariantAttributePattern = namedtuple(
-        "VariantAttributePattern", ["key", "pattern", "default"]
-    )
-    _variant_attributes_regex = (
-        dict()
-    )  # Used to store the compiled regexes of the individual variant attributes
+    VariantAttributePattern = namedtuple("VariantAttributePattern", ["key", "pattern", "default"])
+    _variant_attributes_regex = dict()  # Used to store the compiled regexes of the individual variant attributes
 
     def __init__(self, *args, **kwargs):
         super(ImageRenderer, self).__init__(*args, **kwargs)
@@ -152,12 +148,8 @@ class ImageRenderer(BaseRenderer):
                 regex, default = pattern
                 variant = regex.search(self.name)
                 if variant:
-                    self.variant_attributes[key] = variant.group(
-                        key
-                    )  # We fetch the matched group by its name
-                    self.name = regex.sub(
-                        "", self.name
-                    )  # Remove the parsed variant specifier from the icon name
+                    self.variant_attributes[key] = variant.group(key)  # We fetch the matched group by its name
+                    self.name = regex.sub("", self.name)  # Remove the parsed variant specifier from the icon name
                 elif default:
                     self.variant_attributes[key] = default
         return self.variant_attributes
@@ -219,9 +211,7 @@ class ImageRenderer(BaseRenderer):
         attrs = super(ImageRenderer, self).get_attrs()
         # 'alt' is a mandatory img tag attribute
         attrs["alt"] = self.kwargs.get(
-            "alt",
-            _("Icon of ")
-            + "{}".format(self.name.replace("-", " ").replace("_", " ").title()),
+            "alt", _("Icon of ") + "{}".format(self.name.replace("-", " ").replace("_", " ").title()),
         )
         return attrs
 
@@ -234,6 +224,4 @@ class ImageRenderer(BaseRenderer):
         attrs = self.get_attrs()
         attrs["class"] = merge_css_text(self.get_css_classes())
         attrs = self.clean_attrs(attrs)
-        return format_html(
-            builder, path=src, attrs=mark_safe(flatatt(attrs)) if attrs else ""
-        )
+        return format_html(builder, path=src, attrs=mark_safe(flatatt(attrs)) if attrs else "")

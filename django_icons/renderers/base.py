@@ -1,9 +1,9 @@
 from django.forms.utils import flatatt
 from django.utils.encoding import force_text
-from django.utils.html import format_html, escape
+from django.utils.html import escape, format_html
 from django.utils.safestring import mark_safe
 
-from django_icons.css import merge_css_text, merge_css_list
+from django_icons.css import merge_css_list, merge_css_text
 
 
 class BaseRenderer(object):
@@ -61,9 +61,7 @@ class BaseRenderer(object):
         Takes a dict of attrs and cleans it
         NOTE: This applies `escape` to everything except `id` and `class` per HTML 5 spec
         """
-        return {
-            k: escape(v) if k not in ("id", "class") else v for k, v in attrs.items()
-        }
+        return {k: escape(v) if k not in ("id", "class") else v for k, v in attrs.items()}
 
     def get_content(self):
         """
