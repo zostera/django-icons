@@ -20,11 +20,9 @@ Features
 ========
 
 Use simple template tags to generate icons in your web application.
-Supports Font Awesome out of the box, easily adaptable for other icon libraries.
+Supports *Font Awesome* out of the box, easily adaptable for other icon libraries.
 
-The basic usage is
-
-.. code:: Django
+The basic usage in a Django template::
 
    {% load icons %}
    {% icon 'edit' %}
@@ -33,7 +31,7 @@ The basic usage is
 Requirements
 ============
 
-Django >= 1.11 and a matching Python version. Using Python 3 is strongly recommended.
+Python 3 and matching supported Django versions.
 
 
 Running the demo
@@ -41,9 +39,7 @@ Running the demo
 
 You can run the small demo app that is part of the test suite.
 This requires Django, so you may have to `pip install django` in your environment.
-To run the demo, from the root of the project (where you can find `manage.py`, run:
-
-.. code:: bash
+To run the demo, from the root of the project (where you can find `manage.py`, run::
 
    python manage.py runserver
 
@@ -51,15 +47,11 @@ To run the demo, from the root of the project (where you can find `manage.py`, r
 Running the tests
 =================
 
-The test suite uses `tox`. Run the complete test suite like this:
-
-.. code:: bash
+The test suite uses `tox`. Run the complete test suite like this::
 
    tox
 
-Run the tests only for the current environment like this:
-
-.. code:: bash
+Run the tests only for the current environment like this::
 
    python manage.py test
 

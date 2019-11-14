@@ -1,4 +1,4 @@
-from django_icons.renderers import BaseRenderer
+from django_icons.renderers import BaseRenderer, ImageRenderer
 
 
 class CustomSvgRenderer(BaseRenderer):
@@ -19,3 +19,8 @@ class CustomSvgRenderer(BaseRenderer):
 
     def get_content(self):
         return '<use xlink:href="#icon-{name}"></use>'.format(name=self.name)
+
+
+class CustomImageRenderer(ImageRenderer):
+    def get_image_root(cls):
+        return "hd-icons"
