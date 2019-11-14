@@ -1,6 +1,3 @@
-# coding: utf-8
-from __future__ import unicode_literals
-
 from django.test import TestCase
 
 from django_icons.renderers import Bootstrap3Renderer, FontAwesomeRenderer, ImageRenderer

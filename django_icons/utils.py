@@ -1,11 +1,8 @@
-import sys
-
 from django.conf import settings
 from django.utils.module_loading import import_string
 
 from django_icons.css import merge_css_list
-from django_icons.renderers import (Bootstrap3Renderer, FontAwesomeRenderer,
-                                    ImageRenderer)
+from django_icons.renderers import Bootstrap3Renderer, FontAwesomeRenderer, ImageRenderer
 from django_icons.renderers.material import MaterialRenderer
 
 DEFAULT_RENDERERS = {

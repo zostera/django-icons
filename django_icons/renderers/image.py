@@ -61,11 +61,11 @@ class ImageRenderer(BaseRenderer):
     The format can be defined by the 'format' keyword parameter without altering the definition of variant attributes.
     """
 
-    """
-    The VariantAttributePattern must contain a named grouped, where the name must be specified as `{}` as it will be injected from the
-    key. That is, the pattern used here to match a color specification looks like `-c:(?P<{}>\\w+)`, where `-c:` is
-    arbitrary, `<{}>` represents the matching group name and `\\w+` matches for at least one alphanumeric character
-    (color code be a name or a code).
+    r"""
+    The VariantAttributePattern must contain a named grouped, where the name must be specified as `{}` as it will be
+    injected from the key. That is, the pattern used here to match a color specification looks like `-c:(?P<{}>\\w+)`,
+    where `-c:` is arbitrary, `<{}>` represents the matching group name and `\\w+` matches for at least one
+    alphanumeric character (color code be a name or a code).
     """
     VariantAttributePattern = namedtuple("VariantAttributePattern", ["key", "pattern", "default"])
     _variant_attributes_regex = dict()  # Used to store the compiled regexes of the individual variant attributes

@@ -1,6 +1,3 @@
-# coding: utf-8
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.test import TestCase, override_settings
 
@@ -82,14 +79,8 @@ class ImageTest(TestCase):
     def test_custom_renderer(self):
         DJANGO_ICONS = {
             "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
-            "RENDERERS": {
-                "image": "ImageRenderer",
-                "hd-image": "tests.app.renderers.CustomImageRenderer",
-            },
-            "ICONS": {
-                "edit": {"renderer": "image"},
-                "feather": {"renderer": "hd-image"},
-            },
+            "RENDERERS": {"image": "ImageRenderer", "hd-image": "tests.app.renderers.CustomImageRenderer"},
+            "ICONS": {"edit": {"renderer": "image"}, "feather": {"renderer": "hd-image"}},
         }
         with override_settings(DJANGO_ICONS=DJANGO_ICONS):
             self.assertEqual(
