@@ -46,7 +46,7 @@ class ImageRenderer(BaseRenderer):
 
     """
 
-    """
+    r"""
     The pattern must contain a named grouped, where the name must be specified as `{}` as it will be injected from the
     key. That is, the pattern used here to match a color specification looks like `-c:(?P<{}>\w+)`, where `-c:` is
     arbitrary, `<{}>` represents the matching group name and `\w+` matches for at least one alphanumeric character
@@ -101,8 +101,8 @@ class ImageRenderer(BaseRenderer):
 
         """
         return [
-            cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)", None),
-            cls.VariantAttributePattern("size", "-s:(?P<{}>\w+)", None),
+            cls.VariantAttributePattern("color", r"-c:(?P<{}>\w+)", None),
+            cls.VariantAttributePattern("size", r"-s:(?P<{}>\w+)", None),
         ]
 
     @classmethod

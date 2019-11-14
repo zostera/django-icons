@@ -4,7 +4,7 @@ import re
 import sys
 
 import sphinx_rtd_theme
-import django_icons
+import django_icons  # noqa
 
 sys.path.insert(0, os.path.abspath("../"))
 
