@@ -1,10 +1,10 @@
-.PHONY: clean test tox reformat publish docs
+.PHONY: clean test tox reformat publish docs build publish
 
 clean:
 	rm -rf build dist *.egg-info
 
 test:
-	python manage.py test
+	coverage run manage.py test && coverage report
 
 tox:
 	rm -rf .tox
@@ -20,5 +20,9 @@ reformat:
 docs:
 	cd docs && sphinx-build -b html -d _build/doctrees . _build/html
 
-publish: clean docs
-	python setup.py sdist bdist_wheel upload
+build: clean docs
+	python setup.py sdist bdist_wheel
+	twine check dist/*
+
+publish: build
+	twine upload dist/*

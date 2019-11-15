@@ -20,28 +20,12 @@ with open(os.path.join(os.path.dirname(__file__), "README.rst")) as readme_file:
 with open(os.path.join(os.path.dirname(__file__), "CHANGELOG.rst")) as changelog_file:
     changelog = changelog_file.read().replace(".. :changelog:", "")
 
-if sys.argv[-1] == "publish":
-    os.system("cd docs && make html")
-    os.system("python setup.py sdist")
-    os.system("twine upload dist/django-icons-{}.tar.gz".format(VERSION))
-    message = "\nreleased [{version}](https://pypi.python.org/pypi/django-icons/{version})"
-    print(message.format(version=VERSION))
-    print("You probably want to also tag the version now:")
-    print("  git tag -a %s -m 'version %s'" % (VERSION, VERSION))
-    print("  git push --tags")
-    sys.exit()
-
-if sys.argv[-1] == "test":
-    os.system("pip install -U -r requirements.txt")
-    os.system("pip install -U coverage")
-    os.system("coverage run ./manage.py test && coverage report --include=./*")
-    sys.exit()
-
 setup(
     name="django-icons",
     version=VERSION,
     description="""Icons for Django""",
     long_description=readme + "\n\n" + changelog,
+    long_description_content_type="text/x-rst",
     author="Dylan Verheul",
     author_email="dylan@zostera.nl",
     url="https://github.com/zostera/django-icons",
