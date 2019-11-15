@@ -76,7 +76,7 @@ class ImageTest(TestCase):
             render_template('{% icon "icons8-48" renderer="ImageRenderer" %}'),
         )
 
-    def test_custom_renderer(self):
+    def test_custom_renderer_image_root(self):
         DJANGO_ICONS = {
             "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
             "RENDERERS": {"image": "ImageRenderer", "hd-image": "tests.app.renderers.CustomImageRenderer"},
@@ -90,4 +90,16 @@ class ImageTest(TestCase):
             self.assertEqual(
                 render_template("{% icon 'feather' %}"),
                 '<img src="/static/hd-icons/feather.png" alt="Icon of Feather" class="icon icon-feather">',
+            )
+
+    def test_custom_renderer_image_prefix(self):
+        DJANGO_ICONS = {
+            "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
+            "RENDERERS": {"icons8": "tests.app.renderers.CustomIcons8Renderer"},
+            "ICONS": {"icons8-48": {"renderer": "icons8"}},
+        }
+        with override_settings(DJANGO_ICONS=DJANGO_ICONS):
+            self.assertEqual(
+                render_template("{% icon 'icons8-48' %}"),
+                '<img src="/static/icons/icons8-icons8-48.png" alt="Icon of Icons8 48" class="icon icon-icons8-48">',
             )

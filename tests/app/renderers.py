@@ -24,3 +24,8 @@ class CustomSvgRenderer(BaseRenderer):
 class CustomImageRenderer(ImageRenderer):
     def get_image_root(cls):
         return "hd-icons"
+
+
+class CustomIcons8Renderer(ImageRenderer):
+    def get_image_prefix(self):
+        return "icons8-"
