@@ -1,8 +1,8 @@
 Changelog
 ---------
 
-1.0.0 - In development
-======================
+1.0.0 - 2019-11-15
+==================
 
 - Drop support for Python < 3.5
 - Drop support for Django < 2.2
