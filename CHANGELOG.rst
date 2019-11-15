@@ -1,6 +1,16 @@
 Changelog
 ---------
 
+1.0.0 - In development
+======================
+
+- Drop support for Python < 3.5
+- Drop support for Django < 2.2
+- Add support for Django 3
+- Add support for Python 3.8
+- Add test for custom ``ImageRenderer``
+- Add Makefile for common tasks
+
 0.2.1 - 2018-07-01
 ==================
 

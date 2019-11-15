@@ -1,19 +1,7 @@
-# coding: utf-8
-from __future__ import unicode_literals
-
 from django.test import TestCase
 
-from django_icons.renderers import (
-    FontAwesomeRenderer,
-    Bootstrap3Renderer,
-    ImageRenderer,
-)
-from django_icons.utils import (
-    _get_setting,
-    get_icon_kwargs_from_settings,
-    get_icon_kwargs,
-    get_icon_renderer,
-)
+from django_icons.renderers import Bootstrap3Renderer, FontAwesomeRenderer, ImageRenderer
+from django_icons.utils import _get_setting, get_icon_kwargs, get_icon_kwargs_from_settings, get_icon_renderer
 
 
 class UtilsTest(TestCase):
@@ -33,17 +21,12 @@ class UtilsTest(TestCase):
         with self.settings(DJANGO_ICONS=None):
             self.assertEqual(get_icon_kwargs_from_settings("info"), {"name": "info"})
         with self.settings(DJANGO_ICONS={"ICONS": {"info": "info-sign"}}):
-            self.assertEqual(
-                get_icon_kwargs_from_settings("info"), {"name": "info-sign"}
-            )
+            self.assertEqual(get_icon_kwargs_from_settings("info"), {"name": "info-sign"})
         with self.settings(DJANGO_ICONS={"ICONS": {"info": {"name": "info-sign"}}}):
-            self.assertEqual(
-                get_icon_kwargs_from_settings("info"), {"name": "info-sign"}
-            )
+            self.assertEqual(get_icon_kwargs_from_settings("info"), {"name": "info-sign"})
         with self.settings(DJANGO_ICONS={"ICONS": {"info": {"title": "Information"}}}):
             self.assertEqual(
-                get_icon_kwargs_from_settings("info"),
-                {"name": "info", "title": "Information"},
+                get_icon_kwargs_from_settings("info"), {"name": "info", "title": "Information"},
             )
 
     def test_get_icon_kwargs(self):
@@ -57,9 +40,7 @@ class UtilsTest(TestCase):
         with self.settings(DJANGO_ICONS={"ICONS": {"info": {"name": "info-sign"}}}):
             self.assertEqual(get_icon_kwargs("info"), {"name": "info-sign"})
         with self.settings(DJANGO_ICONS={"ICONS": {"info": {"title": "Information"}}}):
-            self.assertEqual(
-                get_icon_kwargs("info"), {"name": "info", "title": "Information"}
-            )
+            self.assertEqual(get_icon_kwargs("info"), {"name": "info", "title": "Information"})
 
     def test_get_icon_renderer(self):
         with self.settings(DJANGO_ICONS=None):
@@ -68,6 +49,5 @@ class UtilsTest(TestCase):
             self.assertEqual(get_icon_renderer("bootstrap3"), Bootstrap3Renderer)
             self.assertEqual(get_icon_renderer("image"), ImageRenderer)
             self.assertEqual(
-                get_icon_renderer("django_icons.renderers.Bootstrap3Renderer"),
-                Bootstrap3Renderer,
+                get_icon_renderer("django_icons.renderers.Bootstrap3Renderer"), Bootstrap3Renderer,
             )

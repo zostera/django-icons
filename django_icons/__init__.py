@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from .utils import get_icon_kwargs, get_icon_renderer
 
 __version__ = "0.2.1"

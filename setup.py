@@ -1,5 +1,5 @@
 #!/usr/local/bin/python
-# -*- coding: utf-8 -*-
+
 
 import os
 import re
@@ -24,9 +24,7 @@ if sys.argv[-1] == "publish":
     os.system("cd docs && make html")
     os.system("python setup.py sdist")
     os.system("twine upload dist/django-icons-{}.tar.gz".format(VERSION))
-    message = (
-        "\nreleased [{version}](https://pypi.python.org/pypi/django-icons/{version})"
-    )
+    message = "\nreleased [{version}](https://pypi.python.org/pypi/django-icons/{version})"
     print(message.format(version=VERSION))
     print("You probably want to also tag the version now:")
     print("  git tag -a %s -m 'version %s'" % (VERSION, VERSION))
@@ -57,11 +55,10 @@ setup(
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.6",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Operating System :: OS Independent",
         "Topic :: Software Development :: Libraries",
         "Topic :: Utilities",
