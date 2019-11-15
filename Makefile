@@ -1,4 +1,4 @@
-.PHONY: clean test tox reformat publish
+.PHONY: clean test tox reformat publish docs
 
 clean:
 	rm -rf build dist *.egg-info
@@ -17,6 +17,8 @@ reformat:
 	black .
 	flake8 django_icons tests
 
-publish: clean
-	cd docs && make html
+docs:
+	cd docs && sphinx-build -b html -d _build/doctrees . _build/html
+
+publish: clean docs
 	python setup.py sdist bdist_wheel upload
