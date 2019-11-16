@@ -5,9 +5,7 @@ from django_icons.utils import _get_setting, get_icon_kwargs, get_icon_kwargs_fr
 
 
 class UtilsTest(TestCase):
-    """
-    Test the Font Awesome Renderer
-    """
+    """Test the Font Awesome Renderer."""
 
     def test_get_setting(self):
         with self.settings(DJANGO_ICONS=None):

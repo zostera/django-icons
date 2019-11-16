@@ -5,9 +5,7 @@ from .test_template_tags import render_template
 
 
 class ImageTest(TestCase):
-    """
-    Test the Image Renderer
-    """
+    """Test the Image Renderer."""
 
     def test_icons(self):
         self.assertEqual(

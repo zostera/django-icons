@@ -4,9 +4,7 @@ from .test_template_tags import render_template
 
 
 class Bootstrap3Test(TestCase):
-    """
-    Test the Font Awesome Renderer
-    """
+    """Test the Font Awesome Renderer."""
 
     def test_icons(self):
         self.assertEqual(

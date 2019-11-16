@@ -8,7 +8,7 @@ register = template.Library()
 @register.simple_tag(name="icon")
 def do_icon(name, *args, **kwargs):
     """
-    Render an icon
+    Render an icon.
 
     This template is an interface to the `icon` function from `django_icons`
 

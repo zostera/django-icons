@@ -2,9 +2,7 @@ from collections import OrderedDict
 
 
 def _merge_css_item(item):
-    """
-    Process arguments
-    """
+    """Transform argument into a single list of string values."""
     # Recurse lists and tuples to combine into single list
     if isinstance(item, (list, tuple)):
         return _merge_css_list(*item)
@@ -15,18 +13,17 @@ def _merge_css_item(item):
 
 
 def _merge_css_list(*args):
-    """
-    Iterate over all arguments
-    """
+    """Transform arguments into a single list of string values."""
     css_list = []
-    for a in args:
-        css_list += _merge_css_item(a)
+    for arg in args:
+        css_list += _merge_css_item(arg)
     return css_list
 
 
 def merge_css_list(*args):
     """
-    Takes a series of strings and lists and combines them into a single list of unique CSS classes.
+    Combine a series of strings and lists into a single list of unique CSS classes.
+
     Removes duplicates. Gives precedence to first class encountered.
     """
     # Combine args into a single list
@@ -45,7 +42,8 @@ def merge_css_list(*args):
 
 def merge_css_text(*args):
     """
-    Takes a series of strings and lists and combines them into one space separated string of unique CSS classes.
+    Combine a series of strings and lists into one space separated string of unique CSS classes.
+
     Removes duplicates. Gives precedence to first class encountered.
     """
     return " ".join(merge_css_list(*args))

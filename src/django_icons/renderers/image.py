@@ -88,19 +88,20 @@ class ImageRenderer(BaseRenderer):
     @classmethod
     def get_image_root(cls):
         """
-        The root path to the images folder. By default, returns the path to a 'icons' folder inside the static folder.
+        Return the root path to the images folder.
 
-        Returns
-        -------
-        str or callable
+        By default, returns the path to a 'icons' folder inside the static folder.
 
+        :return: str or callable
         """
         return "icons"
 
     @classmethod
     def get_image_prefix(cls):
         """
-        Filename prefix. For example, Icons8 icons are all prefixed with `icons8-`, so that you can call your icons
+        Return filename prefix.
+
+        For example, Icons8 icons are all prefixed with `icons8-`, so that you can call your icons
         without repeating the prefix in the name.
         """
         return ""
@@ -108,12 +109,9 @@ class ImageRenderer(BaseRenderer):
     @classmethod
     def get_image_variant_attributes_pattern(cls):
         """
+        Return list of patterns to match the available variant attributes.
 
-        Returns
-        -------
-        list
-            Contains the patterns to match the available variant attributes.
-
+        :return: list Contains the patterns to match the available variant attributes.
         """
         return [
             cls.VariantAttributePattern("color", r"-c:(?P<{}>\w+)", None),
@@ -123,7 +121,7 @@ class ImageRenderer(BaseRenderer):
     @classmethod
     def get_image_format(cls):
         """
-        Icon format, without dot
+        Return icon format, without dot.
 
         For example: 'png'.
         """
@@ -132,13 +130,9 @@ class ImageRenderer(BaseRenderer):
     @classmethod
     def _get_image_variant_attributes_regex(cls):
         """
-        Compile the regular expression pattern of the variant attributes into regular expression objects
+        Compile the regular expression pattern of the variant attributes into regular expression objects.
 
-        Returns
-        -------
-        dict
-            Key is the variant attribute name and value is a tuple of compiled regex and default value
-
+        :return: dict Key is the variant attribute name and value is a tuple of compiled regex and default value
         """
 
         if not cls._variant_attributes_regex:
@@ -151,12 +145,9 @@ class ImageRenderer(BaseRenderer):
 
     def get_variant_attributes(self):
         """
+        Return the variant attributes.
 
-        Returns
-        -------
-        dict
-            Contains the variant attributes.
-
+        :return: dict The variant attributes.
         """
         if not self.variant_attributes:
             for key, pattern in self._get_image_variant_attributes_regex().items():
@@ -171,14 +162,9 @@ class ImageRenderer(BaseRenderer):
 
     def render_variant(self):
         """
-        This will alter the name [of the icon] by removing the variant attribute definitions.
+        Alter the name of the icon by removing the variant attribute definitions.
 
-        Returns
-        -------
-        str
-            String representing the variant to be appended to the icon name to build the path to the file in the file
-            system.
-
+        :return: str The variant to be appended to the icon name to build the path to the file in the file system.
         """
         variant_attributes = self.get_variant_attributes()
         variant = ""
@@ -190,7 +176,7 @@ class ImageRenderer(BaseRenderer):
 
     def get_path(self):
         """
-        Relative path to the icon.
+        Return the relative path to the icon.
 
         By default, the icon filename is built as '{name}[-{color}][-{size}][-{variantX}]' where '-{color}' '-{size}'
         and '-{variantX}'s are only added if there are defined (if several are defined, they are added in that order).
@@ -207,6 +193,8 @@ class ImageRenderer(BaseRenderer):
 
     def get_class(self):
         """
+        Return CSS class string for the icons.
+
         First CSS classes: 'icon' and 'icon-{name}' where {name} is the given name of the icon in the templatetag.
 
         If the icon defines a color and/or size, 'icon-{color}' and/or 'icon-{size}' classes will be added as well.
@@ -230,9 +218,7 @@ class ImageRenderer(BaseRenderer):
         return attrs
 
     def render(self):
-        """
-        Render the icon.
-        """
+        """Render the icon."""
         builder = '<img src="{path}"{attrs}>'
         src = self.get_path()  # Alters the name
         attrs = self.get_attrs()

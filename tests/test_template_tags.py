@@ -3,26 +3,20 @@ from django.test import TestCase
 
 
 def render_template(content, **context_args):
-    """
-    Create a template with content ``content`` that first loads the font-awesome tags.
-    """
+    """Create a template with content ``content`` that first loads the font-awesome tags."""
     template = Template("{% load icons %}" + content)
     return template.render(Context(context_args))
 
 
 class TemplateTagsTest(TestCase):
-    """
-    Test all template tags
-    """
+    """Test all template tags."""
 
     def test_load_icons(self):
         # Loading the template should not generate an error
         self.assertEqual(render_template(""), "")
 
     def test_icons(self):
-        """
-        Note the ICON settings in test/app/settings.py
-        """
+        """Note the ICON settings in test/app/settings.py."""
 
         # FontAwesome without a mapping
         self.assertEqual(render_template('{% icon "user" %}'), '<i class="fa fa-user"></i>')
