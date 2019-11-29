@@ -44,10 +44,18 @@ TEMPLATES = [
     }
 ]
 
-BOOTSTRAP4 = {
-    "theme_url": "//example.com/theme.css",
-    "javascript_in_head": True,
-    "required_css_class": "bootstrap4-req",
-    "error_css_class": "bootstrap4-err",
-    "success_css_class": "bootstrap4-bound",
+DJANGO_ICONS = {
+    "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
+    "RENDERERS": {
+        "fontawesome": "FontAwesomeRenderer",
+        "bootstrap3": "Bootstrap3Renderer",
+        "material": "MaterialRenderer",
+        "image": "ImageRenderer",
+    },
+    "ICONS": {
+        "delete": "trash",
+        "edit": {"name": "pencil", "title": "Edit"},
+        "feather": {"renderer": "tests.app.renderers.CustomSvgRenderer"},
+        "paperplane": {"renderer": "tests.app.renderers.CustomSvgRenderer"},
+    },
 }
