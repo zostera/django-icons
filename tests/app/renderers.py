@@ -3,6 +3,8 @@ from django_icons.renderers import BaseRenderer, ImageRenderer
 
 class CustomSvgRenderer(BaseRenderer):
     """
+    Render an SVG.
+
     <svg class="svg-icon" viewBox="0 0 32 32"><use xlink:href="#icon-feather"></use></svg>
     """
 
