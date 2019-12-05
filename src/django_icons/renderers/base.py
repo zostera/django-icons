@@ -7,47 +7,37 @@ from django_icons.css import merge_css_list, merge_css_text
 
 
 class BaseRenderer(object):
-    """
-    Basic renderer to i tag with a few attributes
-    """
+    """Basic renderer to i tag with a few attributes."""
 
     def __init__(self, name, **kwargs):
-        """
-        Set name and kwargs
-        """
+        """Set name and kwargs."""
         super(BaseRenderer, self).__init__()
         self.name = name
         self.content = ""
         self.kwargs = kwargs
 
     def get_tag(self):
-        """
-        Default tag for HTML builder
-        """
+        """Return default tag for HTML builder."""
         return "i"
 
     def get_class(self):
         """
-        First class, usually defines the icon
+        Return primary CSS class for this icon.
+
+        This is usually the icon's name.
         """
         return self.name
 
     def get_extra_classes(self):
-        """
-        List of other classes
-        """
+        """Return list of other classes for this icon."""
         return merge_css_list(self.kwargs.get("extra_classes", None))
 
     def get_css_classes(self):
-        """
-        List of class and extra classes
-        """
+        """Return list of all CSS classes for this icon."""
         return merge_css_list(self.get_class(), self.get_extra_classes())
 
     def get_attrs(self):
-        """
-        HTML attributes
-        """
+        """Return HTML attributes for this icons."""
         attrs = {}
         # The `title` attribute is a string
         try:
@@ -58,21 +48,18 @@ class BaseRenderer(object):
 
     def clean_attrs(self, attrs):
         """
-        Takes a dict of attrs and cleans it
-        NOTE: This applies `escape` to everything except `id` and `class` per HTML 5 spec
+        Return cleaned dictionary of HTML attributes.
+
+        This applies `escape` to everything except `id` and `class` per HTML 5 specification.
         """
         return {k: escape(v) if k not in ("id", "class") else v for k, v in attrs.items()}
 
     def get_content(self):
-        """
-        Tag content
-        """
+        """Return tag content for the icon."""
         return self.content
 
     def render(self):
-        """
-        Render the icon
-        """
+        """Render the icon."""
         builder = "<{tag}{attrs}>{content}</{tag}>"
         tag = self.get_tag()
         attrs = self.get_attrs()

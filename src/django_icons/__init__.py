@@ -1,11 +1,9 @@
 from .utils import get_icon_kwargs, get_icon_renderer
 
-__version__ = "1.0.0"
-
 
 def icon(name, *args, **kwargs):
     """
-    Render an icon
+    Render an icon.
 
     **Parameters**:
 

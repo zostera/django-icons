@@ -14,9 +14,7 @@ DEFAULT_RENDERERS = {
 
 
 def _get_setting(section, name, default=None):
-    """
-    Read a setting from a section, optionally provide default
-    """
+    """Return a setting from a section, optionally provide default."""
 
     try:
         # Read from settings
@@ -29,9 +27,7 @@ def _get_setting(section, name, default=None):
 
 
 def get_icon_kwargs_from_settings(name):
-    """
-    Get the kwargs from settings, return a dict with at least a `name` key
-    """
+    """Return the kwargs from settings, return a dict with at least a `name` key."""
 
     # Read dict from settings, default is an empty dict
     kwargs_from_settings = _get_setting("ICONS", name, {})
@@ -48,9 +44,7 @@ def get_icon_kwargs_from_settings(name):
 
 
 def get_icon_kwargs(name, *args, **kwargs):
-    """
-    Build the kwargs for the icon function based on args and kwargs of the template tag
-    """
+    """Build the kwargs for the icon function based on args and kwargs of the template tag."""
 
     # Get kwargs from settings, name will always be set
     icon_kwargs = get_icon_kwargs_from_settings(name)
@@ -74,9 +68,7 @@ def get_icon_kwargs(name, *args, **kwargs):
 
 
 def _get_icon_renderer_by_name(name):
-    """
-    Take a name, return class or dotted path to class from dict in settings
-    """
+    """Return class or dotted path to renderer class with this name from dict in settings."""
 
     # Get the default value
     default = DEFAULT_RENDERERS.get(name, None)
@@ -93,9 +85,7 @@ def _get_icon_renderer_by_name(name):
 
 
 def get_icon_renderer(renderer=None):
-    """
-    Default to Font Awesome
-    """
+    """Return the default icon renderer."""
 
     # Renderer from parameter or default renderer
     renderer_class = renderer if renderer else _get_setting("DEFAULTS", "renderer", FontAwesomeRenderer)

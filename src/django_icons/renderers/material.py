@@ -3,7 +3,7 @@ from django_icons.renderers.base import BaseRenderer
 
 class MaterialRenderer(BaseRenderer):
     """
-    Render a Material Design icon
+    Render a Material Design icon.
 
     <i class="material-icons md-light md-inactive">face</i>
     """

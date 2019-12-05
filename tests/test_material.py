@@ -4,9 +4,7 @@ from .test_template_tags import render_template
 
 
 class MaterialTest(TestCase):
-    """
-    Test the Material Design Renderer
-    """
+    """Test the Material Design Renderer."""
 
     def test_icons(self):
         self.assertEqual(

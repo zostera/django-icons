@@ -1,6 +1,15 @@
 Changelog
 ---------
 
+1.1.0 - 2019-12-05
+==================
+
+- Mark Development Status as Stable in setup.py
+- Fix several issues in Makefile
+- Remove test and publish tasks from setup.py
+- Improve reformat and lint tasks
+- Use `requirements.scm`
+
 1.0.0 - 2019-11-15
 ==================
 

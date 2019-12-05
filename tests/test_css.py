@@ -4,9 +4,7 @@ from django_icons.css import merge_css_list, merge_css_text
 
 
 class CSSTest(TestCase):
-    """
-    Test the CSS utilities
-    """
+    """Test the CSS utilities."""
 
     def test_merge_css_list(self):
         # No arguments results in an empty list
