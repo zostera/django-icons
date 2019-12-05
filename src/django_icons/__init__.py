@@ -1,7 +1,5 @@
 from .utils import get_icon_kwargs, get_icon_renderer
 
-__version__ = "1.0.5"
-
 
 def icon(name, *args, **kwargs):
     """

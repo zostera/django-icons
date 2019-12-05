@@ -1,8 +1,8 @@
 Changelog
 ---------
 
-Unreleased
-==========
+1.1.0 - 2019-12-05
+==================
 
 - Mark Development Status as Stable in setup.py
 - Fix several issues in Makefile

@@ -1,16 +1,11 @@
 .PHONY: version clean test tox reformat lint docs build publish
 
-version_file := src/django_icons/_version.py
-version := $(word 3, $(shell cat ${version_file}))
-
-version:
-	@echo $(version)
-
 clean:
 	rm -rf build dist *.egg-info
 
 test:
-	coverage run manage.py test && coverage report
+	coverage run manage.py test
+	coverage report
 
 tox:
 	rm -rf .tox
