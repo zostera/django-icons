@@ -25,7 +25,7 @@ setup(
     author_email="dylan@zostera.nl",
     url="https://github.com/zostera/django-icons",
     license="BSD-3-Clause",
-    use_scm_version=True,
+    use_scm_version={"write_to": "src/django_icons/_version.py"},
     setup_requires=["setuptools_scm"],
     packages=setuptools.find_packages(where="src"),
     package_dir={"": "src"},
