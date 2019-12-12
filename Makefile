@@ -1,7 +1,7 @@
 .PHONY: clean test tox reformat lint docs build publish
 
-PROJECT=django_icons
-PYTHON_SOURCES=src/${PROJECT} tests *.py
+PROJECT_DIR=src/django_icons
+PYTHON_SOURCES=${PROJECT_DIR} tests *.py
 
 clean:
 	rm -rf build dist *.egg-info
