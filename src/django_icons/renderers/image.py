@@ -5,7 +5,7 @@ from django.forms.utils import flatatt
 from django.templatetags.static import static
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from django_icons.css import merge_css_text
 from django_icons.renderers.base import BaseRenderer
