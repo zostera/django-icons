@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+1.1.2 - 2020-03-21
+==================
+
+- Fix bug that could change icon settings in run-time
+
 1.1.1 - 2019-12-13
 ==================
 
