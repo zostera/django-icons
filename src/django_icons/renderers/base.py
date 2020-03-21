@@ -1,5 +1,5 @@
 from django.forms.utils import flatatt
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import escape, format_html
 from django.utils.safestring import mark_safe
 
@@ -70,5 +70,5 @@ class BaseRenderer(object):
             builder,
             tag=tag,
             attrs=mark_safe(flatatt(attrs)) if attrs else "",
-            content=mark_safe(force_text(content) if content else ""),
+            content=mark_safe(force_str(content) if content else ""),
         )

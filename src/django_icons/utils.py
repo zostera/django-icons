@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from django.conf import settings
 from django.utils.module_loading import import_string
 
@@ -18,7 +20,7 @@ def _get_setting(section, name, default=None):
 
     try:
         # Read from settings
-        setting = settings.DJANGO_ICONS[section][name]
+        setting = deepcopy(settings.DJANGO_ICONS[section][name])
     except (AttributeError, KeyError, TypeError):
         # Set to default
         setting = default
