@@ -1,16 +1,5 @@
 from .utils import get_icon_kwargs, get_icon_renderer
 
-try:
-    from ._version import version
-except ImportError:
-    try:
-        from setuptools_scm import get_version
-
-        version = get_version()
-    except ImportError:
-        version = "???"
-__version__ = version
-
 
 def icon(name, *args, **kwargs):
     """

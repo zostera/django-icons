@@ -31,7 +31,7 @@ The basic usage in a Django template::
 Requirements
 ============
 
-Python 3 and matching supported Django versions.
+Python >= 3.6 and matching supported Django versions.
 
 
 Running the demo

@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+In development
+==============
+
+- Drop support for Python 3.5
+- Switch to poetry
+
 1.1.2 - 2020-03-21
 ==================
 
