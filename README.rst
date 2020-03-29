@@ -31,8 +31,9 @@ The basic usage in a Django template::
 Requirements
 ============
 
-Python >= 3.6 and matching supported Django versions.
+This package requires a Python 3.6 or newer and Django 2.2 or newer.
 
+The combination must be supported by the Django Project. See "Supported Versions" on https://www.djangoproject.com/download/.
 
 Running the demo
 ================

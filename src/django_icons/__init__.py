@@ -1,4 +1,7 @@
+from .__about__ import __version__
 from .utils import get_icon_kwargs, get_icon_renderer
+
+__all__ = ["__version__", "icon"]
 
 
 def icon(name, *args, **kwargs):
