@@ -249,7 +249,7 @@ class Icons8PngCdnRenderer(ImageRenderer):
         str or callable
 
         """
-        return "https://png.icons8.com/"
+        return "https://img.icons8.com/"
 
     @classmethod
     def get_image_variant_attributes_pattern(cls):
@@ -262,7 +262,9 @@ class Icons8PngCdnRenderer(ImageRenderer):
 
         """
         return [
-            cls.VariantAttributePattern("theme", "-t:(?P<{}>\w+)", "color"),
+            cls.VariantAttributePattern(
+                "theme", "-t:(?P<{}>\w+)", "color"
+            ),  # is the 'style' from icons8
             cls.VariantAttributePattern("size", "-s:(?P<{}>\w+)", None),
             cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)", None),
         ]
