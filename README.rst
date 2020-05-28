@@ -41,7 +41,7 @@ Some libraries may require that you set a link to them. For that, you can use th
 .. code:: Django
 
     {% load icons %}
-    {% icon-copyright %}
+    {% icon-attribution %}
 
 
 Requirements

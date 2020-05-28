@@ -1,6 +1,6 @@
 from django import template
 
-from .. import icon, icon_copyright
+from .. import icon, icon_attribution
 
 register = template.Library()
 
@@ -44,29 +44,29 @@ def do_icon(name, *args, **kwargs):
     return icon(name, *args, **kwargs)
 
 
-@register.simple_tag(name="icon-copyright")
-def do_icon_copyright(renderer=None, **kwargs):
+@register.simple_tag(name="icon-attribution")
+def do_icon_attribution(renderer=None, **kwargs):
     """
-    Render a copyright text
+    Render an attribution text, to be used as a citation for the source.
 
-    This template is an interface to the `icon_copyright` function from `django_icons`
+    This template is an interface to the `icon_attribution` function from `django_icons`.
 
 
     **Parameters**:
 
         renderer
-            The renderer for which to generate a copyright text
+            The renderer for which to generate an attribution text
 
             :default: The default renderer as per ``settings.py``, or ultimately `FontAwesomeRenderer`.
 
     **Usage**::
 
-        {% icon-copyright renderer %}
+        {% icon-attribution renderer %}
 
     **Example**::
 
-        {% icon-copyright %}
-        {% icon-copyright 'Icons8PngCdnRenderer' %}
-        {% icon-copyright 'Icons8PngCdnRenderer' extra_classes='my-css' %}
+        {% icon-attribution %}
+        {% icon-attribution 'Icons8PngCdnRenderer' %}
+        {% icon-attribution 'Icons8PngCdnRenderer' extra_classes='my-css' %}
     """
-    return icon_copyright(renderer, **kwargs)
+    return icon_attribution(renderer, **kwargs)

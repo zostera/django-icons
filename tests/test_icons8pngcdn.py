@@ -35,12 +35,12 @@ class ImageTest(TestCase):
             render_template('{% icon "icons8-s:96" renderer="icons8pngcdn" %}'),
         )
         self.assertEqual(
-            '<div class="icons8-copyright">Icons by&nbsp;<a href="https://icons8.com/"><span><img src="https://png.icons8.com/color/icons8-logo.png" alt="Icons8 icon logo" class="icon icon-theme-color icon-icons8-logo icon-copyright" style="vertical-align:middle; width:1.5rem"><span style="margin-left:0.25rem">Icons8</span></span></a></div>',
-            render_template('{% icon-copyright "icons8pngcdn" %}'),
+            '<div class="icons8-attribution">Icons by&nbsp;<a href="https://icons8.com/"><span><img src="https://png.icons8.com/color/icons8-logo.png" alt="Icons8 icon logo" class="icon icon-theme-color icon-icons8-logo icon-attribution" style="vertical-align:middle; width:1.5rem"><span style="margin-left:0.25rem">Icons8</span></span></a></div>',
+            render_template('{% icon-attribution "icons8pngcdn" %}'),
         )
         self.assertEqual(
-            '<div class="my-css icons8-copyright">Icons by&nbsp;<a href="https://icons8.com/"><span><img src="https://png.icons8.com/color/icons8-logo.png" alt="Icons8 icon logo" class="icon icon-theme-color icon-icons8-logo icon-copyright" style="vertical-align:middle; width:1.5rem"><span style="margin-left:0.25rem">Icons8</span></span></a></div>',
+            '<div class="my-css icons8-attribution">Icons by&nbsp;<a href="https://icons8.com/"><span><img src="https://png.icons8.com/color/icons8-logo.png" alt="Icons8 icon logo" class="icon icon-theme-color icon-icons8-logo icon-attribution" style="vertical-align:middle; width:1.5rem"><span style="margin-left:0.25rem">Icons8</span></span></a></div>',
             render_template(
-                '{% icon-copyright "icons8pngcdn" extra_classes="my-css" %}'
+                '{% icon-attribution "icons8pngcdn" extra_classes="my-css" %}'
             ),
         )

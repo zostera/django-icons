@@ -234,7 +234,8 @@ class ImageRenderer(BaseRenderer):
 class Icons8PngCdnRenderer(ImageRenderer):
     """
 
-    When using this Renderer, please cite the source according to https://icons8.com/license
+    When using this Renderer, please cite the source according to https://icons8.com/license; for example by using
+    `icon-attribution` templatetag.
 
     """
 
@@ -286,15 +287,15 @@ class Icons8PngCdnRenderer(ImageRenderer):
                     variant += "{}/".format(variant_attributes[v.key])
         return variant
 
-    def render_copyright(self):
+    def render_attribution(self):
         from .. import icon
         from ..css import merge_css_list
 
-        icotag = icon(
+        icontag = icon(
             "icons8-logo",
             alt=_("Icons8 icon logo"),
             style="vertical-align:middle; width:1.5rem",
-            extra_classes="icon-copyright",
+            extra_classes="icon-attribution",
             renderer=Icons8PngCdnRenderer,
         )
         attrs = {
@@ -309,5 +310,5 @@ class Icons8PngCdnRenderer(ImageRenderer):
             "</a></div>",
             attrs=mark_safe(flatatt(attrs)) if attrs else "",
             label=_("Icons by"),
-            icon=icotag,
+            icon=icontag,
         )

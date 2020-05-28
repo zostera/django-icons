@@ -73,5 +73,5 @@ class BaseRenderer(object):
             content=mark_safe(force_str(content) if content else ""),
         )
 
-    def render_copyright(self):
+    def render_attribution(self):
         return ""

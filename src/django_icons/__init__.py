@@ -38,9 +38,9 @@ def icon(name, *args, **kwargs):
     return renderer.render()
 
 
-def icon_copyright(renderer=None, *args, **kwargs):
+def icon_attribution(renderer=None, *args, **kwargs):
     """
-    Render a copyright text
+    Render an attribution text, to be used as a citation for the source.
 
     **Parameters**:
 
@@ -55,11 +55,11 @@ def icon_copyright(renderer=None, *args, **kwargs):
 
     **Example**::
 
-        icon_copyright()
-        icon_copyright('Icons8PngCdnRenderer')
-        icon_copyright('Icons8PngCdnRenderer', extra_classes='my-css')
+        icon_attribution()
+        icon_attribution('Icons8PngCdnRenderer')
+        icon_attribution('Icons8PngCdnRenderer', extra_classes='my-css')
     """
     renderer_class = get_icon_renderer(renderer)
     tag_kwargs = get_icon_kwargs(renderer_class.__name__, *args, **kwargs)
     renderer = renderer_class(**tag_kwargs)
-    return renderer.render_copyright()
+    return renderer.render_attribution()
