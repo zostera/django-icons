@@ -302,7 +302,7 @@ class Icons8PngCdnRenderer(ImageRenderer):
             renderer=Icons8PngCdnRenderer,
             # TODO support kwargs to customize at least size of the icon
         )
-        attrs = {"class": merge_css_text(merge_css_list(self.get_extra_classes(), "icons8-copyright"))}
+        attrs = {"class": merge_css_text(merge_css_list(self.get_extra_classes(), "icons8-attribution"))}
         attrs = self.clean_attrs(attrs)
         return format_html(
             '<div{attrs}>{label}&nbsp;<a href="https://icons8.com/">'

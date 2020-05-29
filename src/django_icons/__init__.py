@@ -45,13 +45,13 @@ def icon_attribution(renderer=None, *args, **kwargs):
     **Parameters**:
 
         renderer
-            The renderer for which to generate a copyright text
+            The renderer for which to generate an attribution text
 
             :default: The default renderer as per ``settings.py``, or ultimately `FontAwesomeRenderer`.
 
     **Usage**::
 
-        icon_copyright(renderer)
+        icon_attribution(renderer)
 
     **Example**::
 
