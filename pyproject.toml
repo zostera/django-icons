@@ -12,7 +12,6 @@ keywords= ["django", "icons", "django-icons"]
 classifiers=[
     "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
-    "Framework :: Django :: 2.1",
     "Framework :: Django :: 2.2",
     "Framework :: Django :: 3.0",
     "Framework :: Django",
