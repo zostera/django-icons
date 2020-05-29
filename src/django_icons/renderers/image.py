@@ -109,7 +109,8 @@ class ImageRenderer(BaseRenderer):
     @classmethod
     def get_image_variant_attributes_pattern(cls):
         """
-        Return list of patterns to match the available variant attributes.
+        Return list of patterns to match the available variant attributes. The order must match how they appear in
+        the concrete path to the file.
 
         :return: list Contains the patterns to match the available variant attributes.
         """
@@ -119,11 +120,21 @@ class ImageRenderer(BaseRenderer):
         ]
 
     @classmethod
+    def get_image_variant_pattern(cls):
+        """
+        :return: str The pattern to concatenate the variant attributes. Contains at least '{}'.
+        """
+        return "-{}"
+
+    @classmethod
     def get_image_format(cls):
         """
         Return icon format, without dot.
 
         For example: 'png'.
+
+        :return: str The icon file format, without dot.
+
         """
         return "png"
 
@@ -173,7 +184,7 @@ class ImageRenderer(BaseRenderer):
         if variant_attributes:
             for v in self.get_image_variant_attributes_pattern():
                 if v.key in variant_attributes:
-                    variant += "-{}".format(variant_attributes[v.key])
+                    variant += self.get_image_variant_pattern().format(variant_attributes[v.key])
         return variant
 
     def get_path(self):
@@ -264,6 +275,10 @@ class Icons8PngCdnRenderer(ImageRenderer):
             cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)", None),
         ]
 
+    @classmethod
+    def get_image_variant_pattern(cls):
+        return "{}/"
+
     def get_path(self):
         """
         Relative path to the icon.
@@ -274,15 +289,6 @@ class Icons8PngCdnRenderer(ImageRenderer):
         variant = self.extract_variant()
         filename = self.name + "." + self.get_image_format()
         return self.get_image_root() + variant + filename
-
-    def extract_variant(self):
-        variant_attributes = self.extract_variant_attributes()
-        variant = ""
-        if variant_attributes:
-            for v in self.get_image_variant_attributes_pattern():
-                if v.key in variant_attributes:
-                    variant += "{}/".format(variant_attributes[v.key])
-        return variant
 
     def render_attribution(self):
         from .. import icon
