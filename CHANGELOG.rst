@@ -1,6 +1,12 @@
 Changelog
 ---------
 
+In development
+==============
+
+- Drop support for Python 3.5 and Django 2.1
+- Switch to poetry (https://python-poetry.org) for easier packaging
+
 1.1.2 - 2020-03-21
 ==================
 

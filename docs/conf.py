@@ -1,28 +1,27 @@
 import os
-import sys
-from pkg_resources import get_distribution
 
-project = "django-icons"
+try:
+    from importlib.metadata import metadata
+except ImportError:
+    from importlib_metadata import metadata
 
-SRC_ROOT = os.path.join(os.path.dirname(__file__), "..", "src")
-sys.path.append(SRC_ROOT)
+PROJECT_NAME = "django-icons"
 
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tests.app.settings')
+on_rtd = os.environ.get("READTHEDOCS", None) == "True"
+project_metadata = metadata(PROJECT_NAME)
 
-# import django
-# django.setup()
-#
-extensions = ["sphinx.ext.autodoc", "sphinx.ext.viewcode"]
+project = project_metadata["name"]
+author = project_metadata["author"]
+copyright = f"2020, {author}"
 
 # The full version, including alpha/beta/rc tags, in x.y.z.misc format
-release = get_distribution(project).version
+release = project_metadata["version"]
 # The short X.Y version.
 version = ".".join(release.split(".")[:2])
 
+extensions = ["sphinx.ext.autodoc", "sphinx.ext.viewcode"]
 pygments_style = "sphinx"
-htmlhelp_basename = f"{project}-doc"
-
-on_rtd = os.environ.get("READTHEDOCS", None) == "True"
+htmlhelp_basename = f"{PROJECT_NAME}-doc"
 
 if not on_rtd:  # only import and set the theme if we're building docs locally
     import sphinx_rtd_theme
