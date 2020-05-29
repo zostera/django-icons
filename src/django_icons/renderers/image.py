@@ -143,9 +143,11 @@ class ImageRenderer(BaseRenderer):
                 )
         return cls._variant_attributes_regex
 
-    def get_variant_attributes(self):
+    def extract_variant_attributes(self):
         """
         Return the variant attributes.
+
+        Alters the name of the icon by removing the variant attribute definitions.
 
         :return: dict The variant attributes.
         """
@@ -160,13 +162,13 @@ class ImageRenderer(BaseRenderer):
                     self.variant_attributes[key] = default
         return self.variant_attributes
 
-    def render_variant(self):
+    def extract_variant(self):
         """
         Alter the name of the icon by removing the variant attribute definitions.
 
-        :return: str The variant to be appended to the icon name to build the path to the file in the file system.
+        :return: str The variant to be inserted in the path for the file system.
         """
-        variant_attributes = self.get_variant_attributes()
+        variant_attributes = self.extract_variant_attributes()
         variant = ""
         if variant_attributes:
             for v in self.get_image_variant_attributes_pattern():
@@ -181,7 +183,7 @@ class ImageRenderer(BaseRenderer):
         By default, the icon filename is built as '{name}[-{color}][-{size}][-{variantX}]' where '-{color}' '-{size}'
         and '-{variantX}'s are only added if there are defined (if several are defined, they are added in that order).
         """
-        variant = self.render_variant()  # Alters the name
+        variant = self.extract_variant()  # Alters the name
         filename = (
             self.get_image_prefix()
             + self.name
@@ -203,9 +205,9 @@ class ImageRenderer(BaseRenderer):
         if self.get_image_prefix():
             css_classes += " icon-{prefix}".format(prefix=self.name)
         for v_p in self.get_image_variant_attributes_pattern():
-            if v_p.key in self.get_variant_attributes():
+            if v_p.key in self.extract_variant_attributes():
                 css_classes += " icon-{variant}-{value}".format(
-                    variant=v_p.key, value=self.get_variant_attributes()[v_p.key]
+                    variant=v_p.key, value=self.extract_variant_attributes()[v_p.key]
                 )
         css_classes += " icon-{name}".format(name=self.name)
         return css_classes
@@ -244,9 +246,7 @@ class Icons8PngCdnRenderer(ImageRenderer):
         """
         The root path to the images folder. By default, returns the path to an 'icons' folder inside the static folder.
 
-        Returns
-        -------
-        str or callable
+        :return: str or callable
 
         """
         return "https://img.icons8.com/"
@@ -255,16 +255,11 @@ class Icons8PngCdnRenderer(ImageRenderer):
     def get_image_variant_attributes_pattern(cls):
         """
 
-        Returns
-        -------
-        list
-            Contains the patterns to match the available variant attributes.
+        :return: list Contains the patterns to match the available variant attributes.
 
         """
         return [
-            cls.VariantAttributePattern(
-                "theme", "-t:(?P<{}>\w+)", "color"
-            ),  # is the 'style' from icons8
+            cls.VariantAttributePattern("theme", "-t:(?P<{}>\w+)", "color"),  # is the 'style' from icons8
             cls.VariantAttributePattern("size", "-s:(?P<{}>\w+)", None),
             cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)", None),
         ]
@@ -276,12 +271,12 @@ class Icons8PngCdnRenderer(ImageRenderer):
         By default, the icon filename is built as '{name}.{format}' where '-{color}' '-{size}'
         and '-{variantX}'s are only added if there are defined (if several are defined, they are added in that order).
         """
-        variant = self.render_variant()
+        variant = self.extract_variant()
         filename = self.name + "." + self.get_image_format()
         return self.get_image_root() + variant + filename
 
-    def render_variant(self):
-        variant_attributes = self.get_variant_attributes()
+    def extract_variant(self):
+        variant_attributes = self.extract_variant_attributes()
         variant = ""
         if variant_attributes:
             for v in self.get_image_variant_attributes_pattern():
@@ -299,12 +294,9 @@ class Icons8PngCdnRenderer(ImageRenderer):
             style="vertical-align:middle; width:1.5rem",
             extra_classes="icon-attribution",
             renderer=Icons8PngCdnRenderer,
+            # TODO support kwargs to customize at least size of the icon
         )
-        attrs = {
-            "class": merge_css_text(
-                merge_css_list(self.get_extra_classes(), "icons8-copyright")
-            )
-        }
+        attrs = {"class": merge_css_text(merge_css_list(self.get_extra_classes(), "icons8-copyright"))}
         attrs = self.clean_attrs(attrs)
         return format_html(
             '<div{attrs}>{label}&nbsp;<a href="https://icons8.com/">'

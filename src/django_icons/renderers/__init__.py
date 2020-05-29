@@ -5,4 +5,11 @@ from .image import ImageRenderer, Icons8PngCdnRenderer
 
 from .material import MaterialRenderer
 
-__all__ = ["BaseRenderer", "Bootstrap3Renderer", "FontAwesomeRenderer", "MaterialRenderer", "ImageRenderer", "Icons8PngCdnRenderer"]
+__all__ = [
+    "BaseRenderer",
+    "Bootstrap3Renderer",
+    "FontAwesomeRenderer",
+    "MaterialRenderer",
+    "ImageRenderer",
+    "Icons8PngCdnRenderer",
+]

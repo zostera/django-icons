@@ -74,4 +74,5 @@ class BaseRenderer(object):
         )
 
     def render_attribution(self):
+        """Render the attribution to the source of the icon library, if any."""
         return ""
