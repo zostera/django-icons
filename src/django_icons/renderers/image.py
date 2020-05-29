@@ -270,9 +270,9 @@ class Icons8PngCdnRenderer(ImageRenderer):
 
         """
         return [
-            cls.VariantAttributePattern("theme", "-t:(?P<{}>\w+)", "color"),  # is the 'style' from icons8
-            cls.VariantAttributePattern("size", "-s:(?P<{}>\w+)", None),
-            cls.VariantAttributePattern("color", "-c:(?P<{}>\w+)", None),
+            cls.VariantAttributePattern("theme", r"-t:(?P<{}>\w+)", "color"),  # is the 'style' from icons8
+            cls.VariantAttributePattern("size", r"-s:(?P<{}>\w+)", None),
+            cls.VariantAttributePattern("color", r"-c:(?P<{}>\w+)", None),
         ]
 
     @classmethod
