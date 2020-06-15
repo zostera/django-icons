@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Use Markdown for README.
+- Update Makefile, tox.ini and README to support renaming `master` branch to `main`.
 
 ## [2.0.0] - 2020-06-01
 ### Changed
@@ -59,7 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add ``MaterialRenderer`` for [Material icons](http://google.github.io/material-design-icons/).
 
 ### Changed
-- Set default branch to master.
+- Set default branch to `master`.
 - Make ``icon`` function available as import from django_icons (fixes).
 
 ## [0.0.5] - 2017-12-21
