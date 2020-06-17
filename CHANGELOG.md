@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Use Markdown for README.
 - Update Makefile, tox.ini and README to support renaming `master` branch to `main`.
+- Rename branch `master` to `main`.
 
 ## [2.0.0] - 2020-06-01
 ### Changed
