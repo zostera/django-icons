@@ -5,11 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Changed
+- Use Markdown for README.
+- Update Makefile, tox.ini and README to support renaming `master` branch to `main`.
+
 ## [2.0.0] - 2020-06-01
 ### Changed
 - Use [poetry](https://python-poetry.org) for managing dependencies and packaging.
 - Update tox and Travis config to work with poetry.
-- Rewrite CHANGELOG in MarkDown.
+- Rewrite CHANGELOG in Markdown.
 
 ### Removed
 - Drop support for Python 3.5 and Django 2.1.
@@ -55,7 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add ``MaterialRenderer`` for [Material icons](http://google.github.io/material-design-icons/).
 
 ### Changed
-- Set default branch to master.
+- Set default branch to `master`.
 - Make ``icon`` function available as import from django_icons (fixes).
 
 ## [0.0.5] - 2017-12-21

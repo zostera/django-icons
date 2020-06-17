@@ -2,7 +2,11 @@ from django_icons.renderers.base import BaseRenderer
 
 
 class FontAwesomeRenderer(BaseRenderer):
-    """Render a Font Awesome icon."""
+    """
+    Render a Font Awesome 4 icon.
+
+    For FontAwesome 5, use the BaseRenderer.
+    """
 
     def get_size(self):
         """Return the CSS class for a given size."""

@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "django-icons"
-version = "2.0.0"
+version = "2.1.0-alpha.0"
 description = "Icons for Django"
 homepage = "https://github.com/zostera/django-icons"
 repository = "https://github.com/zostera/django-icons"
 documentation = "https://django-icons.readthedocs.io/"
 authors = ["Dylan Verheul <dylan@zostera.nl>"]
 license = "BSD-3-Clause"
-readme = "README.rst"
+readme = "README.md"
 keywords= ["django", "icons", "django-icons"]
 classifiers=[
     "Development Status :: 5 - Production/Stable",
@@ -42,6 +42,7 @@ sphinx = "^2.4.4"
 sphinx_rtd_theme = "^0.4.3"
 coverage = {extras = ["toml"], version = "^5.0.4"}
 tox = "^3.15.1"
+coveralls = "^2.0.0"
 
 [tool.black]
 line-length = 120

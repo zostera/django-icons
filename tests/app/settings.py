@@ -1,5 +1,7 @@
 SECRET_KEY = "Thanks for using django-icons!"
 
+DEBUG = True
+
 DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}}
 
 INSTALLED_APPS = (
