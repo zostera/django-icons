@@ -1,3 +1,5 @@
+dist: bionic
+
 language: python
 
 python:
@@ -6,5 +8,12 @@ python:
   - "3.8"
 
 before_install: pip install poetry
-install: pip install tox-travis
-script: tox
+
+install: pip install tox-travis coveralls
+
+script:
+  - tox
+
+after_success:
+  - coverage combine
+  - coveralls

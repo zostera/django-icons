@@ -5,13 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.1.0] - 2020-06-17
+## [2.1.0] - 2020-07-02
 ### Changed
+- Add Django 3.1 to test matrix.
+- Fix readthedocs configuration.
+- Update tox configuration.
 - Use Markdown for README.
 - Update Makefile, tox.ini and README to support renaming `master` branch to `main`.
 - Rename branch `master` to `main`.
-- Fix documentation on ReadTheDocs.
-- Update tox configuration.
 
 ## [2.0.0] - 2020-06-01
 ### Changed
