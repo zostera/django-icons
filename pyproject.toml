@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-icons"
-version = "2.1.0"
+version = "2.1.1"
 description = "Icons for Django"
 homepage = "https://github.com/zostera/django-icons"
 repository = "https://github.com/zostera/django-icons"
@@ -48,7 +48,7 @@ tox = "^3.15.1"
 coveralls = "^2.0.0"
 
 [tool.poetry.extras]
-docs = ["sphinx", "sphinx_rts_theme", "m2r"]
+docs = ["sphinx", "sphinx_rtd_theme", "m2r"]
 
 [tool.black]
 line-length = 120
