@@ -291,8 +291,8 @@ MarkupSafe = ">=0.23"
 i18n = ["Babel (>=0.8)"]
 
 [[package]]
-name = "m2r"
-version = "0.2.1"
+name = "m2r2"
+version = "0.2.5"
 description = "Markdown and reStructuredText in a single file."
 category = "main"
 optional = true
@@ -674,12 +674,12 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pytest-cov", "jaraco.test (>=3.2.0)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy"]
 
 [extras]
-docs = ["sphinx", "sphinx_rtd_theme", "m2r"]
+docs = ["sphinx", "sphinx_rtd_theme", "m2r2"]
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6"
-content-hash = "f94d4a7944bb7363c5b31028e647334ba883d15b907ae7293ec784398abfacf9"
+content-hash = "992fd82069eb919b4c9d97573035df177f34b2e6749b53bbeb5a81140e013056"
 
 [metadata.files]
 alabaster = [
@@ -815,8 +815,9 @@ jinja2 = [
     {file = "Jinja2-2.11.2-py2.py3-none-any.whl", hash = "sha256:f0a4641d3cf955324a89c04f3d94663aa4d638abe8f733ecd3582848e1c37035"},
     {file = "Jinja2-2.11.2.tar.gz", hash = "sha256:89aab215427ef59c34ad58735269eb58b1a5808103067f7bb9d5836c651b3bb0"},
 ]
-m2r = [
-    {file = "m2r-0.2.1.tar.gz", hash = "sha256:bf90bad66cda1164b17e5ba4a037806d2443f2a4d5ddc9f6a5554a0322aaed99"},
+m2r2 = [
+    {file = "m2r2-0.2.5-py3-none-any.whl", hash = "sha256:2fe7e03c41e1d2052b9cf3e76359bbfe64960b8fee9d69dfc1fc6e35ccff01e7"},
+    {file = "m2r2-0.2.5.tar.gz", hash = "sha256:9da08226c7ff0a60c4fce62ad5b60c761d7fd6e8c20bd2b7f9c246bce4dc0685"},
 ]
 markupsafe = [
     {file = "MarkupSafe-1.1.1-cp27-cp27m-macosx_10_6_intel.whl", hash = "sha256:09027a7803a62ca78792ad89403b1b7a73a01c8cb65909cd876f7fcebd79b161"},

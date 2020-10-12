@@ -12,11 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Fix poetry build system configuration.
 - Accept importlib-metadata 2.x.x.
+- Update test settings to prevent Django 3.1 warning.
+- Replace `m2r` with `m2r2` to support Sphinx3.
 
 ## [2.1.1] - 2020-07-14
 ### Changed
 - Remove dependency on sphinx_rtd_theme (fixes #21).
-- Update test settings to prevent Django 3.1 warning.
 
 ## [2.1.0] - 2020-07-02
 ### Changed
