@@ -37,13 +37,14 @@ sphinx_rtd_theme = { version = "^0.4.3", optional = true }
 m2r2 = { version = "^0.2.5", optional = true }
 
 [tool.poetry.dev-dependencies]
-black = "^20.8b1"
+black = {version = "^20.8b1", allow-prereleases = true}
 isort = "^5.6.3"
 autoflake = "^1.4"
 flake8 = "^3.8.4"
 docformatter = "^1.3.1"
 pydocstyle = "^5.1.1"
 coverage = {extras = ["toml"], version = "^5.0.4"}
+tox = "^3.20.1"
 
 [tool.poetry.extras]
 docs = ["sphinx", "sphinx_rtd_theme", "m2r2"]
@@ -53,11 +54,16 @@ line-length = 120
 target-version = ["py36"]
 
 [tool.coverage.run]
-source = ["src/django_icons"]
+branch = true
+source = ["django_icons"]
+
+[tool.coverage.paths]
+source = ["src", ".tox/*/site-packages"]
 
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
+
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]

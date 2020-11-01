@@ -24,7 +24,8 @@ class UtilsTest(TestCase):
             self.assertEqual(get_icon_kwargs_from_settings("info"), {"name": "info-sign"})
         with self.settings(DJANGO_ICONS={"ICONS": {"info": {"title": "Information"}}}):
             self.assertEqual(
-                get_icon_kwargs_from_settings("info"), {"name": "info", "title": "Information"},
+                get_icon_kwargs_from_settings("info"),
+                {"name": "info", "title": "Information"},
             )
 
     def test_get_icon_kwargs(self):
@@ -47,5 +48,6 @@ class UtilsTest(TestCase):
             self.assertEqual(get_icon_renderer("bootstrap3"), Bootstrap3Renderer)
             self.assertEqual(get_icon_renderer("image"), ImageRenderer)
             self.assertEqual(
-                get_icon_renderer("django_icons.renderers.Bootstrap3Renderer"), Bootstrap3Renderer,
+                get_icon_renderer("django_icons.renderers.Bootstrap3Renderer"),
+                Bootstrap3Renderer,
             )
