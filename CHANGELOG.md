@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.2.1 - In development
+## 2.2.1 - 2020-11-07
 
 - Update dependencies.
 - Reformat CHANGELOG.
