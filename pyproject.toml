@@ -24,6 +24,11 @@ classifiers=[
     "Programming Language :: Python :: 3.8",
     "Topic :: Utilities",
 ]
+packages = [
+    { include = "django_icons", from = "src" },
+    { include = "docs", format = "sdist" },
+    { include = "tests", format = "sdist" },
+]
 include = ["LICENSE"]
 
 [tool.poetry.dependencies]
@@ -63,7 +68,6 @@ source = ["src", ".tox/*/site-packages"]
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
-
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]
