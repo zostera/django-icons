@@ -47,12 +47,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install GDAL binaries
-        run: |
-          sudo apt-get install binutils libproj-dev gdal-bin
-
       - run: pip install -U pip
-      - run: pip install -U poetry tox coverage coveralls
+      - run: pip install -U tox coverage coveralls
 
       - name: Test with tox
         run: tox -e py

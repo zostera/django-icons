@@ -59,22 +59,20 @@ The combination must be supported by the Django Project. See "Supported Versions
 
 ## Local installation
 
-`django-icons` adopts [Poetry](https://python-poetry.org) to manage its dependencies. This is the recommended way to do a local installation for development or to run the demo.
-
 Assuming Python>=3.6 is available on your system, the development dependencies are installed with Poetry as follows:
 
 ```shell script
 $ git clone git://github.com/zostera/django-icons.git
-$ cd colour
-$ poetry install
+$ cd django-icons
+$ pip install -U pip -r requiremenets-dev.txt
 ```
 
 ### Running the demo
 
-You can run the small demo app that is part of the test suite:
+You can run the example app:
 
 ```shell script
-poetry run python manage.py runserver
+run python manage.py runserver
 ```
 
 ### Running the tests
