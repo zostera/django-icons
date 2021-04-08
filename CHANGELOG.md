@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.0 - In development
+
+- Add Dependabot.
+- Revert to setuptools for packaging.
+- Drop support for Django 3.0, extended support stopped on 2021-04-01).
+- Add support for Django 3.2.
+
 ## 2.2.1 - 2020-11-07
 
 - Update dependencies.
