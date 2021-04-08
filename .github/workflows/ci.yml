@@ -4,10 +4,35 @@ on: [ push ]
 
 jobs:
 
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: actions/checkout@v2
+
+      - run: pip install -U tox
+
+      - name: Test with tox
+        run: tox -e docs
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: actions/checkout@v2
+
+      - run: pip install -U tox
+
+      - name: Test with tox
+        run: tox -e lint
+
   test:
     name: Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
-
     strategy:
       max-parallel: 5
       matrix:
@@ -22,41 +47,35 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - run: pip install -U pip
-      - run: pip install -U poetry tox coverage
-
-      - name: Test with tox
-        run: tox -e py
-
-      - name: Upload coverage
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage${{ matrix.group }}
-          path: .coverage*
-
-  coverage:
-    needs: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
+      - name: Install GDAL binaries
+        run: |
+          sudo apt-get install binutils libproj-dev gdal-bin
 
       - run: pip install -U pip
       - run: pip install -U poetry tox coverage coveralls
 
-      - name: Download coverage
-        uses: actions/download-artifact@v2
+      - name: Test with tox
+        run: tox -e py
 
-      - name: Combine coverage
-        run: coverage combine coverage*/.coverage*
+      - name: Coverage combine
+        run: coverage combine
 
-      - name: Coveralls
+      - name: Coverage report
+        run: coverage report
+
+      - name: Upload coveralls
         env:
+          COVERALLS_PARALLEL: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python -m coveralls
+        run: coveralls --service=github
+
+  coveralls:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Coveralls Finished
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
