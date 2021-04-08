@@ -1,5 +1,4 @@
 from django.test import TestCase
-
 from django_icons.css import merge_css_list, merge_css_text
 
 
