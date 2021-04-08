@@ -2,6 +2,7 @@ from django.forms.utils import flatatt
 from django.utils.encoding import force_str
 from django.utils.html import escape, format_html
 from django.utils.safestring import mark_safe
+
 from django_icons.css import merge_css_list, merge_css_text
 
 

@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from django_icons.renderers import Bootstrap3Renderer, FontAwesomeRenderer, ImageRenderer
 from django_icons.utils import _get_setting, get_icon_kwargs, get_icon_kwargs_from_settings, get_icon_renderer
 
