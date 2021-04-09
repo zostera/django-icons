@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.0.0 - In development
+## 3.0.0 - 2021-04-09
 
 - Add Dependabot.
 - Revert to setuptools for packaging.
