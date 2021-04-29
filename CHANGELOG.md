@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.1 - In development
+
+- Fix PyPI description.
+- Fix PyPI classifiers.
+
 ## 3.0.0 - 2021-04-09
 
 - Add Dependabot.
