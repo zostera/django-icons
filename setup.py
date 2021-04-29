@@ -14,7 +14,7 @@ setup(
     name="django-icons",
     zip_safe=False,
     version="3.0.0",
-    description="Icons 5 for Django",
+    description="Icons for Django",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/zostera/django-icons",
@@ -25,7 +25,7 @@ setup(
     package_dir={"": "src"},
     include_package_data=True,
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Django",
         "Framework :: Django :: 2.2",
