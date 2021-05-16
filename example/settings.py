@@ -8,20 +8,45 @@ SRC_FOLDER = os.path.abspath(os.path.join(BASE_DIR, "..", "src"))
 if SRC_FOLDER not in sys.path:
     sys.path.insert(0, SRC_FOLDER)
 
-SECRET_KEY = "Thank you for using django-icons!"
 DEBUG = True
-ALLOWED_HOSTS = []
 
-INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "django_icons",
-    "tests.app",
-]
+ADMINS = ()
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    }
+}
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
+TIME_ZONE = "Europe/Amsterdam"
+
+LANGUAGE_CODE = "en-us"
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+MEDIA_ROOT = ""
+
+MEDIA_URL = ""
+
+STATIC_ROOT = ""
+
+STATIC_URL = "/static/"
+
+STATICFILES_DIRS = ("assets",)
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
+
+SECRET_KEY = "8s)l4^2s&&0*31-)+6lethmfy3#r1egh^6y^=b9@g!q63r649_"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -33,44 +58,58 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "tests.app.urls"
+ROOT_URLCONF = "urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ["templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.request",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.i18n",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
+                "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
             ]
         },
     }
 ]
 
-WSGI_APPLICATION = "tests.app.wsgi.application"
+INSTALLED_APPS = (
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.sites",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django.contrib.admin",
+    "django_icons",
+    "app",
+)
 
-DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}}
-
-LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-STATIC_URL = "/static/"
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
+    "handlers": {
+        "mail_admins": {
+            "level": "ERROR",
+            "filters": ["require_debug_false"],
+            "class": "django.utils.log.AdminEmailHandler",
+        }
+    },
+    "loggers": {"django.request": {"handlers": ["mail_admins"], "level": "ERROR", "propagate": True}},
+}
 
 DJANGO_ICONS = {
-    "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
+    "DEFAULTS": {"renderer": "fontawesome4", "attrs": {"aria-hidden": True}},
     "RENDERERS": {
-        "fontawesome": "FontAwesomeRenderer",
+        "fontawesome4": "FontAwesome4Renderer",
         "bootstrap3": "Bootstrap3Renderer",
         "material": "MaterialRenderer",
         "image": "ImageRenderer",
@@ -78,7 +117,7 @@ DJANGO_ICONS = {
     "ICONS": {
         "delete": "trash",
         "edit": {"name": "pencil", "title": "Edit"},
-        "feather": {"renderer": "tests.app.renderers.CustomSvgRenderer"},
-        "paperplane": {"renderer": "tests.app.renderers.CustomSvgRenderer"},
+        "feather": {"renderer": "app.renderers.CustomSvgRenderer"},
+        "paperplane": {"renderer": "app.renderers.CustomSvgRenderer"},
     },
 }
