@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.0.1 - In development
+## 3.0.1 - 2021-05-16
 
 - Fix PyPI description.
 - Fix PyPI classifiers.
