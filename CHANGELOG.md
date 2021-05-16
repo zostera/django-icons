@@ -2,7 +2,7 @@
 
 ## 4.0.0 - In development
 
-- Rename `FontAwesomeRenderer` to `FontAwesome4Renderer`.
+- Rename `FontAwesomeRenderer` to `FontAwesome4Renderer` (#48).
 - Fix PyPI description.
 - Fix PyPI classifiers.
 
