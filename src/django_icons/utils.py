@@ -4,11 +4,11 @@ from django.conf import settings
 from django.utils.module_loading import import_string
 
 from django_icons.css import merge_css_list
-from django_icons.renderers import Bootstrap3Renderer, FontAwesomeRenderer, ImageRenderer
+from django_icons.renderers import Bootstrap3Renderer, FontAwesome4Renderer, ImageRenderer
 from django_icons.renderers.material import MaterialRenderer
 
 DEFAULT_RENDERERS = {
-    "fontawesome": FontAwesomeRenderer,
+    "fontawesome4": FontAwesome4Renderer,
     "bootstrap3": Bootstrap3Renderer,
     "material": MaterialRenderer,
     "image": ImageRenderer,
@@ -90,7 +90,7 @@ def get_icon_renderer(renderer=None):
     """Return the default icon renderer."""
 
     # Renderer from parameter or default renderer
-    renderer_class = renderer if renderer else _get_setting("DEFAULTS", "renderer", FontAwesomeRenderer)
+    renderer_class = renderer if renderer else _get_setting("DEFAULTS", "renderer", FontAwesome4Renderer)
 
     # Translate a name to a full path
     if isinstance(renderer_class, str):
