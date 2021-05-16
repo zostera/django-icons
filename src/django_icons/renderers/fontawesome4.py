@@ -1,7 +1,7 @@
 from django_icons.renderers.base import BaseRenderer
 
 
-class FontAwesomeRenderer(BaseRenderer):
+class FontAwesome4Renderer(BaseRenderer):
     """
     Render a Font Awesome 4 icon.
 
@@ -22,7 +22,7 @@ class FontAwesomeRenderer(BaseRenderer):
     def get_extra_classes(self):
         """Return the extra CSS classes for the icon."""
         extra_classes = [
-            super(FontAwesomeRenderer, self).get_extra_classes(),
+            super(FontAwesome4Renderer, self).get_extra_classes(),
             self.get_size(),
         ]
         return extra_classes

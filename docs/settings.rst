@@ -9,11 +9,11 @@ In your Django ``settings.py`` file, make a dictionary for ``DJANGO_ICONS`` like
     DJANGO_ICONS = {
 
         'DEFAULTS': {
-            'renderer': 'fontawesome',
+            'renderer': 'fontawesome4',
         },
 
         'RENDERERS': {
-            'fontawesome': 'FontAwesomeRenderer',
+            'fontawesome4': 'FontAwesome4Renderer',
             'bootstrap3': 'Bootstrap3Renderer',
         },
 
@@ -49,7 +49,7 @@ All values can be overwritten on renderer and icon level.
     DJANGO_ICONS = {
 
         'DEFAULTS': {
-            'renderer': 'fontawesome',
+            'renderer': 'fontawesome4',
         },
 
         ...

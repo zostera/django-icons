@@ -1,7 +1,8 @@
 # Changelog
 
-## 3.0.1 - 2021-05-16
+## 4.0.0 - In development
 
+- Rename `FontAwesomeRenderer` to `FontAwesome4Renderer` (#48).
 - Fix PyPI description.
 - Fix PyPI classifiers.
 
@@ -109,7 +110,7 @@
 ## 0.0.2 - 2017-06-19
 
 - Demo of custom SVG renderer included.
-- FontAwesome and Bootstrap3 renderers included.
+- FontAwesome 4 and Bootstrap3 renderers included.
 - New structure for settings dict.
 - First documentation, linked to ReadTheDocs.
 - First tests.

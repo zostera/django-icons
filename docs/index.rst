@@ -9,6 +9,7 @@ Icons for Django
 
    installation
    quickstart
+   renderers
    example
    demo
    api
