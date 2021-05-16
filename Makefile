@@ -22,6 +22,7 @@ lint:
 	pydocstyle --add-ignore=D1,D202,D301,D413 ${PYTHON_SOURCES}
 
 docs:
+	rm -rf docs/_build
 	cd docs && sphinx-build -b html -d _build/doctrees . _build/html
 
 porcelain:
@@ -42,7 +43,9 @@ endif
 
 build: docs
 	rm -rf build
+	rm -rf dist
 	python setup.py sdist bdist_wheel
 
 publish: porcelain branch build
 	twine upload dist/*
+	rm -rf dist
