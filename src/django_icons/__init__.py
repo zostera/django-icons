@@ -21,7 +21,7 @@ def icon(name, *args, **kwargs):
         renderer
             The renderer to use for the icon
 
-            :default: The default renderer as per ``settings.py``, or ultimately `FontAwesomeRenderer`.
+            :default: The default renderer as per ``settings.py``, or ultimately `FontAwesome4Renderer`.
 
     **Usage**::
 

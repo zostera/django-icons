@@ -47,9 +47,9 @@ TEMPLATES = [
 ]
 
 DJANGO_ICONS = {
-    "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
+    "DEFAULTS": {"renderer": "fontawesome4", "attrs": {"aria-hidden": True}},
     "RENDERERS": {
-        "fontawesome": "FontAwesomeRenderer",
+        "fontawesome4": "FontAwesome4Renderer",
         "bootstrap3": "Bootstrap3Renderer",
         "material": "MaterialRenderer",
         "image": "ImageRenderer",

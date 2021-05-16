@@ -45,7 +45,7 @@ class ImageRenderer(BaseRenderer):
                 return "special-icons"
 
         DJANGO_ICONS = {
-            "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
+            "DEFAULTS": {"renderer": "fontawesome4", "attrs": {"aria-hidden": True}},
             "RENDERERS": {
                 "image": "app.renderers.CustomImageRenderer",
             },

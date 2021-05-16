@@ -8,6 +8,6 @@ class FontAwesomeTest(TestCase):
 
     def test_icons(self):
         self.assertEqual(
-            render_template('{% icon "user" size="lg" renderer="FontAwesomeRenderer" %}'),
+            render_template('{% icon "user" size="lg" renderer="FontAwesome4Renderer" %}'),
             '<i class="fa fa-user fa-lg"></i>',
         )

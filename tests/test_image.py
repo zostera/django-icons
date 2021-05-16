@@ -76,7 +76,7 @@ class ImageTest(TestCase):
 
     def test_custom_renderer_image_root(self):
         DJANGO_ICONS = {
-            "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
+            "DEFAULTS": {"renderer": "fontawesome4", "attrs": {"aria-hidden": True}},
             "RENDERERS": {"image": "ImageRenderer", "hd-image": "tests.app.renderers.CustomImageRenderer"},
             "ICONS": {"edit": {"renderer": "image"}, "feather": {"renderer": "hd-image"}},
         }
@@ -92,7 +92,7 @@ class ImageTest(TestCase):
 
     def test_custom_renderer_image_prefix(self):
         DJANGO_ICONS = {
-            "DEFAULTS": {"renderer": "fontawesome", "attrs": {"aria-hidden": True}},
+            "DEFAULTS": {"renderer": "fontawesome4", "attrs": {"aria-hidden": True}},
             "RENDERERS": {"icons8": "tests.app.renderers.CustomIcons8Renderer"},
             "ICONS": {"icons8-48": {"renderer": "icons8"}},
         }
