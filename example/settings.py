@@ -9,44 +9,27 @@ if SRC_FOLDER not in sys.path:
     sys.path.insert(0, SRC_FOLDER)
 
 DEBUG = True
-
 ADMINS = ()
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
-}
+SECRET_KEY = "Thanks for using django-bootstrap5!"
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
-
 TIME_ZONE = "Europe/Amsterdam"
-
 LANGUAGE_CODE = "en-us"
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 MEDIA_ROOT = ""
-
 MEDIA_URL = ""
 
 STATIC_ROOT = ""
-
 STATIC_URL = "/static/"
-
 STATICFILES_DIRS = ("assets",)
-
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
-
-SECRET_KEY = "8s)l4^2s&&0*31-)+6lethmfy3#r1egh^6y^=b9@g!q63r649_"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -57,6 +40,13 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    }
+}
 
 ROOT_URLCONF = "urls"
 
