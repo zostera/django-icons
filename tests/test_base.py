@@ -1,10 +1,12 @@
 from django.test import TestCase
+from django.utils import translation
+from django.utils.translation import gettext_lazy as _
 
 from .test_template_tags import render_template
 
 
 class BaseTest(TestCase):
-    """Test the Font Awesome Renderer."""
+    """Test the BaseRenderer."""
 
     def test_version(self):
         from django_icons import __version__
@@ -21,3 +23,14 @@ class BaseTest(TestCase):
             render_template('{% icon "fas fa-user fa-2x" size="lg" renderer="BaseRenderer" %}'),
             '<i class="fas fa-user fa-2x"></i>',
         )
+
+    def test_laziness(self):
+        self.assertEqual(
+            render_template('{% icon "user" title=title  renderer="BaseRenderer" %}', title=_("user")),
+            '<i class="user" title="user"></i>',
+        )
+        with translation.override("nl"):
+            self.assertEqual(
+                render_template('{% icon "user" title=title  renderer="BaseRenderer" %}', title=_("user")),
+                '<i class="user" title="gebruiker"></i>',
+            )

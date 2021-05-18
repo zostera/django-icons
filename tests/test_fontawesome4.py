@@ -3,8 +3,8 @@ from django.test import TestCase
 from .test_template_tags import render_template
 
 
-class FontAwesomeTest(TestCase):
-    """Test the Font Awesome Renderer."""
+class FontAwesome4Test(TestCase):
+    """Test the FontAwesome 4 Renderer."""
 
     def test_icons(self):
         self.assertEqual(
