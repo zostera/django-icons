@@ -59,5 +59,10 @@ DJANGO_ICONS = {
         "edit": {"name": "pencil", "title": "Edit"},
         "feather": {"renderer": "tests.app.renderers.CustomSvgRenderer"},
         "paperplane": {"renderer": "tests.app.renderers.CustomSvgRenderer"},
+        "extra-triangle": {
+            "name": "fas fa-triangle fa-fw",
+            "extra_classes": "extra",
+            "renderer": "django_icons.renderers.BaseRenderer",
+        },
     },
 }
