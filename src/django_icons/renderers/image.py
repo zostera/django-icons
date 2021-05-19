@@ -1,13 +1,9 @@
 import re
 from collections import namedtuple
 
-from django.forms.utils import flatatt
 from django.templatetags.static import static
-from django.utils.html import format_html
-from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from django_icons.css import merge_css_text
 from django_icons.renderers.base import BaseRenderer
 
 
@@ -211,17 +207,12 @@ class ImageRenderer(BaseRenderer):
         return css_classes
 
     def get_attrs(self):
+        src = self.get_path()  # Alters self.name
         attrs = super(ImageRenderer, self).get_attrs()
-        # 'alt' is a mandatory img tag attribute
         cleaned_name = self.name.replace("-", " ").replace("_", " ").title()
         attrs["alt"] = self.kwargs.get("alt", _("Icon of {}").format(cleaned_name))
+        attrs["src"] = src
         return attrs
 
-    def render(self):
-        """Render the icon."""
-        builder = '<img src="{path}"{attrs}>'
-        src = self.get_path()  # Alters the name
-        attrs = self.get_attrs()
-        attrs["class"] = merge_css_text(self.get_css_classes())
-        attrs = self.clean_attrs(attrs)
-        return format_html(builder, path=src, attrs=mark_safe(flatatt(attrs)) if attrs else "")
+    def get_format_string(self):
+        return "<img{attrs}>"
