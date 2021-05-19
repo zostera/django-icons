@@ -48,24 +48,14 @@ def get_icon_kwargs_from_settings(name):
 def get_icon_kwargs(name, *args, **kwargs):
     """Build the kwargs for the icon function based on args and kwargs of the template tag."""
 
-    # Get kwargs from settings, name will always be set
     icon_kwargs = get_icon_kwargs_from_settings(name)
+    extra_classes = icon_kwargs.get("extra_classes", "")
 
-    # Remember the name, we do not allow this to be overwritten
-    remember_name = icon_kwargs["name"]
-
-    # Update with kwargs
     icon_kwargs.update(kwargs)
-
-    # Merge args with extra_classes
-    extra_classes = merge_css_list(args, kwargs.get("extra_classes", ""))
+    extra_classes = merge_css_list(extra_classes, args, kwargs.get("extra_classes", ""))
     if extra_classes:
         icon_kwargs["extra_classes"] = extra_classes
 
-    # Check the name
-    assert icon_kwargs["name"] == remember_name, "Overwriting the icon name is not allowed"
-
-    # Return the dict
     return icon_kwargs
 
 

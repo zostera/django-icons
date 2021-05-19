@@ -21,3 +21,13 @@ class BaseTest(TestCase):
             render_template('{% icon "fas fa-user fa-2x" size="lg" renderer="BaseRenderer" %}'),
             '<i class="fas fa-user fa-2x"></i>',
         )
+
+    def test_extra_classes(self):
+        self.assertEqual(
+            render_template('{% icon "extra-triangle" %}'),
+            '<i class="fas fa-triangle fa-fw extra"></i>',
+        )
+        self.assertEqual(
+            render_template('{% icon "extra-triangle" extra_classes="and more" %}'),
+            '<i class="fas fa-triangle fa-fw extra and more"></i>',
+        )
