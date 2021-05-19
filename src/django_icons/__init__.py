@@ -1,9 +1,12 @@
+from django.utils.functional import keep_lazy_text
+
 from .__about__ import __version__
 from .utils import get_icon_kwargs, get_icon_renderer
 
 __all__ = ["__version__", "icon"]
 
 
+@keep_lazy_text
 def icon(name, *args, **kwargs):
     """
     Render an icon.
