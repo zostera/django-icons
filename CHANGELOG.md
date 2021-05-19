@@ -2,6 +2,7 @@
 
 ## 4.0.0 - In development
 
+- Merge `extra-classes` (#55).
 - Fix example app (#49).
 - Rename `FontAwesomeRenderer` to `FontAwesome4Renderer` (#48).
 - Fix PyPI description.
