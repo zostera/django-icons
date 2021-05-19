@@ -1,6 +1,4 @@
 from django.test import TestCase
-from django.utils import translation
-from django.utils.translation import gettext_lazy as _
 
 from .test_template_tags import render_template
 
@@ -33,14 +31,3 @@ class BaseTest(TestCase):
             render_template('{% icon "extra-triangle" extra_classes="and more" %}'),
             '<i class="fas fa-triangle fa-fw extra and more"></i>',
         )
-
-    def test_laziness(self):
-        self.assertEqual(
-            render_template('{% icon "user" title=title  renderer="BaseRenderer" %}', title=_("user")),
-            '<i class="user" title="user"></i>',
-        )
-        with translation.override("nl"):
-            self.assertEqual(
-                render_template('{% icon "user" title=title  renderer="BaseRenderer" %}', title=_("user")),
-                '<i class="user" title="gebruiker"></i>',
-            )
