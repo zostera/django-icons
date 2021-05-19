@@ -47,22 +47,15 @@ TEMPLATES = [
 ]
 
 DJANGO_ICONS = {
-    "DEFAULTS": {"renderer": "fontawesome4", "attrs": {"aria-hidden": True}},
-    "RENDERERS": {
-        "fontawesome4": "FontAwesome4Renderer",
-        "bootstrap3": "Bootstrap3Renderer",
-        "material": "MaterialRenderer",
-        "image": "ImageRenderer",
-    },
     "ICONS": {
-        "delete": "trash",
-        "edit": {"name": "pencil", "title": "Edit"},
+        "delete": {"name": "trash", "renderer": "FontAwesome4Renderer"},
+        "edit": {"name": "pencil", "title": "Edit", "renderer": "fontawesome4"},
         "feather": {"renderer": "tests.app.renderers.CustomSvgRenderer"},
         "paperplane": {"renderer": "tests.app.renderers.CustomSvgRenderer"},
         "extra-triangle": {
             "name": "fas fa-triangle fa-fw",
             "extra_classes": "extra",
-            "renderer": "django_icons.renderers.BaseRenderer",
+            "renderer": "django_icons.renderers.IconRenderer",
         },
     },
 }

@@ -1,19 +1,13 @@
-from collections import OrderedDict
-
-
 def _merge_css_item(item):
-    """Transform argument into a single list of string values."""
-    # Recurse lists and tuples to combine into single list
+    """Transform argument into a list with a single string value."""
     if isinstance(item, (list, tuple)):
         return _merge_css_list(*item)
-    # Cast to string, be sure to cast falsy values to ''
-    item = "{}".format(item) if item else ""
-    # Return as a list
+    item = f"{item}" if item else ""
     return [item]
 
 
 def _merge_css_list(*args):
-    """Transform arguments into a single list of string values."""
+    """Transform arguments into a list of string values."""
     css_list = []
     for arg in args:
         css_list += _merge_css_item(arg)
@@ -26,18 +20,11 @@ def merge_css_list(*args):
 
     Removes duplicates. Gives precedence to first class encountered.
     """
-    # Combine args into a single list
-    css_list = _merge_css_list(*args)
-    # There may be strings with multiple classes in the array, so combine the values into a string ...
-    css_string = " ".join(css_list)
-    # ... and split the string back to a list, also takes care of all whitespace, including tabs and newlines
-    css_list = css_string.split()
-    # Remove empty values from the list
-    css_list = filter(None, css_list)
+    css_string = " ".join(_merge_css_list(*args))  # Create single string
+    css_list = css_string.split()  # Split it to remove all whitespace
+    css_list = filter(None, css_list)  # Remove empty strings
     # Remove duplicates, see https://stackoverflow.com/questions/480214/
-    css_list = list(OrderedDict.fromkeys(css_list))
-    # Return the list
-    return css_list
+    return list(dict.fromkeys(css_list))
 
 
 def merge_css_text(*args):

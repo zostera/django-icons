@@ -1,19 +1,35 @@
 from django.test import TestCase
-from django.utils import translation
-from django.utils.translation import gettext_lazy as _
 
-from django_icons import icon
-from django_icons.renderers import BaseRenderer
+from .test_template_tags import render_template
 
 
-class IconTest(TestCase):
-    """Test the icon function."""
+class BaseTest(TestCase):
+    """Test the IconRenderer."""
 
-    def test_laziness(self):
+    def test_icons(self):
         self.assertEqual(
-            icon("user", title=_("user"), renderer=BaseRenderer),
-            '<i class="user" title="user"></i>',
+            render_template('{% icon "" %}'),
+            "<i></i>",
         )
-        user_icon = icon("user", title=_("user"), renderer=BaseRenderer)
-        with translation.override("nl"):
-            self.assertEqual(user_icon, '<i class="user" title="gebruiker"></i>')
+        self.assertEqual(
+            render_template('{% icon "user" %}'),
+            '<i class="user"></i>',
+        )
+        self.assertEqual(
+            render_template('{% icon "fas fa-user fa-2x" %}'),
+            '<i class="fas fa-user fa-2x"></i>',
+        )
+
+    def test_extra_classes(self):
+        self.assertEqual(
+            render_template('{% icon "extra-triangle" %}'),
+            '<i class="fas fa-triangle fa-fw extra"></i>',
+        )
+        self.assertEqual(
+            render_template('{% icon "extra-triangle" extra_classes="and more" %}'),
+            '<i class="fas fa-triangle fa-fw extra and more"></i>',
+        )
+        self.assertEqual(
+            render_template('{% icon "extra-triangle" "and" extra_classes="more" %}'),
+            '<i class="fas fa-triangle fa-fw extra and more"></i>',
+        )

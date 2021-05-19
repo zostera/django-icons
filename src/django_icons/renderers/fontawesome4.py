@@ -1,28 +1,16 @@
-from django_icons.renderers.base import BaseRenderer
+from django_icons.renderers.icon import IconRenderer
 
 
-class FontAwesome4Renderer(BaseRenderer):
+class FontAwesome4Renderer(IconRenderer):
     """
     Render a Font Awesome 4 icon.
 
-    For FontAwesome 5, use the BaseRenderer.
+    For FontAwesome 5, use IconRenderer.
     """
 
     def get_size(self):
-        """Return the CSS class for a given size."""
-        try:
-            return "fa-{size}".format(size=self.kwargs["size"])
-        except KeyError:
-            return ""
+        size = self.kwargs.get("size", None)
+        return f"fa-{size}" if size else ""
 
     def get_class(self):
-        """Return the primary CSS class for the icon."""
-        return "fa fa-{name}".format(name=self.name)
-
-    def get_extra_classes(self):
-        """Return the extra CSS classes for the icon."""
-        extra_classes = [
-            super(FontAwesome4Renderer, self).get_extra_classes(),
-            self.get_size(),
-        ]
-        return extra_classes
+        return f"fa fa-{self.name} {self.get_size()}"

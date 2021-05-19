@@ -4,10 +4,11 @@ from django.conf import settings
 from django.utils.module_loading import import_string
 
 from django_icons.css import merge_css_list
-from django_icons.renderers import Bootstrap3Renderer, FontAwesome4Renderer, ImageRenderer
+from django_icons.renderers import Bootstrap3Renderer, FontAwesome4Renderer, IconRenderer, ImageRenderer
 from django_icons.renderers.material import MaterialRenderer
 
 DEFAULT_RENDERERS = {
+    "icon": IconRenderer,
     "fontawesome4": FontAwesome4Renderer,
     "bootstrap3": Bootstrap3Renderer,
     "material": MaterialRenderer,
@@ -31,17 +32,10 @@ def _get_setting(section, name, default=None):
 def get_icon_kwargs_from_settings(name):
     """Return the kwargs from settings, return a dict with at least a `name` key."""
 
-    # Read dict from settings, default is an empty dict
     kwargs_from_settings = _get_setting("ICONS", name, {})
-
-    # Settings might return single string, convert to dict with key `name`
     if isinstance(kwargs_from_settings, str):
         kwargs_from_settings = {"name": kwargs_from_settings}
-
-    # If no name is set, set the name
     kwargs_from_settings.setdefault("name", name)
-
-    # Return the dict
     return kwargs_from_settings
 
 
@@ -62,39 +56,21 @@ def get_icon_kwargs(name, *args, **kwargs):
 def _get_icon_renderer_by_name(name):
     """Return class or dotted path to renderer class with this name from dict in settings."""
 
-    # Get the default value
     default = DEFAULT_RENDERERS.get(name, None)
-
-    # Fetch the value from the settings dict
     renderer_class = _get_setting("RENDERERS", name, default)
-
-    # If no result is found, return the original argument
-    if renderer_class is None:
-        renderer_class = name
-
-    # Return result
-    return renderer_class
+    return renderer_class if renderer_class else name
 
 
 def get_icon_renderer(renderer=None):
     """Return the default icon renderer."""
 
-    # Renderer from parameter or default renderer
-    renderer_class = renderer if renderer else _get_setting("DEFAULTS", "renderer", FontAwesome4Renderer)
+    renderer_class = renderer or _get_setting("DEFAULTS", "renderer", IconRenderer)
 
-    # Translate a name to a full path
     if isinstance(renderer_class, str):
-
-        # Note that a dotted path remains a dotted path if it is not a name
         renderer_class = _get_icon_renderer_by_name(renderer_class)
-
-        # If we still have a string, it has to be a dotted path to the class
         if isinstance(renderer_class, str):
-            # Be kind to our own Renderers
             if "." not in renderer_class:
-                renderer_class = "django_icons.renderers.{}".format(renderer_class)
-            # Import the class with a Django shortcut
+                renderer_class = f"django_icons.renderers.{renderer_class}"
             renderer_class = import_string(renderer_class)
 
-    # Done
     return renderer_class

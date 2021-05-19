@@ -1,7 +1,7 @@
-from django_icons.renderers.base import BaseRenderer
+from django_icons.renderers.icon import IconRenderer
 
 
-class MaterialRenderer(BaseRenderer):
+class MaterialRenderer(IconRenderer):
     """
     Render a Material Design icon.
 

@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from django_icons.renderers import Bootstrap3Renderer, FontAwesome4Renderer, ImageRenderer
+from django_icons.renderers import Bootstrap3Renderer, FontAwesome4Renderer, IconRenderer, ImageRenderer
 from django_icons.utils import _get_setting, get_icon_kwargs, get_icon_kwargs_from_settings, get_icon_renderer
 
 
@@ -43,11 +43,16 @@ class UtilsTest(TestCase):
 
     def test_get_icon_renderer(self):
         with self.settings(DJANGO_ICONS=None):
-            self.assertEqual(get_icon_renderer(), FontAwesome4Renderer)
+            self.assertEqual(get_icon_renderer(), IconRenderer)
+            self.assertEqual(get_icon_renderer("icon"), IconRenderer)
             self.assertEqual(get_icon_renderer("fontawesome4"), FontAwesome4Renderer)
             self.assertEqual(get_icon_renderer("bootstrap3"), Bootstrap3Renderer)
             self.assertEqual(get_icon_renderer("image"), ImageRenderer)
             self.assertEqual(
                 get_icon_renderer("django_icons.renderers.Bootstrap3Renderer"),
+                Bootstrap3Renderer,
+            )
+            self.assertEqual(
+                get_icon_renderer("Bootstrap3Renderer"),
                 Bootstrap3Renderer,
             )

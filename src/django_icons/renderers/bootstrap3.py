@@ -1,9 +1,8 @@
-from django_icons.renderers.base import BaseRenderer
+from django_icons.renderers.icon import IconRenderer
 
 
-class Bootstrap3Renderer(BaseRenderer):
-    """Render a Font Awesome icon."""
+class Bootstrap3Renderer(IconRenderer):
+    """Render a Bootstrap 3 icon."""
 
     def get_class(self):
-        """Return the primary CSS class for the icon."""
-        return "glyphicon glyphicon-{name}".format(name=self.name)
+        return f"glyphicon glyphicon-{self.name}"
