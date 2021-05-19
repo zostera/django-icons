@@ -44,18 +44,17 @@ class TemplateTagsTest(TestCase):
 
         # FontAwesome with a mapping to a dict with a `title`, overwriting the `title` and testing UTF-8 char escaping
         self.assertIn(
-            render_template('{% icon "edit" title="Edit\'" %}'),
+            render_template('{% icon "edit" title=title %}', title="Edit'"),
             (
                 '<i class="fa fa-pencil" title="Edit&#39;"></i>',
                 '<i class="fa fa-pencil" title="Edit&#x27;"></i>',
             ),
         )
-
         self.assertEqual(
-            render_template("{% icon 'edit' title='Edit\"' %}"),
+            render_template('{% icon "edit" title=title %}', title='Edit"'),
             '<i class="fa fa-pencil" title="Edit&quot;"></i>',
         )
         self.assertEqual(
-            render_template('{% icon "edit" title="<Edit>" %}'),
+            render_template('{% icon "edit" title=title %}', title="<Edit>"),
             '<i class="fa fa-pencil" title="&lt;Edit&gt;"></i>',
         )

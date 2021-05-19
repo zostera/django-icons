@@ -3,6 +3,7 @@
 ## 4.0.0 - In development
 
 - Defer evaluation of strings (#53).
+- Stop using `mark_safe` (#57).
 - Merge `extra-classes` (#55).
 - Fix example app (#49).
 - Rename `FontAwesomeRenderer` to `FontAwesome4Renderer` (#48).

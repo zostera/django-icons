@@ -1,7 +1,5 @@
 from django.forms.utils import flatatt
-from django.utils.encoding import force_str
-from django.utils.html import escape, format_html
-from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 
 from django_icons.css import merge_css_list, merge_css_text
 
@@ -37,38 +35,30 @@ class BaseRenderer(object):
         return merge_css_list(self.get_class(), self.get_extra_classes())
 
     def get_attrs(self):
-        """Return HTML attributes for this icons."""
+        """Return HTML attributes for this icon."""
         attrs = {}
-        # The `title` attribute is a string
-        try:
-            attrs["title"] = self.kwargs["title"]
-        except KeyError:
-            pass
+        title = self.kwargs.get("title")
+        if title:
+            attrs["title"] = title
+        css_classes = merge_css_text(self.get_css_classes())
+        if css_classes:
+            attrs["class"] = css_classes
         return attrs
-
-    def clean_attrs(self, attrs):
-        """
-        Return cleaned dictionary of HTML attributes.
-
-        This applies `escape` to everything except `id` and `class` per HTML 5 specification.
-        """
-        return {k: escape(v) if k not in ("id", "class") else v for k, v in attrs.items()}
 
     def get_content(self):
         """Return tag content for the icon."""
-        return self.content
+        return self.content or ""
+
+    def get_format_string(self):
+        return "<{tag}{attrs}>{content}</{tag}>"
+
+    def get_format_context(self):
+        return {
+            "tag": self.get_tag(),
+            "attrs": flatatt(self.get_attrs()),
+            "content": self.get_content(),
+        }
 
     def render(self):
         """Render the icon."""
-        builder = "<{tag}{attrs}>{content}</{tag}>"
-        tag = self.get_tag()
-        attrs = self.get_attrs()
-        attrs["class"] = merge_css_text(self.get_css_classes())
-        attrs = self.clean_attrs(attrs)
-        content = self.get_content()
-        return format_html(
-            builder,
-            tag=tag,
-            attrs=mark_safe(flatatt(attrs)) if attrs else "",
-            content=mark_safe(force_str(content) if content else ""),
-        )
+        return format_html(self.get_format_string(), **self.get_format_context())
