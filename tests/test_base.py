@@ -4,7 +4,7 @@ from .test_template_tags import render_template
 
 
 class BaseTest(TestCase):
-    """Test the Font Awesome Renderer."""
+    """Test the BaseRenderer."""
 
     def test_version(self):
         from django_icons import __version__
