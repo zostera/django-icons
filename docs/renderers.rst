@@ -12,4 +12,6 @@ You can use a customized renderer to support specific icon libraries or specific
 
 This package includes renderers for FontAwesome 4, Bootstrap 3, Material Design and image sets.
 
+The example app includes a custom SVG renderer.
+
 .. automodule:: django_icons.renderers
