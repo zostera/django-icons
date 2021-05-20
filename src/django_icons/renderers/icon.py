@@ -4,26 +4,25 @@ from django.utils.html import format_html
 from django_icons.css import merge_css_list, merge_css_text
 
 
-class BaseRenderer(object):
-    """Basic renderer to i tag with a few attributes."""
+class IconRenderer(object):
+    """Render an icon as an HTML element."""
+
+    tag = "i"
+    format_string = "<{tag}{attrs}>{content}</{tag}>"
 
     def __init__(self, name, **kwargs):
         """Set name and kwargs."""
-        super(BaseRenderer, self).__init__()
+        super(IconRenderer, self).__init__()
         self.name = name
         self.content = ""
         self.kwargs = kwargs
 
     def get_tag(self):
         """Return default tag for HTML builder."""
-        return "i"
+        return self.tag
 
     def get_class(self):
-        """
-        Return primary CSS class for this icon.
-
-        This is usually the icon's name.
-        """
+        """Return primary CSS class for this icon."""
         return self.name
 
     def get_extra_classes(self):
@@ -46,13 +45,15 @@ class BaseRenderer(object):
         return attrs
 
     def get_content(self):
-        """Return tag content for the icon."""
+        """Return content for the HTML element."""
         return self.content or ""
 
     def get_format_string(self):
-        return "<{tag}{attrs}>{content}</{tag}>"
+        """Return format string for HTML output."""
+        return self.format_string
 
     def get_format_context(self):
+        """Return context for HTML output."""
         return {
             "tag": self.get_tag(),
             "attrs": flatatt(self.get_attrs()),
@@ -60,5 +61,5 @@ class BaseRenderer(object):
         }
 
     def render(self):
-        """Render the icon."""
+        """Return HTML output for icon."""
         return format_html(self.get_format_string(), **self.get_format_context())

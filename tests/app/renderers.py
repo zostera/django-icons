@@ -1,7 +1,7 @@
-from django_icons.renderers import BaseRenderer, ImageRenderer
+from django_icons.renderers import IconRenderer, ImageRenderer
 
 
-class CustomSvgRenderer(BaseRenderer):
+class CustomSvgRenderer(IconRenderer):
     """
     Render an SVG.
 

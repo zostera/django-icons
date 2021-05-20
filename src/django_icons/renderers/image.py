@@ -4,10 +4,10 @@ from collections import namedtuple
 from django.templatetags.static import static
 from django.utils.translation import gettext_lazy as _
 
-from django_icons.renderers.base import BaseRenderer
+from django_icons.renderers.icon import IconRenderer
 
 
-class ImageRenderer(BaseRenderer):
+class ImageRenderer(IconRenderer):
     """
     Render an icon from a local file, each icon being a single file rendered with an <img> tag.
 
@@ -63,6 +63,10 @@ class ImageRenderer(BaseRenderer):
     where `-c:` is arbitrary, `<{}>` represents the matching group name and `\\w+` matches for at least one
     alphanumeric character (color code be a name or a code).
     """
+
+    tag = "img"
+    format_string = "<{tag}{attrs}>"
+
     VariantAttributePattern = namedtuple("VariantAttributePattern", ["key", "pattern", "default"])
     _variant_attributes_regex = dict()  # Used to store the compiled regexes of the individual variant attributes
 
@@ -103,6 +107,15 @@ class ImageRenderer(BaseRenderer):
         return ""
 
     @classmethod
+    def get_image_format(cls):
+        """
+        Return icon format, without dot.
+
+        For example: 'png'.
+        """
+        return "png"
+
+    @classmethod
     def get_image_variant_attributes_pattern(cls):
         """
         Return list of patterns to match the available variant attributes.
@@ -113,15 +126,6 @@ class ImageRenderer(BaseRenderer):
             cls.VariantAttributePattern("color", r"-c:(?P<{}>\w+)", None),
             cls.VariantAttributePattern("size", r"-s:(?P<{}>\w+)", None),
         ]
-
-    @classmethod
-    def get_image_format(cls):
-        """
-        Return icon format, without dot.
-
-        For example: 'png'.
-        """
-        return "png"
 
     @classmethod
     def _get_image_variant_attributes_regex(cls):
@@ -213,6 +217,3 @@ class ImageRenderer(BaseRenderer):
         attrs["alt"] = self.kwargs.get("alt", _("Icon of {}").format(cleaned_name))
         attrs["src"] = src
         return attrs
-
-    def get_format_string(self):
-        return "<img{attrs}>"
