@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 setup(
     name="django-icons",
     zip_safe=False,
-    version="3.0.1",
+    version="4.0.0",
     description="Icons for Django",
     long_description=README,
     long_description_content_type="text/markdown",
