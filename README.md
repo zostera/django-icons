@@ -1,22 +1,33 @@
 # django-icons
 
-Icons for Django
-
 [![CI](https://github.com/zostera/django-icons/workflows/CI/badge.svg?branch=main)](https://github.com/zostera/django-icons/actions?workflow=CI)
 [![Coverage Status](https://coveralls.io/repos/github/zostera/django-icons/badge.svg?branch=main)](https://coveralls.io/github/zostera/django-icons?branch=main)
 [![Latest PyPI version](https://img.shields.io/pypi/v/django-icons.svg)](https://pypi.python.org/pypi/django-icons)
 [![Any color you like](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
-## Why should I use this?
+### Icons for Django
 
 - Define your icons in your settings, with defaults for name, title and other attributes.
 - Generate icons using template tags.
-- Supports Font Awesome, Material, Bootstrap 3 and images out of the box.
-- Add other (custom) icon sets by subclassing a renderer.
+- Supports Font Awesome, Material, Bootstrap 3 and images.
+- Add other libraries and custom icon sets by subclassing IconRenderer.
+  
+### More information
 
-## How do I use this?
+- [PyPI (django-icons)](https://pypi.python.org/pypi/django-icons)
+- [Documentation](https://django-icons.readthedocs.io/en/latest/)
+- [Bug tracker](http://github.com/zostera/django-icons/issues)
 
-Define an icon in your `settings.py`, for example like this:
+## Installation
+
+
+Install using pip.
+
+```shell
+pip install django-icons
+```
+
+Define an icon in your `settings.py`.
 
 ```python
 DJANGO_ICONS = {
@@ -25,27 +36,28 @@ DJANGO_ICONS = {
     },
 }
 ```
-The basic usage in a Django template:
+
+Render an icon in a Django template.
 
 ```djangotemplate
 {% load icons %}
 {% icon 'edit' %}
 ```
 
-This will generate the FontAwesome 5 pencil icon in regular style:
+This will generate the FontAwesome 5 pencil icon in regular style.
 
 ```html
 <i class="far fa-pencil"></i>
 ```
 
-Add extra classes and attributes to your predefined icon like this:
+Add extra classes and attributes to your predefined icon.
 
 ```djangotemplate
 {% load icons %}
 {% icon 'edit' extra_classes='fa-fw my-own-icon' title='Update' %}
 ```
 
-This will generate:
+These will be added to the HTML output.
 
 ```html
 <i class="far fa-pencil fa-fw my-own-icon" title="Update"></i>
@@ -53,39 +65,41 @@ This will generate:
 
 ## Requirements
 
-This package requires a Python 3.6 or newer and Django 2.2 or newer.
+This package requires a combination of Python and Django that is currently supported.
 
-The combination must be supported by the Django Project. See "Supported Versions" on <https://www.djangoproject.com/download/>.
+See "Supported Versions" on <https://www.djangoproject.com/download/>.
 
 ## Local installation
 
-Assuming Python>=3.6 is available on your system, the development dependencies are installed with Poetry as follows:
+**This section assumes you know about local Python versions and virtual environments.**
 
-```shell script
+To clone the repository and install the requirements for local development:
+
+```shell
 $ git clone git://github.com/zostera/django-icons.git
 $ cd django-icons
-$ pip install -U pip -r requiremenets-dev.txt
+$ pip install -U pip -r requirements-dev.txt
 ```
 
 ### Running the demo
 
 You can run the example app:
 
-```shell script
-run python manage.py runserver
+```shell
+cd example && run python manage.py runserver
 ```
 
 ### Running the tests
 
 The test suite requires [tox](https://tox.readthedocs.io/) to be installed. Run the complete test suite like this:
 
-```shell script
+```shell
 tox
 ```
 
-Test for the current (virtual) environment can be run with the Django `manage.py` command. If you need to do this, you will need to have an understanding of Python virtual environments. Explaining those is beyong the scope of this README.
+Test for the current environment can be run with the Django `manage.py` command.
 
-```shell script
+```shell
 python manage.py test
 ```
 
