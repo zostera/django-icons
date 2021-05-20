@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.0.0 - In development
+## 4.0.0 - 2021-05-20
 
 - Set `IconRenderer` as default renderer (#58).
 - Defer evaluation of strings (#53).
