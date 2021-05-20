@@ -2,6 +2,7 @@
 
 ## 4.0.0 - In development
 
+- Set `IconRenderer` as default renderer (#58).
 - Defer evaluation of strings (#53).
 - Stop using `mark_safe` (#57).
 - Merge `extra-classes` (#55).
