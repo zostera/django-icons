@@ -5,18 +5,21 @@
 [![Latest PyPI version](https://img.shields.io/pypi/v/django-icons.svg)](https://pypi.python.org/pypi/django-icons)
 [![Any color you like](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
-Icons for Django
+### Icons for Django
 
 - Define your icons in your settings, with defaults for name, title and other attributes.
 - Generate icons using template tags.
 - Supports Font Awesome, Material, Bootstrap 3 and images.
 - Add other libraries and custom icon sets by subclassing IconRenderer.
-- Available on pypi as [django-icons](https://pypi.python.org/pypi/django-icons)
-- Tested against [currently supported Python/Django combinations](https://docs.djangoproject.com/en/dev/faq/install/#what-python-version-can-i-use-with-django).
-- [Documentation on readthedocs.org](https://django-icons.readthedocs.io/en/latest/)
+  
+### More information
+
+- [PyPI (django-icons)](https://pypi.python.org/pypi/django-icons)
+- [Documentation](https://django-icons.readthedocs.io/en/latest/)
 - [Bug tracker](http://github.com/zostera/django-icons/issues)
 
 ## Installation
+
 
 Install using pip.
 
