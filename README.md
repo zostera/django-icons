@@ -62,11 +62,13 @@ These will be added to the HTML output.
 
 ## Requirements
 
-This package requires a combination of Python and Django that is currently supported. See "Supported Versions" on <https://www.djangoproject.com/download/>.
+This package requires a combination of Python and Django that is currently supported.
+
+See "Supported Versions" on <https://www.djangoproject.com/download/>.
 
 ## Local installation
 
-This section assumes you know about local Python versions and virtual environments.
+**This section assumes you know about local Python versions and virtual environments.**
 
 To clone the repository and install the requirements for local development:
 
