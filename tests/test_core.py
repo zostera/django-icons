@@ -13,7 +13,7 @@ class VersionTest(TestCase):
         from django_icons import __version__
 
         parts = __version__.split(".")
-        self.assertEqual(len(parts), 3)
+        self.assertEqual(len(parts), 2)
 
 
 class IconFunctionTest(TestCase):
