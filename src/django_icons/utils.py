@@ -46,6 +46,7 @@ def get_icon_kwargs(name, *args, **kwargs):
     extra_classes = icon_kwargs.get("extra_classes", "")
 
     icon_kwargs.update(kwargs)
+
     extra_classes = merge_css_list(extra_classes, args, kwargs.get("extra_classes", ""))
     if extra_classes:
         icon_kwargs["extra_classes"] = extra_classes

@@ -2,6 +2,7 @@
 
 ## In development
 
+- Deprecate `icon` because of frequent name collisions, use `render_icon` instead.
 - Fix CI.
 - Drop support for Django 3.1 (EOL).
 - Drop support for Python 3.6 (EOL).

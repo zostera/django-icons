@@ -1,12 +1,12 @@
 from django import template
 
-from .. import icon
+from ..core import render_icon
 
 register = template.Library()
 
 
 @register.simple_tag(name="icon")
-def do_icon(name, *args, **kwargs):
+def icon_tag(name, *args, **kwargs):
     """
     Render an icon.
 
@@ -41,4 +41,4 @@ def do_icon(name, *args, **kwargs):
         {% icon 'pencil' 'fa-big' %}
         {% icon 'trash' title='Delete' %}
     """
-    return icon(name, *args, **kwargs)
+    return render_icon(name, *args, **kwargs)
