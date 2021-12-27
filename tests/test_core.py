@@ -35,7 +35,7 @@ class IconFunctionTest(TestCase):
     """Test the `icon` function."""
 
     def test_icon(self):
-        with self.assertWarns(Warning):
+        with self.assertWarns(DeprecationWarning):
             self.assertEqual(
                 icon("user", title=_("user"), renderer=IconRenderer),
                 '<i class="user" title="user"></i>',
