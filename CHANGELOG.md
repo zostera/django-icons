@@ -1,5 +1,9 @@
 # Changelog
 
+## 21.3 (2021-12-27)
+
+- Fix documentation issues that snuck into 21.2.
+
 ## 21.2 (2021-12-27)
 
 - Deprecate `icon` because of name collisions, use `render_icon` (#150).
