@@ -10,7 +10,7 @@ def icon_tag(name, *args, **kwargs):
     """
     Render an icon.
 
-    This template is an interface to the `icon` function from `django_icons`
+    This template is an interface to the `render_icon` function from `django_icons`
 
     **Tag name**::
 

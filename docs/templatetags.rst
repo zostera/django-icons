@@ -14,4 +14,4 @@ Template Tags and Filters
 icon
 ~~~~
 
-.. autofunction:: django_icons.templatetags.icons.icon
+.. autofunction:: django_icons.templatetags.icons.icon_tag
