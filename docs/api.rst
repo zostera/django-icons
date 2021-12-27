@@ -6,4 +6,4 @@ API
 icon
 ~~~~
 
-.. autofunction:: django_icons.icon
+.. autofunction:: django_icons.render_icon

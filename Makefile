@@ -23,7 +23,7 @@ lint:
 
 docs:
 	rm -rf docs/_build
-	cd docs && sphinx-build -b html -d _build/doctrees . _build/html
+	cd docs && sphinx-build -b html -d _build/doctrees -W --keep-going -n . _build/html
 
 porcelain:
 ifeq ($(shell git status --porcelain),)

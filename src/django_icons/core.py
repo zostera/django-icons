@@ -5,7 +5,6 @@ from django.utils.functional import keep_lazy_text
 from .utils import get_icon_kwargs, get_icon_renderer
 
 
-@keep_lazy_text
 def icon(name, *args, **kwargs):
     """
     Render an icon.
@@ -34,7 +33,7 @@ def render_icon(name, *args, **kwargs):
         renderer
             The renderer to use for the icon
 
-            :default: The default renderer as per ``settings.py``, or ultimately `FontAwesome4Renderer`.
+            :default: The default renderer as per ``settings.py``, or ultimately `IconRenderer`.
 
     **Usage**::
 
