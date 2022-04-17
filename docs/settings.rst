@@ -64,7 +64,7 @@ All values can be overwritten on renderer and icon level.
 RENDERERS
 ---------
 
-A mapping of renderer names to paths to Renderer classses.
+A mapping of renderer names to paths to Renderer classes.
 
 
 ICONS

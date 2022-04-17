@@ -105,7 +105,7 @@ python manage.py test
 
 ## Origin
 
-Our plans at Zostera for an icon tool originate in <https://github.com/dyve/django-bootstrap3>. We isolated this into a Font Awesome tool in <https://github.com/zostera/django-fa>. When using our own product, we felt that the icon tool provided little improvement over plain HTML. Also, Font Awesome's icon names did not match the the intended function of the icon.
+Our plans at Zostera for an icon tool originate in <https://github.com/dyve/django-bootstrap3>. We isolated this into a Font Awesome tool in <https://github.com/zostera/django-fa>. When using our own product, we felt that the icon tool provided little improvement over plain HTML. Also, Font Awesome's icon names did not match the intended function of the icon.
 
 This is how we came to think of a library that:
 
