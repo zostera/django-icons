@@ -1,5 +1,9 @@
 # Changelog
 
+## 23.1 (2023-04-02)
+
+- Update requirements, support Django 4.2, remove coveralls (#352).
+
 ## 22.1 (2022-08-08)
 
 - Drop support for Django 2.2 (EOL) (#240).
