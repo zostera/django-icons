@@ -15,3 +15,5 @@ Icons for Django
    api
    templatetags
    settings
+   changelog
+   
