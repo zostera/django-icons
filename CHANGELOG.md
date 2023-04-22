@@ -1,5 +1,12 @@
 # Changelog
 
+## 23.2 (in development)
+
+- Add changelog to documentation (#358).
+- Fix documentation (#355).
+- Use production version of Django in tox (#357).
+- Remove version restriction on importlib-metadata (#356).
+
 ## 23.1 (2023-04-02)
 
 - Update requirements, support Django 4.2, remove coveralls (#352).
