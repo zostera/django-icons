@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django_icons.css import merge_css_list, merge_css_text
 
 
-class IconRenderer(object):
+class IconRenderer:
     """Render an icon as an HTML element."""
 
     tag = "i"
@@ -12,7 +12,7 @@ class IconRenderer(object):
 
     def __init__(self, name, **kwargs):
         """Set name and kwargs."""
-        super(IconRenderer, self).__init__()
+        super().__init__()
         self.name = name
         self.content = ""
         self.kwargs = kwargs
