@@ -18,7 +18,6 @@ DEFAULT_RENDERERS = {
 
 def _get_setting(section, name, default=None):
     """Return a setting from a section, optionally provide default."""
-
     try:
         # Read from settings
         setting = deepcopy(settings.DJANGO_ICONS[section][name])
@@ -31,7 +30,6 @@ def _get_setting(section, name, default=None):
 
 def get_icon_kwargs_from_settings(name):
     """Return the kwargs from settings, return a dict with at least a `name` key."""
-
     kwargs_from_settings = _get_setting("ICONS", name, {})
     if isinstance(kwargs_from_settings, str):
         kwargs_from_settings = {"name": kwargs_from_settings}
@@ -41,7 +39,6 @@ def get_icon_kwargs_from_settings(name):
 
 def get_icon_kwargs(name, *args, **kwargs):
     """Build the kwargs for the icon function based on args and kwargs of the template tag."""
-
     icon_kwargs = get_icon_kwargs_from_settings(name)
     extra_classes = icon_kwargs.get("extra_classes", "")
 
@@ -56,7 +53,6 @@ def get_icon_kwargs(name, *args, **kwargs):
 
 def _get_icon_renderer_by_name(name):
     """Return class or dotted path to renderer class with this name from dict in settings."""
-
     default = DEFAULT_RENDERERS.get(name, None)
     renderer_class = _get_setting("RENDERERS", name, default)
     return renderer_class if renderer_class else name
@@ -64,7 +60,6 @@ def _get_icon_renderer_by_name(name):
 
 def get_icon_renderer(renderer=None):
     """Return the default icon renderer."""
-
     renderer_class = renderer or _get_setting("DEFAULTS", "renderer", IconRenderer)
 
     if isinstance(renderer_class, str):

@@ -134,7 +134,6 @@ class ImageRenderer(IconRenderer):
 
         :return: dict Key is the variant attribute name and value is a tuple of compiled regex and default value
         """
-
         if not cls._variant_attributes_regex:
             for v in cls.get_image_variant_attributes_pattern():
                 cls._variant_attributes_regex[v.key] = (
@@ -171,7 +170,7 @@ class ImageRenderer(IconRenderer):
         if variant_attributes:
             for v in self.get_image_variant_attributes_pattern():
                 if v.key in variant_attributes:
-                    variant += "-{}".format(variant_attributes[v.key])
+                    variant += f"-{variant_attributes[v.key]}"
         return variant
 
     def get_path(self):
@@ -189,7 +188,7 @@ class ImageRenderer(IconRenderer):
             + "."
             + (self.kwargs.get("format", None) or self.get_image_format())
         )
-        return "{}/{}".format(static(self.get_image_root()), filename)
+        return f"{static(self.get_image_root())}/{filename}"
 
     def get_class(self):
         """
@@ -201,18 +200,18 @@ class ImageRenderer(IconRenderer):
         """
         css_classes = "icon"
         if self.get_image_prefix():
-            css_classes += " icon-{prefix}".format(prefix=self.name)
+            css_classes += f" icon-{self.name}"
         for v_p in self.get_image_variant_attributes_pattern():
             if v_p.key in self.get_variant_attributes():
                 css_classes += " icon-{variant}-{value}".format(
                     variant=v_p.key, value=self.get_variant_attributes()[v_p.key]
                 )
-        css_classes += " icon-{name}".format(name=self.name)
+        css_classes += f" icon-{self.name}"
         return css_classes
 
     def get_attrs(self):
         src = self.get_path()  # Alters self.name
-        attrs = super(ImageRenderer, self).get_attrs()
+        attrs = super().get_attrs()
         cleaned_name = self.name.replace("-", " ").replace("_", " ").title()
         attrs["alt"] = self.kwargs.get("alt", _("Icon of {}").format(cleaned_name))
         attrs["src"] = src
