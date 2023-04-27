@@ -11,7 +11,7 @@
 - Generate icons using template tags.
 - Supports Font Awesome, Material, Bootstrap 3 and images.
 - Add other libraries and custom icon sets by subclassing IconRenderer.
-  
+
 ### More information
 
 - [PyPI (django-icons)](https://pypi.python.org/pypi/django-icons)
@@ -27,9 +27,16 @@ Install using pip.
 pip install django-icons
 ```
 
-Define an icon in your `settings.py`.
+In your `settings.py`, add `django_icons` to `INSTALLED_APPS` and define an icon.
 
 ```python
+
+INSTALLED_APPS = (
+    # ...
+    "django_icons",
+    # ...
+)
+
 DJANGO_ICONS = {
     "ICONS": {
         "edit": {"name": "far fa-pencil"},
@@ -78,6 +85,7 @@ To clone the repository and install the requirements for local development:
 ```shell
 $ git clone git://github.com/zostera/django-icons.git
 $ cd django-icons
+$ pip install -e .
 $ pip install -U pip -r requirements-dev.txt
 ```
 
