@@ -3,7 +3,7 @@ from django.test import TestCase
 from .test_template_tags import render_template
 
 
-class Bootstrap3Test(TestCase):
+class Bootstrap3RendererTest(TestCase):
     """Test Bootstrap 3 Renderer."""
 
     def test_icons(self):

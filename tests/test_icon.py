@@ -3,8 +3,19 @@ from django.test import TestCase
 from .test_template_tags import render_template
 
 
-class BaseTest(TestCase):
+class IconRendererTest(TestCase):
     """Test the IconRenderer."""
+
+    def test_stacked_icon(self):
+        self.assertEqual(
+            render_template('{% icon "stacked" %}'),
+            (
+                '<span class="fa-stack fa-2x">'
+                '<i class="fas fa-square fa-stack-2x"></i>'
+                '<i class="fab fa-twitter fa-stack-1x fa-inverse"></i>'
+                "</span>"
+            ),
+        )
 
     def test_icons(self):
         self.assertEqual(

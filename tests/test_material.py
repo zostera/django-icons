@@ -3,7 +3,7 @@ from django.test import TestCase
 from .test_template_tags import render_template
 
 
-class MaterialTest(TestCase):
+class MaterialRendererTest(TestCase):
     """Test the Material Design Renderer."""
 
     def test_icons(self):

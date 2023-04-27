@@ -1,4 +1,5 @@
 from django_icons.renderers import IconRenderer
+from django.utils.html import format_html
 
 
 class CustomSvgRenderer(IconRenderer):
@@ -20,4 +21,4 @@ class CustomSvgRenderer(IconRenderer):
         return attrs
 
     def get_content(self):
-        return f'<use xlink:href="#icon-{self.name}"></use>'
+        return format_html('<use xlink:href="#icon-{name}"></use>', name=self.name)
