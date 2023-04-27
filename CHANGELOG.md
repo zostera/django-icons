@@ -6,6 +6,7 @@
 - Fix documentation (#355).
 - Use production version of Django in tox (#357).
 - Remove version restriction on importlib-metadata (#356).
+- Fix README.md (#373).
 
 ## 23.1 (2023-04-02)
 
