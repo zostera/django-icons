@@ -5,8 +5,9 @@
 - Add changelog to documentation (#358).
 - Fix documentation (#355).
 - Use production version of Django in tox (#357).
-- Remove version restriction on importlib-metadata (#356).
 - Fix README.md (#373).
+- Update packaging, reduce dependencies (#356, #368, #374).
+- Drop support for Django 4.0 (#374).
 
 ## 23.1 (2023-04-02)
 
