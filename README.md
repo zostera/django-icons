@@ -120,6 +120,7 @@ This is how we came to think of a library that:
 - Took a limited number of arguments
 - Converted those arguments into an icon
 - Was able to support multiple icon libraries
-- And could easily be extended by users
+- Could bind an icon definition to a preset name for easy reuse
+- Could easily be extended by users
 
 This is how we came to write and use `django-icons`.
