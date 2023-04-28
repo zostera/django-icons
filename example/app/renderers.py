@@ -1,5 +1,6 @@
-from django_icons.renderers import IconRenderer
 from django.utils.html import format_html
+
+from django_icons.renderers import IconRenderer
 
 
 class CustomSvgRenderer(IconRenderer):
