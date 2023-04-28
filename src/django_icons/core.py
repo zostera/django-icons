@@ -37,17 +37,22 @@ def render_icon(name, *args, **kwargs):
     **Parameters**:
 
         name
-            The name of the icon to be rendered
+            The name of the icon to be rendered.
 
         title
             The title attribute for the icon
 
-            :default: None (no title attribute rendered)
+            :default: None (no title attribute rendered).
 
         renderer
             The renderer to use for the icon
 
             :default: The default renderer as per ``settings.py``, or ultimately `IconRenderer`.
+
+        tag
+            The tag to use for the icon
+
+            :default: Each renderer has a default tag set. This parameter overrides the renderer's default tag.
 
     **Usage**::
 
@@ -55,8 +60,8 @@ def render_icon(name, *args, **kwargs):
 
     **Example**::
 
-        render_icon('pencil')
-        render_icon('trash', title='Delete')
+        render_icon("pencil")
+        render_icon("trash", title="Delete")
     """
     icon_kwargs = get_icon_kwargs(name, *args, **kwargs)
     renderer_class = get_icon_renderer(icon_kwargs.get("renderer", None))
