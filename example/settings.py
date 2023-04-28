@@ -97,16 +97,9 @@ LOGGING = {
 }
 
 DJANGO_ICONS = {
-    "DEFAULTS": {"renderer": "fontawesome4", "attrs": {"aria-hidden": True}},
-    "RENDERERS": {
-        "fontawesome4": "FontAwesome4Renderer",
-        "bootstrap3": "Bootstrap3Renderer",
-        "material": "MaterialRenderer",
-        "image": "ImageRenderer",
-    },
+    "DEFAULTS": {"attrs": {"aria-hidden": True}},
     "ICONS": {
-        "delete": "trash",
-        "edit": {"name": "pencil", "title": "Edit"},
+        "delete": {"name": "trash", "title": "Edit", "renderer": "fontawesome4"},
         "feather": {"renderer": "app.renderers.CustomSvgRenderer"},
         "paperplane": {"renderer": "app.renderers.CustomSvgRenderer"},
     },
