@@ -74,8 +74,8 @@ A mapping of icon names to ``icon`` kwargs dict. If a single string is specified
 this is assumed to be the ``name`` parameter for the icon.
 
 The ``content`` parameter can specify content for the icon. If the content is a ``dict``, it will
-be considered a nested icon definition. If the content is a ``list``, it will be considered a list
-of content that shou dbe joined together. This can be used to create stacked icons.
+be considered a nested icon definition. If the content is a ``list``, it will be considered content
+that should be concatenated. This can be used to create stacked icons.
 
 .. code:: Python
 
