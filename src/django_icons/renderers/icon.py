@@ -37,7 +37,7 @@ class IconRenderer:
 
     def get_attrs(self):
         """Return HTML attributes for this icon."""
-        attrs = {}
+        attrs = self.kwargs.get("attrs", {})
         title = self.kwargs.get("title")
         if title:
             attrs["title"] = title

@@ -83,15 +83,14 @@ that should be concatenated. This can be used to create stacked icons.
     DJANGO_ICONS = {
 
         "ICONS": {
-            "stacked": {
+            "no-pictures-please": {
                 "name": "fa-stack",
                 "tag": "span",
                 "extra_classes": "fa-2x",
                 "content": [
-                    {"name": "fas fa-square fa-stack-2x"},
-                    {"name": "fab fa-twitter fa-stack-1x fa-inverse"},
+                    {"name": "fa-solid fa-camera fa-stack-1x"},
+                    {"name": "fa-solid fa-ban fa-stack-2x", "attrs": {"style": "color:Tomato"}},
                 ],
             },
         },
-
     }
