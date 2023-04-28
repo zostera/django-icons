@@ -102,5 +102,14 @@ DJANGO_ICONS = {
         "delete": {"name": "trash", "title": "Edit", "renderer": "fontawesome4"},
         "feather": {"renderer": "app.renderers.CustomSvgRenderer"},
         "paperplane": {"renderer": "app.renderers.CustomSvgRenderer"},
+        "stacked": {
+            "name": "fa-stack",
+            "tag": "span",
+            "extra_classes": "fa-2x",
+            "content": [
+                {"name": "fas fa-square fa-stack-2x"},
+                {"name": "fab fa-twitter fa-stack-1x fa-inverse"},
+            ],
+        },
     },
 }

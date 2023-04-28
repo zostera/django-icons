@@ -8,27 +8,27 @@ In your Django ``settings.py`` file, make a dictionary for ``DJANGO_ICONS`` like
     # Settings for django-icons
     DJANGO_ICONS = {
 
-        'DEFAULTS': {
-            'renderer': 'fontawesome4',
+        "DEFAULTS": {
+            "renderer": "fontawesome4",
         },
 
-        'RENDERERS': {
-            'fontawesome4': 'FontAwesome4Renderer',
-            'bootstrap3': 'Bootstrap3Renderer',
+        "RENDERERS": {
+            "fontawesome4": "FontAwesome4Renderer",
+            "bootstrap3": "Bootstrap3Renderer",
         },
 
-        'ICONS': {
+        "ICONS": {
 
-            'delete': 'trash',
-            'edit': {
-                'name': 'pencil',
-                'title': 'Edit',
+            "delete": "trash",
+            "edit": {
+                "name": "pencil",
+                "title": "Edit",
             },
-            'feather': {
-                'renderer': 'tests.app.renderers.CustomSvgRenderer',
+            "feather": {
+                "renderer": "tests.app.renderers.CustomSvgRenderer",
             },
-            'paperplane': {
-                'renderer': 'tests.app.renderers.CustomSvgRenderer',
+            "paperplane": {
+                "renderer": "tests.app.renderers.CustomSvgRenderer",
             }
         },
 
@@ -48,8 +48,8 @@ All values can be overwritten on renderer and icon level.
     # Settings for django-icons
     DJANGO_ICONS = {
 
-        'DEFAULTS': {
-            'renderer': 'fontawesome4',
+        "DEFAULTS": {
+            "renderer": "fontawesome4",
         },
 
         ...
@@ -73,3 +73,25 @@ ICONS
 A mapping of icon names to ``icon`` kwargs dict. If a single string is specified instead of a dict,
 this is assumed to be the ``name`` parameter for the icon.
 
+The ``content`` parameter can specify content for the icon. If the content is a ``dict``, it will
+be considered a nested icon definition. If the content is a ``list``, it will be considered a list
+of content that shou dbe joined together. This can be used to create stacked icons.
+
+.. code:: Python
+
+    # Settings for django-icons
+    DJANGO_ICONS = {
+
+        "ICONS": {
+            "stacked": {
+                "name": "fa-stack",
+                "tag": "span",
+                "extra_classes": "fa-2x",
+                "content": [
+                    {"name": "fas fa-square fa-stack-2x"},
+                    {"name": "fab fa-twitter fa-stack-1x fa-inverse"},
+                ],
+            },
+        },
+
+    }
