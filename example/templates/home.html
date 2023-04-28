@@ -13,39 +13,39 @@
     </style>
 
     <p>
-        {% icon 'user' %}
-        The `user` icon from FontAwesome 4.
+        {% icon 'fas fa-user' %}
+        The `user` icon from FontAwesome 6, using the default IconRenderer.
     </p>
 
     <p>
         {% icon 'delete' size='lg' %}
-        The `trash` icon from FontAwesome 4 in a larger size, connected to the `delete` name in `settings.py`.
+        The `trash` icon from FontAwesome 4 in a larger size with Fontawesome4Renderer set and connected to the `delete` name in `settings.py`.
     </p>
 
     <p>
         {% icon 'star' renderer='Bootstrap3Renderer' %}
-        The `star` icon from Bootstrap 3, with the renderer explicitly set.
+        The `star` icon from Bootstrap 3, with the Bootstrap3Renderer explicitly set.
     </p>
 
     <p>
         {% icon 'face' 'md-inherit' renderer='MaterialRenderer' %}
-        The `face` icon from Material, with the renderer explicitly set and an extra class to set the size.
+        The `face` icon from Material, with the MaterialRenderer explicitly set and an extra class to set the size.
     </p>
 
     <p>
         {% icon 'wikimedia-download' renderer='ImageRenderer' %}
         The <a href="https://commons.wikimedia.org/wiki/File:Download-Icon.png" target="_blank">WikiMedia Download Icon</a>,
-        with the renderer explicitly set.
+        with the ImageRenderer explicitly set.
     </p>
 
     <p>
         {% icon 'paperplane' %}
-        A `paperplane` icon that is included in the source as SVG.
+        A `paperplane` icon that is included in the source as SVG, using presets from `settings.py`.
     </p>
 
     <p>
         {% icon 'feather' 'svg-icon-o' %}
-        A `feather` icon that is included in the source as SVG, with an extra class to render the outline.
+        A `feather` icon that is included in the source as SVG, using presets from `settings.py`, with an extra class to render the outline.
     </p>
 
 {% endblock %}
