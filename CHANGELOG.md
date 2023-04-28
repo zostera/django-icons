@@ -10,6 +10,7 @@
 - Drop support for Django 4.0 (#374).
 - Fix example app (#377).
 - Update example app (#379).
+- Add support for nested icons and content in icon definitions (#378).
 
 ## 23.1 (2023-04-02)
 
