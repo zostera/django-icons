@@ -11,6 +11,7 @@
 - Fix example app (#377).
 - Update example app (#379).
 - Add support for nested icons and content in icon definitions (#378).
+- Update documentation and examples (#381).
 
 ## 23.1 (2023-04-02)
 
