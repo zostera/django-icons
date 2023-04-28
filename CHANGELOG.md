@@ -1,6 +1,6 @@
 # Changelog
 
-## 23.2 (in development)
+## 23.2 (2023-04-28)
 
 - Add changelog to documentation (#358).
 - Fix documentation (#355).
