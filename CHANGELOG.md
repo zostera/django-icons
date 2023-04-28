@@ -9,6 +9,7 @@
 - Update packaging, reduce dependencies (#356, #368, #374).
 - Drop support for Django 4.0 (#374).
 - Fix example app (#377).
+- Update example app (#379).
 
 ## 23.1 (2023-04-02)
 
