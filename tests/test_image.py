@@ -4,7 +4,7 @@ from django.test import TestCase, override_settings
 from .test_template_tags import render_template
 
 
-class ImageRendererTest(TestCase):
+class ImageTest(TestCase):
     """Test the Image Renderer."""
 
     def test_icons(self):

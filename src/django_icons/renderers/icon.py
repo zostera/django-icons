@@ -10,14 +10,12 @@ class IconRenderer:
     tag = "i"
     format_string = "<{tag}{attrs}>{content}</{tag}>"
 
-    def __init__(self, name, content="", tag=None, **kwargs):
+    def __init__(self, name, **kwargs):
         """Set name and kwargs."""
         super().__init__()
         self.name = name
-        self.content = content
+        self.content = ""
         self.kwargs = kwargs
-        if tag:
-            self.tag = tag
 
     def get_tag(self):
         """Return default tag for HTML builder."""

@@ -3,7 +3,7 @@ from django.test import TestCase
 from .test_template_tags import render_template
 
 
-class FontAwesome4RendererTest(TestCase):
+class FontAwesome4Test(TestCase):
     """Test the FontAwesome 4 Renderer."""
 
     def test_icons(self):
