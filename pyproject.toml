@@ -29,7 +29,7 @@ dependencies = [
   "Django>=3.2",
   "beautifulsoup4>=4.8.0",
 ]
-description = "Django extensions by Zostera"
+description = "Icons for Django"
 dynamic = [
   "version",
 ]
