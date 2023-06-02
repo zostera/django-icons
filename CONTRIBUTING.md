@@ -9,7 +9,7 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at <https://github.com/zostera/django-marina/issues>.
+Report bugs at <https://github.com/zostera/django-bootstrap3/issues>.
 
 If you are reporting a bug, please include:
 
@@ -27,12 +27,12 @@ Look through the GitHub issues for features. Anything tagged with \"feature\" is
 
 ### Write Documentation
 
-`django-marina` could always use more documentation, whether as part of the official django-marina docs, in docstrings, or even on the web in blog posts, articles, and such.
+`django-bootstrap3` could always use more documentation, whether as part of the official django-bootstrap3 docs, in docstrings, or even on the web in blog posts, articles, and such.
 
 ### Submit Feedback
 
 The best way to send feedback is to file an issue at
-<https://github.com/zostera/django-marina/issues>.
+<https://github.com/zostera/django-bootstrap3/issues>.
 
 If you are proposing a feature:
 
@@ -41,7 +41,7 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here\'s how to set up `django-marina` for local development.
+Ready to contribute? Here\'s how to set up `django-bootstrap3` for local development.
 
 You will need some knowledge of git, github, and Python/Django development. Using a Python virtual environment is advised.
 
@@ -54,8 +54,8 @@ This section assumes you know about local Python versions and virtual environmen
 To clone the repository and install the requirements for local development:
 
 ```console
-git clone git://github.com/zostera/django-marina.git
-cd django-marina
+git clone git://github.com/zostera/django-bootstrap3.git
+cd django-bootstrap3
 pip install -U pip hatch
 pip install -e .
 ```

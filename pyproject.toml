@@ -34,19 +34,19 @@ dynamic = [
   "version",
 ]
 license = "BSD-3-Clause"
-name = "django-marina"
+name = "django-icons"
 readme = "README.md"
 requires-python = ">=3.7"
 
 [project.urls]
-Changelog = "https://github.com/zostera/django-marina/blob/main/CHANGELOG.md"
-Documentation = "https://django-marina.readthedocs.io/"
-Homepage = "https://github.com/zostera/django-marina"
-Issues = "https://github.com/zostera/django-marina/issues"
-Source = "https://github.com/zostera/django-marina"
+Changelog = "https://github.com/zostera/django-icons/blob/main/CHANGELOG.md"
+Documentation = "https://django-icons.readthedocs.io/"
+Homepage = "https://github.com/zostera/django-icons"
+Issues = "https://github.com/zostera/django-icons/issues"
+Source = "https://github.com/zostera/django-icons"
 
 [tool.hatch.version]
-path = "src/django_marina/__about__.py"
+path = "src/django_icons/__about__.py"
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -160,7 +160,7 @@ unfixable = [
 ]
 
 [tool.ruff.isort]
-known-first-party = ["django_marina", "app"]
+known-first-party = ["django_icons", "app"]
 known-third-party = ["django"]
 
 [tool.coverage.run]
@@ -169,7 +169,7 @@ parallel = true
 source = ["src"]
 
 [tool.coverage.paths]
-package = ["src/django_marina", "*/django_marina/src/django_marina"]
+package = ["src/django_icons", "*/django_icons/src/django_icons"]
 
 [tool.coverage.report]
 show_missing = true
