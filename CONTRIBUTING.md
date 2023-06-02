@@ -9,7 +9,7 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at <https://github.com/zostera/django-bootstrap3/issues>.
+Report bugs at <https://github.com/zostera/django-icons/issues>.
 
 If you are reporting a bug, please include:
 
@@ -27,12 +27,12 @@ Look through the GitHub issues for features. Anything tagged with \"feature\" is
 
 ### Write Documentation
 
-`django-bootstrap3` could always use more documentation, whether as part of the official django-bootstrap3 docs, in docstrings, or even on the web in blog posts, articles, and such.
+`django-icons` could always use more documentation, whether as part of the official django-icons docs, in docstrings, or even on the web in blog posts, articles, and such.
 
 ### Submit Feedback
 
 The best way to send feedback is to file an issue at
-<https://github.com/zostera/django-bootstrap3/issues>.
+<https://github.com/zostera/django-icons/issues>.
 
 If you are proposing a feature:
 
@@ -41,7 +41,7 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here\'s how to set up `django-bootstrap3` for local development.
+Ready to contribute? Here\'s how to set up `django-icons` for local development.
 
 You will need some knowledge of git, github, and Python/Django development. Using a Python virtual environment is advised.
 
@@ -54,8 +54,8 @@ This section assumes you know about local Python versions and virtual environmen
 To clone the repository and install the requirements for local development:
 
 ```console
-git clone git://github.com/zostera/django-bootstrap3.git
-cd django-bootstrap3
+git clone git://github.com/zostera/django-icons.git
+cd django-icons
 pip install -U pip hatch
 pip install -e .
 ```
