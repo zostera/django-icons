@@ -9,7 +9,7 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at <https://github.com/zostera/django-icons/issues>.
+Report bugs at <https://github.com/zostera/django-marina/issues>.
 
 If you are reporting a bug, please include:
 
@@ -27,12 +27,12 @@ Look through the GitHub issues for features. Anything tagged with \"feature\" is
 
 ### Write Documentation
 
-`django-icons` could always use more documentation, whether as part of the official django-icons docs, in docstrings, or even on the web in blog posts, articles, and such.
+`django-marina` could always use more documentation, whether as part of the official django-marina docs, in docstrings, or even on the web in blog posts, articles, and such.
 
 ### Submit Feedback
 
 The best way to send feedback is to file an issue at
-<https://github.com/zostera/django-icons/issues>.
+<https://github.com/zostera/django-marina/issues>.
 
 If you are proposing a feature:
 
@@ -41,9 +41,11 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here\'s how to set up `django-icons` for local development.
+Ready to contribute? Here\'s how to set up `django-marina` for local development.
 
 You will need some knowledge of git, github, and Python/Django development. Using a Python virtual environment is advised.
+
+This project uses [Hatch](https://github.com/pypa/hatch) for environments and builds.
 
 ### Local installation
 
@@ -51,35 +53,25 @@ This section assumes you know about local Python versions and virtual environmen
 
 To clone the repository and install the requirements for local development:
 
-```shell-script
-git clone git://github.com/zostera/django-icons.git
-cd django-icons
+```console
+git clone git://github.com/zostera/django-marina.git
+cd django-marina
+pip install -U pip hatch
 pip install -e .
-pip install -U pip -r requirements-dev.txt
-```
-
-### Running the example app
-
-You can run the example app:
-
-```shell-script
-cd example && python manage.py runserver
 ```
 
 ### Running the tests
 
-The test suite requires tox to be installed.
+To run the tests:
 
-To run the complete test suite:
-
-```shell-script
-make tox
+```console
+make test
 ```
 
-To run the tests in your current environment:
+To run the tests on all supported Python/Django combinations:
 
-```shell-script
-make test
+```console
+make tests
 ```
 
 ## Pull Request Guidelines
