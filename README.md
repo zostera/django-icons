@@ -23,7 +23,7 @@
 
 Install using pip.
 
-```shell
+```console
 pip install django-icons
 ```
 
@@ -82,32 +82,32 @@ See "Supported Versions" on <https://www.djangoproject.com/download/>.
 
 To clone the repository and install the requirements for local development:
 
-```shell
+```console
 $ git clone git://github.com/zostera/django-icons.git
 $ cd django-icons
 $ pip install -e .
 $ pip install -U pip -r requirements-dev.txt
 ```
 
-### Running the demo
+## Example app
 
-You can run the example app:
+An example app is provided in the folder `example`. You can run the example app with this command:
 
-```shell
-cd example && run python manage.py runserver
+```console
+make example
 ```
 
 ### Running the tests
 
 The test suite requires [tox](https://tox.readthedocs.io/) to be installed. Run the complete test suite like this:
 
-```shell
+```console
 tox
 ```
 
 Test for the current environment can be run with the Django `manage.py` command.
 
-```shell
+```console
 python manage.py test
 ```
 

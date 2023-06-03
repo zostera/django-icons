@@ -20,6 +20,10 @@ lint:
 docs:
 	hatch run docs:build
 
+.PHONY: example
+example:
+	hatch run example:runserver
+
 .PHONY: porcelain
 porcelain:
 ifeq ($(shell git status --porcelain),)
