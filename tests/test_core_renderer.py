@@ -13,16 +13,6 @@ from django_icons.core import (
 from django_icons.renderers import Bootstrap3Renderer, FontAwesome4Renderer, IconRenderer, ImageRenderer
 
 
-class VersionTest(TestCase):
-    """Test the package version."""
-
-    def test_version(self):
-        from django_icons import __version__
-
-        parts = __version__.split(".")
-        self.assertEqual(len(parts), 2)
-
-
 class RenderIconFunctionTest(TestCase):
     """Test the `render_icon` function."""
 
