@@ -2,7 +2,7 @@
 
 ## 23.4 (in development)
 
-- Remove support for Python 3.7 (EOL) (#).
+- Remove support for Python 3.7 (EOL) (#406).
 
 ## 23.3 (2023-06-03)
 
