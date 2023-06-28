@@ -1,5 +1,9 @@
 # Changelog
 
+## 23.4 (in development)
+
+- Remove support for Python 3.7 (EOL) (#).
+
 ## 23.3 (2023-06-03)
 
 - Switch to Hatch for builds and environments (#403).
