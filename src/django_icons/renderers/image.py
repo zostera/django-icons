@@ -203,9 +203,7 @@ class ImageRenderer(IconRenderer):
             css_classes += f" icon-{self.name}"
         for v_p in self.get_image_variant_attributes_pattern():
             if v_p.key in self.get_variant_attributes():
-                css_classes += " icon-{variant}-{value}".format(
-                    variant=v_p.key, value=self.get_variant_attributes()[v_p.key]
-                )
+                css_classes += f" icon-{v_p.key}-{self.get_variant_attributes()[v_p.key]}"
         css_classes += f" icon-{self.name}"
         return css_classes
 
