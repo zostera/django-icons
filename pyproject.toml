@@ -103,8 +103,7 @@ clean = "rm -rf docs/_build"
 
 [tool.hatch.envs.lint]
 dependencies = [
-  "black>=23.3.0",
-  "ruff>=0.0.270",
+  "ruff>0.1",
 ]
 detached = true
 
@@ -113,13 +112,12 @@ all = [
   "style",
 ]
 fmt = [
-  "black {args:.}",
   "ruff --fix {args:.}",
+  "ruff format {args:.}",
   "style",
 ]
 style = [
   "ruff {args:.}",
-  "black --check --diff {args:.}",
 ]
 
 [tool.black]

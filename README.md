@@ -3,7 +3,6 @@
 [![CI](https://github.com/zostera/django-icons/workflows/CI/badge.svg?branch=main)](https://github.com/zostera/django-icons/actions?workflow=CI)
 [![Coverage Status](https://coveralls.io/repos/github/zostera/django-icons/badge.svg?branch=main)](https://coveralls.io/github/zostera/django-icons?branch=main)
 [![Latest PyPI version](https://img.shields.io/pypi/v/django-icons.svg)](https://pypi.python.org/pypi/django-icons)
-[![Any color you like](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 ### Icons for Django
 
