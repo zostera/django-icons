@@ -4,6 +4,9 @@
 
 - Use ruff instead of black for formatting (#419).
 - Remove support for Python 3.7 (EOL) (#406).
+- Add support for Python 3.12 (#422).
+- Add support for Django 5.0 (#422).
+- Use setuptools, build, twine and tox for package (#422).
 
 ## 23.3 (2023-06-03)
 
