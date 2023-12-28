@@ -34,7 +34,7 @@ license = {file = "LICENSE"}
 name = "django-icons"
 readme = "README.md"
 requires-python = ">=3.8"
-version = "23.5dev0"
+version = "23.5"
 
 [project.urls]
 Changelog = "https://github.com/zostera/django-icons/blob/main/CHANGELOG.md"
