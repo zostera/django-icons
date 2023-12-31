@@ -38,7 +38,7 @@ INSTALLED_APPS = (
 
 DJANGO_ICONS = {
     "ICONS": {
-        "edit": {"name": "far fa-pencil"},
+        "edit": {"name": "fa-solid fa-pencil"},
     },
 }
 ```
@@ -47,26 +47,30 @@ Render an icon in a Django template.
 
 ```djangotemplate
 {% load icons %}
+
+<!-- Include your icon library. This example uses Font Awesome 6 through cdnjs.  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 {% icon 'edit' %}
 ```
 
-This will generate the FontAwesome 5 pencil icon in regular style.
+This will generate the FontAwesome 6 pencil icon in regular style.
 
 ```html
-<i class="far fa-pencil"></i>
+<i class="fa-solid fa-pencil"></i>
 ```
 
 Add extra classes and attributes to your predefined icon.
 
 ```djangotemplate
 {% load icons %}
-{% icon 'edit' extra_classes='fa-fw my-own-icon' title='Update' %}
+{% icon 'edit' extra_classes='fa-2xs my-extra-class' title='Update' %}
 ```
 
 These will be added to the HTML output.
 
 ```html
-<i class="far fa-pencil fa-fw my-own-icon" title="Update"></i>
+<i class="fa-solid fa-pencil fa-2xs my-extra-class" title="Update"></i>
 ```
 
 ## Requirements

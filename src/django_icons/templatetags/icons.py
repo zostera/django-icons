@@ -29,7 +29,7 @@ def icon_tag(name, *args, **kwargs):
         renderer
             The renderer to use for the icon
 
-            :default: The default renderer as per ``settings.py``, or ultimately `FontAwesome4Renderer`.
+            :default: The default renderer as per ``settings.py``, or ultimately `IconRenderer`.
 
     **Usage**::
 

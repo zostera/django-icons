@@ -1,7 +1,7 @@
 Settings
 ========
 
-In your Django ``settings.py`` file, make a dictionary for ``DJANGO_ICONS`` like this:
+In your Django ``settings.py`` file, make a dictionary for ``DJANGO_ICONS``.
 
 .. code:: Python
 
@@ -9,12 +9,11 @@ In your Django ``settings.py`` file, make a dictionary for ``DJANGO_ICONS`` like
     DJANGO_ICONS = {
 
         "DEFAULTS": {
-            "renderer": "fontawesome4",
+            "renderer": "icon",
         },
 
         "RENDERERS": {
-            "fontawesome4": "FontAwesome4Renderer",
-            "bootstrap3": "Bootstrap3Renderer",
+            "custom-svg": "tests.app.renderers.CustomSvgRenderer",
         },
 
         "ICONS": {
@@ -28,14 +27,13 @@ In your Django ``settings.py`` file, make a dictionary for ``DJANGO_ICONS`` like
                 "renderer": "tests.app.renderers.CustomSvgRenderer",
             },
             "paperplane": {
-                "renderer": "tests.app.renderers.CustomSvgRenderer",
+                "renderer": "custom-svg",
             }
         },
 
     }
 
 The ``DJANGO_ICONS`` dictionary has 3 sections, all of which are optional.
-
 
 DEFAULTS
 --------
