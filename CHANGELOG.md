@@ -1,5 +1,9 @@
 # Changelog
 
+## In devlopment
+
+- Update documentation (#426).
+
 ## 23.5 (2023-12-28)
 
 - Use setuptools-scm to build package (#424).
