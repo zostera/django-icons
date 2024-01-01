@@ -1,6 +1,6 @@
 # Changelog
 
-## In devlopment
+## In development
 
 - Update documentation (#426).
 
