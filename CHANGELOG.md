@@ -3,6 +3,7 @@
 ## In development
 
 - Update documentation (#426).
+- Remove support for Django 3.2 (EOL) (#).
 
 ## 23.5 (2023-12-28)
 
