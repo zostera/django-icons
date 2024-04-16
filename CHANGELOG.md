@@ -1,6 +1,6 @@
 # Changelog
 
-## In development
+## 24.1 (2024-04-16)
 
 - Update documentation (#426).
 - Fix Read the Docs (#460).
