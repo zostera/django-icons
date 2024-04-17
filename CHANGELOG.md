@@ -1,5 +1,9 @@
 # Changelog
 
+## 24.2 (2024-04-17)
+
+- Reinstate setuptools_scm for build (#464).
+
 ## 24.1 (2024-04-16)
 
 - Update documentation (#426).
