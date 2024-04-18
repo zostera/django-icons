@@ -10,5 +10,6 @@ include tox.ini
 include docs/*.rst docs/*.txt docs/*.py docs/Makefile
 graft src
 graft tests
+graft example
 global-exclude *.pyc
 prune docs/_build
