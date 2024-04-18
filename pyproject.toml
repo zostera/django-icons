@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools>=64", "setuptools_scm>=8"]
+requires = ["setuptools>=64"]
 
 [project]
 authors = [
@@ -10,7 +10,6 @@ classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Web Environment",
   "Framework :: Django",
-  "Framework :: Django :: 4.1",
   "Framework :: Django :: 4.2",
   "Framework :: Django :: 5.0",
   "Intended Audience :: Developers",
@@ -26,9 +25,10 @@ classifiers = [
   "Topic :: Utilities",
 ]
 dependencies = [
-  "Django>=4.1",
+  "Django>=4.2",
 ]
 description = "Icons for Django"
+keywords = ["django", "icons"]
 license = {file = "LICENSE"}
 name = "django-icons"
 readme = "README.md"
