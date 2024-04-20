@@ -1,5 +1,11 @@
 # Changelog
 
+## 24.3 (2024-04-20)
+
+- Fix ruff warnings (#471).
+- Update and cleanup package (#467).
+- Replace sphinx_mdinclude with MyST (#466).
+
 ## 24.2 (2024-04-17)
 
 - Reinstate setuptools_scm for build (#464).
