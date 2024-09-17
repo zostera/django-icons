@@ -12,6 +12,7 @@ classifiers = [
   "Framework :: Django",
   "Framework :: Django :: 4.2",
   "Framework :: Django :: 5.0",
+  "Framework :: Django :: 5.1",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: BSD License",
   "Operating System :: OS Independent",
@@ -24,9 +25,7 @@ classifiers = [
   "Topic :: Software Development :: Libraries",
   "Topic :: Utilities",
 ]
-dependencies = [
-  "Django>=4.2",
-]
+dependencies = ["Django>=4.2"]
 description = "Icons for Django"
 keywords = ["django", "icons"]
 license = {file = "LICENSE"}
@@ -73,7 +72,7 @@ unfixable = [
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["django_marina", "app"]
+known-first-party = ["django_icons", "app"]
 known-third-party = ["django"]
 
 [tool.coverage.run]
@@ -81,7 +80,7 @@ branch = true
 source = ["src", "tests"]
 
 [tool.coverage.paths]
-package = ["src/django_marina", "*/django_marina/src/django_marina"]
+package = ["src/django_icons", "*/django_icons/src/django_icons"]
 
 [tool.coverage.report]
 show_missing = true

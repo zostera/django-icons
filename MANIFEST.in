@@ -1,5 +1,6 @@
 include LICENSE
 include MANIFEST.in
+include .editorconfig
 include *.yaml
 include pyproject.toml
 include *.md
@@ -11,5 +12,6 @@ include docs/*.rst docs/*.txt docs/*.py docs/Makefile
 graft src
 graft tests
 graft example
-global-exclude *.pyc
 prune docs/_build
+exclude example/db.sqlite3
+global-exclude *.py[cod]
