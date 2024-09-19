@@ -1,5 +1,9 @@
 # Changelog
 
+## 24.4 (2024-09-19)
+
+- Add support for Django 5.1 (#547).
+
 ## 24.3 (2024-04-20)
 
 - Fix ruff warnings (#471).
