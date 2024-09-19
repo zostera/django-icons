@@ -1,6 +1,6 @@
 # django-icons
 
-[![CI](https://github.com/zostera/django-icons/workflows/CI/badge.svg?branch=main)](https://github.com/zostera/django-icons/actions?workflow=CI)
+[![Tests](https://github.com/zostera/django-icons/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/zostera/django-icons/actions?query=workflow%3Atest+branch%3Amain)
 [![Coverage Status](https://coveralls.io/repos/github/zostera/django-icons/badge.svg?branch=main)](https://coveralls.io/github/zostera/django-icons?branch=main)
 [![Latest PyPI version](https://img.shields.io/pypi/v/django-icons.svg)](https://pypi.python.org/pypi/django-icons)
 
