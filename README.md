@@ -81,15 +81,16 @@ See "Supported Versions" on <https://www.djangoproject.com/download/>.
 
 ## Local installation
 
-**This section assumes you know about local Python versions and virtual environments.**
+### Local installation
+
+This package uses [uv](https://github.com/astral-sh/uv) and [just](https://github.com/casey/just).
 
 To clone the repository and install the requirements for local development:
 
-```shell
-$ git clone git://github.com/zostera/django-icons.git
-$ cd django-icons
-$ pip install -e .
-$ pip install -U pip -r requirements-dev.txt
+```console
+git clone git://github.com/zostera/django-icons.git
+cd django-icons
+just bootstrap
 ```
 
 ### Running the demo
@@ -97,7 +98,7 @@ $ pip install -U pip -r requirements-dev.txt
 You can run the example app:
 
 ```shell
-cd example && run python manage.py runserver
+just example
 ```
 
 ### Running the tests
@@ -111,7 +112,7 @@ tox
 Test for the current environment can be run with the Django `manage.py` command.
 
 ```shell
-python manage.py test
+just test
 ```
 
 ## Origin
