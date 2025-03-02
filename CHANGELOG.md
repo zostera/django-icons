@@ -1,10 +1,10 @@
 # Changelog
 
-## In development
+## 25.1 (2025-03-02)
 
 - Add support for Python 3.13 (#585).
 - Drop support for Python 3.8 (#585).
-- Switch to just an duv (#585).
+- Switch to just and uv (#585).
 
 ## 24.4 (2024-09-19)
 
