@@ -2,7 +2,7 @@
 
 ## In development
 
-- Drop support for Django 5.0 (#).
+- Drop support for Django 5.0 (#592).
 
 ## 25.1 (2025-03-02)
 
