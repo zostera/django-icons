@@ -1,5 +1,9 @@
 # Changelog
 
+## In development
+
+- Drop support for Django 5.0 (#592).
+
 ## 25.1 (2025-03-02)
 
 - Add support for Python 3.13 (#585).
