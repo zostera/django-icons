@@ -5,6 +5,7 @@
 - Add support for Django 5.2 (#593).
 - Drop support for Django 5.0 (#592).
 - Symlink CHANGELOG.md into docs for Sphinx (#594).
+- Use `setup-uv` and `uv build` (#596).
 
 ## 25.1 (2025-03-02)
 
@@ -89,6 +90,7 @@
 
 - Switch to a CalVer YY.MINOR versioning scheme. MINOR is the number of the release in the given year. This is the first release in 2021 using this scheme, so its version is 21.1. The next version this year will be 21.2. The first version in 2022 will be 22.1.
 - Add support for Django 4 and Python 3.10 (#193).
+
 ## 4.0.0 (2021-05-20)
 
 - Set `IconRenderer` as default renderer (#58).
@@ -175,7 +177,7 @@
 ## 0.2.0 (2018-06-30)
 
 - Add icons from images, contribution by @mbourqui.
-- Adopt black code style (https://github.com/ambv/black).
+- Adopt black code style (<https://github.com/ambv/black>).
 
 ## 0.1.0 (2018-01-11)
 
