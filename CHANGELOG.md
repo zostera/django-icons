@@ -6,6 +6,7 @@
 - Drop support for Django 5.0 (#592).
 - Symlink CHANGELOG.md into docs for Sphinx (#594).
 - Use `setup-uv` and `uv build` (#596).
+- Use `uv.lock` in GitHub Actions (#597).
 
 ## 25.1 (2025-03-02)
 
