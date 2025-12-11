@@ -77,12 +77,9 @@ jobs:
 
     - name: Install Django ${{ matrix.django-version }}
       run: uv pip install Django==${{ matrix.django-version }}
-      if: ${{ matrix.django-version != 'main' && matrix.django-version != '6.0' }}
-    - name: Install Django ${{ matrix.django-version }}
-      run: uv pip install "Django>=6.0a1,<6.1"
-      if: matrix.django-version == '6.0'
+      if: ${{ matrix.django-version != 'main' }}
     - name: Install Django main branch
-      run: uv pip install -U https://github.com/django/django/archive/master.tar.gz
+      run: uv pip install -U https://github.com/django/django/archive/main.tar.gz
       if: matrix.django-version == 'main'
 
     - name: Run tests
