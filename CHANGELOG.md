@@ -1,7 +1,8 @@
 # Changelog
 
-## In development
+## Unreleased
 
+- Refactor release workflow to tag-based publishing via GitHub Actions (#616).
 - Remove support for Django 5.1 (EOL) (#614).
 
 ## 25.3 (2025-11-14)
