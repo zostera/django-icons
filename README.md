@@ -1,6 +1,6 @@
 # django-icons
 
-[![Tests](https://github.com/zostera/django-icons/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/zostera/django-icons/actions?query=workflow%3Atest+branch%3Amain)
+[![CI](https://github.com/zostera/django-icons/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/zostera/django-icons/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/zostera/django-icons/badge.svg?branch=main)](https://coveralls.io/github/zostera/django-icons?branch=main)
 [![Latest PyPI version](https://img.shields.io/pypi/v/django-icons.svg)](https://pypi.python.org/pypi/django-icons)
 
@@ -18,7 +18,6 @@
 - [Bug tracker](http://github.com/zostera/django-icons/issues)
 
 ## Installation
-
 
 Install using pip.
 
