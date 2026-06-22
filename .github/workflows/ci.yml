@@ -23,7 +23,7 @@ jobs:
         run: uv python install 3.12
 
       - name: Set up just
-        uses: extractions/setup-just@v3
+        uses: extractions/setup-just@v4
 
       - name: Lint source code
         run: just lint
@@ -105,7 +105,7 @@ jobs:
         run: uv python install 3.12
 
       - name: Set up just
-        uses: extractions/setup-just@v3
+        uses: extractions/setup-just@v4
 
       - name: Build package
         run: just build
@@ -124,7 +124,7 @@ jobs:
         run: uv python install 3.12
 
       - name: Set up just
-        uses: extractions/setup-just@v3
+        uses: extractions/setup-just@v4
 
       - name: Build documentation
         run: just docs
