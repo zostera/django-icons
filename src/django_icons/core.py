@@ -25,7 +25,7 @@ def icon(name, *args, **kwargs):
 
     Deprecated because of frequent name collisions.
     """
-    warnings.warn("The `icon` function is deprecated, user `render_icon` instead.", DeprecationWarning)
+    warnings.warn("The `icon` function is deprecated, use `render_icon` instead.", DeprecationWarning)
     return render_icon(name, *args, **kwargs)
 
 
