@@ -85,10 +85,10 @@ def _render_settings_content(content):
     """Render content from icon settings."""
     if not isinstance(content, list):
         content = [content]
-    result = mark_safe("")
+    parts = []
     for item in content:
-        result += render_icon(**item) if isinstance(item, dict) else str(item)
-    return result
+        parts.append(render_icon(**item) if isinstance(item, dict) else str(item))
+    return mark_safe("".join(parts))
 
 
 def get_icon_kwargs_from_settings(name):

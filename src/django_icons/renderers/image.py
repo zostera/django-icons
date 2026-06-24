@@ -37,6 +37,7 @@ class ImageRenderer(IconRenderer):
         from django_icons.renderers import ImageRenderer
 
         class CustomImageRenderer(ImageRenderer):
+            @classmethod
             def get_image_root(cls):
                 return "special-icons"
 
@@ -161,7 +162,9 @@ class ImageRenderer(IconRenderer):
 
     def render_variant(self):
         """
-        Alter the name of the icon by removing the variant attribute definitions.
+        Return the variant suffix to append to the icon filename.
+
+        Calls get_variant_attributes(), which as a side effect strips variant specifiers from self.name.
 
         :return: str The variant to be appended to the icon name to build the path to the file in the file system.
         """
