@@ -11,7 +11,7 @@ if SRC_FOLDER not in sys.path:
 DEBUG = True
 ADMINS = ()
 
-SECRET_KEY = "Thanks for using django-bootstrap5!"
+SECRET_KEY = "Thanks for using django-icons!"
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 TIME_ZONE = "Europe/Amsterdam"
@@ -99,7 +99,7 @@ LOGGING = {
 DJANGO_ICONS = {
     "DEFAULTS": {"attrs": {"aria-hidden": True}},
     "ICONS": {
-        "delete": {"name": "trash", "title": "Edit", "renderer": "fontawesome4"},
+        "delete": {"name": "trash", "title": "Delete", "renderer": "fontawesome4"},
         "feather": {"renderer": "app.renderers.CustomSvgRenderer"},
         "paperplane": {"renderer": "app.renderers.CustomSvgRenderer"},
         "no-pictures-please": {
