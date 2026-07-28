@@ -5,6 +5,16 @@ little bit helps, and credit will always be given.
 
 You can contribute in many ways:
 
+## Scope
+
+The goal of this project is icon rendering for Django: define icons in settings (name, title,
+and other attributes), render them via template tags, with pluggable renderers for Font
+Awesome, Material, Bootstrap 3, images, and custom icon sets via subclassing `IconRenderer`.
+Contributions that fit that goal are welcome. Contributions that don't — a general-purpose
+templating helper unrelated to icons, a new dependency for a single renderer's sake — are
+likely to be closed even if well-implemented, so it's worth opening an issue to discuss scope
+before investing time in a pull request.
+
 ## Types of Contributions
 
 ### Report Bugs
@@ -19,11 +29,11 @@ If you are reporting a bug, please include:
 
 ### Fix Bugs
 
-Look through the GitHub issues for bugs. Anything tagged with \"bug\" is open to whoever wants to implement it.
+Look through the GitHub issues for bugs. Anything tagged with "bug" is open to whoever wants to implement it.
 
 ### Implement Features
 
-Look through the GitHub issues for features. Anything tagged with \"feature\" is open to whoever wants to implement it.
+Look through the GitHub issues for features. Anything tagged with "feature" is open to whoever wants to implement it.
 
 ### Write Documentation
 
@@ -41,7 +51,7 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here\'s how to set up `django-icons` for local development.
+Ready to contribute? Here's how to set up `django-icons` for local development.
 
 You will need some knowledge of git, github, and Python/Django development. Using a Python virtual environment is advised.
 
@@ -75,5 +85,13 @@ just tests
 
 Before you submit a pull request, check that it meets these guidelines:
 
-1. The pull request should include tests for new or changed functionality, and pass all tests.
-2. If the pull request adds functionality, the docs should be updated. Put your new functionality into a function with a docstring, and add the feature to the list in CHANGELOG.md.
+1. It fits the project's [scope](#scope) — if in doubt, open an issue first.
+2. It includes tests for new or changed functionality, and passes all existing tests (`just test`).
+3. It doesn't change the rendered markup of an existing renderer unless that's the explicit
+   point of the PR — existing users depend on the current output.
+4. It doesn't add a new runtime dependency without discussing it in an issue first.
+5. If it adds functionality, the docs are updated and the change is added to `CHANGELOG.md`.
+
+Pull requests that don't meet these may be asked for changes, or closed if they've gone stale
+without a response — see [MAINTAINING.md](MAINTAINING.md) for how the project handles review
+backlog and version support.
