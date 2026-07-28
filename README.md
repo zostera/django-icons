@@ -28,7 +28,6 @@ pip install django-icons
 In your `settings.py`, add `django_icons` to `INSTALLED_APPS` and define an icon.
 
 ```python
-
 INSTALLED_APPS = (
     # ...
     "django_icons",
