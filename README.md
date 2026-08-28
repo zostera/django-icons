@@ -4,49 +4,69 @@
 [![Coverage Status](https://coveralls.io/repos/github/zostera/django-icons/badge.svg?branch=main)](https://coveralls.io/github/zostera/django-icons?branch=main)
 [![Latest PyPI version](https://img.shields.io/pypi/v/django-icons.svg)](https://pypi.python.org/pypi/django-icons)
 
-### Icons for Django
+Icons for Django.
+
+## Goal
+
+The goal of this project is to provide a single, simple template tag for rendering icons from any icon library in Django templates.
 
 - Define your icons in your settings, with defaults for name, title and other attributes.
 - Generate icons using template tags.
 - Supports Font Awesome, Material, Bootstrap 3 and images.
-- Add other libraries and custom icon sets by subclassing IconRenderer.
+- Add other libraries and custom icon sets by subclassing `IconRenderer`.
 
-### More information
+## Status
 
-- [PyPI (django-icons)](https://pypi.python.org/pypi/django-icons)
-- [Documentation](https://django-icons.readthedocs.io/en/latest/)
-- [Bug tracker](http://github.com/zostera/django-icons/issues)
+Ready for production. Issues and pull requests welcome, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Requirements
+
+This package requires a combination of Python and Django that is currently supported.
+
+See "Supported Versions" on https://www.djangoproject.com/download/.
+
+This package uses [uv](https://github.com/astral-sh/uv) and [just](https://github.com/casey/just) for local development.
+
+## Documentation
+
+The full documentation is at https://django-icons.readthedocs.io/en/latest/
 
 ## Installation
 
-Install using pip.
+1. Install using pip:
 
-```shell
-pip install django-icons
-```
+    ```console
+    pip install django-icons
+    ```
 
-In your `settings.py`, add `django_icons` to `INSTALLED_APPS` and define an icon.
+2. Add to `INSTALLED_APPS` in your `settings.py`:
 
-```python
-INSTALLED_APPS = (
-    # ...
-    "django_icons",
-    # ...
-)
+   ```python
+   INSTALLED_APPS = (
+       # ...
+       "django_icons",
+       # ...
+   )
+   ```
 
-DJANGO_ICONS = {
-    "ICONS": {
-        "edit": {"name": "fa-solid fa-pencil"},
-    },
-}
-```
+3. Define an icon:
 
-Render an icon in a Django template.
+   ```python
+   DJANGO_ICONS = {
+       "ICONS": {
+           "edit": {"name": "fa-solid fa-pencil"},
+       },
+   }
+   ```
+
+4. In your templates, load the `icons` library and use the `{% icon %}` tag. See example below.
+
+## Example template
 
 ```djangotemplate
 {% load icons %}
 
-<!-- Include your icon library. This example uses Font Awesome 6 through cdnjs.  -->
+<!-- Include your icon library. This example uses Font Awesome 6 through cdnjs. -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 {% icon 'edit' %}
@@ -71,47 +91,33 @@ These will be added to the HTML output.
 <i class="fa-solid fa-pencil fa-2xs my-extra-class" title="Update"></i>
 ```
 
-## Requirements
+## Example app
 
-This package requires a combination of Python and Django that is currently supported.
-
-See "Supported Versions" on <https://www.djangoproject.com/download/>.
-
-## Local installation
-
-### Local installation
-
-This package uses [uv](https://github.com/astral-sh/uv) and [just](https://github.com/casey/just).
-
-To clone the repository and install the requirements for local development:
+An example app is provided in the folder `example`. You can run the example app with this command:
 
 ```console
-git clone git://github.com/zostera/django-icons.git
-cd django-icons
-just bootstrap
-```
-
-### Running the demo
-
-You can run the example app:
-
-```shell
 just example
 ```
 
-### Running the tests
+## Bugs and suggestions
 
-The test suite requires [tox](https://tox.readthedocs.io/) to be installed. Run the complete test suite like this:
+If you have found a bug or if you have a request for additional functionality, please use the issue tracker on GitHub.
 
-```shell
-tox
-```
+https://github.com/zostera/django-icons/issues
 
-Test for the current environment can be run with the Django `manage.py` command.
+## License
 
-```shell
-just test
-```
+You can use this under BSD-3-Clause. See [LICENSE](LICENSE) file for details.
+
+## Author
+
+Developed and maintained by [Zostera](https://zostera.nl).
+
+Original author: [Dylan Verheul](https://github.com/dyve).
+
+Thanks to everybody that has contributed pull requests, ideas, issues, comments and kind words.
+
+Please see [AUTHORS](AUTHORS) for a list of contributors.
 
 ## Origin
 
