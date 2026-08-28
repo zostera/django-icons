@@ -1,20 +1,20 @@
 # Changelog
 
-## Unreleased
+## 26.2 (2026-08-28)
 
+- Drop support for Django 4.2 (EOL).
+- Add support for Django 6.1.
 - **Breaking:** Fix `SafeString` loss in `_render_settings_content` — when `DJANGO_ICONS` settings content mixed plain strings with icon dicts, `SafeString.__add__` degraded the accumulator to a plain `str` and the whole result was escaped, rendering icon markup as visible text. Parts are now joined and marked safe once. String content in settings is consequently emitted as HTML rather than escaped (#635).
 - Fix typo in the `icon()` deprecation warning ("user" -> "use") (#634).
 - Fix a misleading `render_variant()` docstring and a missing `@classmethod` in the `ImageRenderer` usage example (#635).
 - Use `format_html()` in the test app's `CustomSvgRenderer.get_content()` to prevent XSS, and add a missing `@classmethod` to `CustomImageRenderer.get_image_root` — test app only, not shipped in the wheel (#635).
-- Fix the example project's `SECRET_KEY`, copied from django-bootstrap5, and a delete icon labelled "Edit" (#635).
 - Add AGENTS.md (#634).
 - Add a maintenance-round section and release-note ordering convention to MAINTAINING.md.
 - Add a 15-minute `timeout-minutes` to every CI job.
 - Fix `just build`: ignore the transient `pyproject.toml.orig` in `check-manifest`.
 - Add `typos` spell checking to `just lint`.
 - Add MAINTAINING.md (version-support policy, release process); add scope statement and PR-review checklist to CONTRIBUTING.md.
-- Add support for Django 6.1.
-- Drop support for Django 4.2 (EOL).
+- Fix the example project's `SECRET_KEY`, copied from django-bootstrap5, and a delete icon labelled "Edit" (#635).
 
 ## 26.1 (2026-01-02)
 
