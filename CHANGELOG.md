@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add a maintenance-round section and release-note ordering convention to MAINTAINING.md.
 - Fix `just build`: ignore the transient `pyproject.toml.orig` in `check-manifest`.
 - Add `typos` spell checking to `just lint`.
 - Add MAINTAINING.md (version-support policy, release process); add scope statement and PR-review checklist to CONTRIBUTING.md.
