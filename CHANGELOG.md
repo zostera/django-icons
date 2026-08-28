@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add a 15-minute `timeout-minutes` to every CI job.
 - Fix `just build`: ignore the transient `pyproject.toml.orig` in `check-manifest`.
 - Add `typos` spell checking to `just lint`.
 - Add MAINTAINING.md (version-support policy, release process); add scope statement and PR-review checklist to CONTRIBUTING.md.
