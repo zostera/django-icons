@@ -1,108 +1,52 @@
-# django-icons — Agent Guide
+# django-icons: Agent Guide
 
 Icon rendering for Django, by [Zostera](https://github.com/zostera). Define icons in settings, render via template tags. Supports Font Awesome, Material, Bootstrap 3, images, and custom renderers.
 
 ## Related packages
 
-These packages share tooling and conventions — changes in one often mirror to others:
+These packages share tooling and conventions. Changes in one often mirror to others:
 
-- `https://github.com/zostera/django-bootstrap3` — Bootstrap 3 for Django
-- `https://github.com/zostera/django-bootstrap4` — Bootstrap 4 for Django
-- `https://github.com/zostera/django-bootstrap5` — Bootstrap 5 for Django
-- `https://github.com/zostera/django-icons` — Icons for Django (this package)
-- `https://github.com/zostera/django-marina` — Django extensions by Zostera
+- `https://github.com/zostera/django-bootstrap3`, Bootstrap 3 for Django
+- `https://github.com/zostera/django-bootstrap4`, Bootstrap 4 for Django
+- `https://github.com/zostera/django-bootstrap5`, Bootstrap 5 for Django
+- `https://github.com/zostera/django-icons`, Icons for Django (this package)
+- `https://github.com/zostera/django-marina`, Django extensions by Zostera
 
 Config files (justfile, tox.ini, pyproject.toml, etc.) are kept in sync across packages.
-AGENTS.md is **not** synced — each package has its own.
+AGENTS.md is **not** synced, each package has its own.
+
+django-marina is the canonical source for this shared tooling. See its
+[PACKAGING.md](https://github.com/zostera/django-marina/blob/main/PACKAGING.md) for exactly
+which files sync, which need per-package substitution, and the propagation process.
 
 ## Setup
 
-Requires [uv](https://github.com/astral-sh/uv) and [just](https://github.com/casey/just).
-
-```
-just install    # install deps from uv.lock
-just upgrade    # upgrade all deps
-```
+Requires [uv](https://github.com/astral-sh/uv) and [just](https://github.com/casey/just). Run `just` for the command list.
 
 Never invoke `python`, `pip`, or `ruff` directly. All commands go through `just`, which delegates to `uv run` (venv) or `uvx` (ephemeral tools like ruff, twine, check-manifest).
 
-`uv.lock` is fully generated — never manually resolve merge conflicts in it. On conflict: accept either side, then run `just upgrade` to regenerate.
+`uv.lock` is fully generated, never manually resolve merge conflicts in it. On conflict: accept either side, then run `just upgrade` to regenerate.
 
-Also run `just upgrade` after changing any dependency constraint in `pyproject.toml` (e.g. bumping the Django floor) — otherwise `uv.lock`'s own `requires-dist` metadata goes stale and silently drifts from `pyproject.toml`.
-
-## Key commands
-
-```
-just test           # run tests (single Python/Django version)
-just test-cov       # run tests with coverage report
-just tests          # run full tox matrix (all Python × Django combos)
-just lint           # check formatting and style (ruff)
-just format         # auto-fix formatting and style
-just build          # build + packaging checks (preflight before release)
-just docs           # build Sphinx documentation
-just example        # run the example Django project
-just version        # print current package version
-```
+Also run `just upgrade` after changing any dependency constraint in `pyproject.toml` (e.g. bumping the Django floor). Otherwise `uv.lock`'s own `requires-dist` metadata goes stale and silently drifts from `pyproject.toml`.
 
 ## Code style
 
-- **Formatter/linter**: ruff (line length 120)
-- **Docstrings**: pydocstyle D2xx/D4xx rules; D1xx (missing docstring) is ignored
-- `ruff check --fix` auto-fixes isort, pyupgrade, and some flake8 issues
-- `F8` (unused names) is not auto-fixed — fix manually
-
-Run `just lint` before committing. CI enforces it.
+ruff, configured in `[tool.ruff]` in `pyproject.toml`. `just format` fixes, `just lint` checks. Run it before committing, CI enforces it.
 
 ## Package structure
 
-```
-src/django_icons/
-    __about__.py        version string
-    __init__.py         exports __version__
-    core.py             icon() and render_icon() entry points, settings access
-    css.py              CSS class utilities
-    templatetags/
-        icons.py        {% icon %} template tag (load with {% load icons %})
-    renderers/
-        __init__.py
-        icon.py         base IconRenderer class
-        bootstrap3.py   Bootstrap 3 glyphicon renderer
-        fontawesome4.py Font Awesome 4 renderer
-        image.py        image-based icon renderer
-        material.py     Material Design icon renderer
-```
-
-Icons are configured in Django settings under `DJANGO_ICONS`. Custom renderers subclass `IconRenderer`.
+The package lives in `src/django_icons/`. The `{% icon %}` tag is loaded with `{% load icons %}`. Icons are configured in Django settings under `DJANGO_ICONS`. Custom renderers subclass `IconRenderer` and live in `src/django_icons/renderers/`.
 
 ## Testing
 
 **Test runner is Django's test runner, not pytest.** Use `manage.py test` or `just test`.
 
-```
-tests/
-    app/                        minimal Django project used as test harness
-    smoke_test.py               import smoke test (run against built wheel/tarball)
-    test_bootstrap3_renderer.py
-    test_core_renderer.py
-    test_css.py
-    test_fontawesome4_renderer.py
-    test_icon_renderer.py
-    test_image_renderer.py
-    test_material_renderer.py
-    test_template_tags.py
-    test_version.py
-```
-
-The current Python × Django matrix is not a full grid — see `tox.ini`'s `envlist` for what's actually tested (`pyproject.toml` classifiers and `ci.yml`'s matrix must match it). Don't copy the matrix into prose elsewhere; it drifts. See [MAINTAINING.md](MAINTAINING.md) for the policy behind how the matrix is chosen and kept current.
+The current Python × Django matrix is not a full grid. See `tox.ini`'s `envlist` for what's actually tested (`pyproject.toml` classifiers and `ci.yml`'s matrix must match it). Don't copy the matrix into prose elsewhere; it drifts. See [MAINTAINING.md](MAINTAINING.md) for the policy behind how the matrix is chosen and kept current.
 
 Target the matrix when adding features; avoid Django-version-specific code paths where possible.
 
 ## CI
 
-GitHub Actions runs on every push and PR:
-- `ci.yml` — lint + full tox matrix
-- `release.yml` — publishes to PyPI on version tags
-
-`just lint` must pass before committing — CI enforces it and will fail the PR.
+`just lint` must pass before committing, CI enforces it and will fail the PR.
 
 See [MAINTAINING.md](MAINTAINING.md) for the release process and version-support policy.
