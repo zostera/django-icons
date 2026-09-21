@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Test on Python 3.15 (release candidate) against Django 6.1 and `main`. The job is non-blocking and 3.15 is not yet advertised as supported.
+- Fail the CI gate when any job fails, not only the test matrix. A failing docs or packaging build could previously be merged.
 - Add `just release-check` to list `src/` changes against changelog entries before a release.
 - Fix the release process in MAINTAINING.md: the version bump goes through a PR, not a direct push to protected `main`.
 - Note in MAINTAINING.md why the `Django` dependency carries no upper bound.
