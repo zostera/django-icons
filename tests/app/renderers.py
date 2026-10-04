@@ -34,3 +34,14 @@ class CustomImageRenderer(ImageRenderer):
 class CustomIcons8Renderer(ImageRenderer):
     def get_image_prefix(self):
         return "icons8-"
+
+
+class CustomVariantDefaultsRenderer(ImageRenderer):
+    """An image renderer whose variant attributes carry defaults."""
+
+    @classmethod
+    def get_image_variant_attributes_pattern(cls):
+        return [
+            cls.VariantAttributePattern("color", r"-c:(?P<{}>\w+)", "black"),
+            cls.VariantAttributePattern("size", r"-s:(?P<{}>\w+)", "48"),
+        ]
