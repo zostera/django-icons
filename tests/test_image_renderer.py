@@ -101,3 +101,10 @@ class ImageRendererTest(TestCase):
                 render_template("{% icon 'icons8-48' %}"),
                 '<img src="/static/icons/icons8-icons8-48.png" alt="Icon of Icons8 48" class="icon icon-icons8-48">',
             )
+
+    def test_one_variant_keyword_argument_leaves_the_other_unset(self):
+        """A variant with no default and no keyword argument is simply absent."""
+        self.assertHTMLEqual(
+            render_template('{% icon "icons8" renderer="ImageRenderer" size="48" %}'),
+            '<img src="/static/icons/icons8-48.png" alt="Icon of Icons8" class="icon icon-size-48 icon-icons8">',
+        )

@@ -69,7 +69,6 @@ class ImageRenderer(IconRenderer):
     format_string = "<{tag}{attrs}>"
 
     VariantAttributePattern = namedtuple("VariantAttributePattern", ["key", "pattern", "default"])
-    _variant_attributes_regex = dict()  # Used to store the compiled regexes of the individual variant attributes
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -135,12 +134,15 @@ class ImageRenderer(IconRenderer):
 
         :return: dict Key is the variant attribute name and value is a tuple of compiled regex and default value
         """
-        if not cls._variant_attributes_regex:
-            for v in cls.get_image_variant_attributes_pattern():
-                cls._variant_attributes_regex[v.key] = (
-                    re.compile(v.pattern.format(v.key)),
-                    v.default,
-                )
+        # Cache on this class only. Looking the attribute up through the MRO would find a
+        # parent's cache, so a subclass that overrides get_image_variant_attributes_pattern
+        # would silently reuse its parent's patterns, and the first class to populate the
+        # cache would decide the patterns for every other one in the process.
+        if "_variant_attributes_regex" not in cls.__dict__:
+            cls._variant_attributes_regex = {
+                v.key: (re.compile(v.pattern.format(v.key)), v.default)
+                for v in cls.get_image_variant_attributes_pattern()
+            }
         return cls._variant_attributes_regex
 
     def get_variant_attributes(self):
