@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Breaking:** Drop support for Python 3.10, end of life since 2026-10-01. The floor is now Python 3.11.
 - Fix an `ImageRenderer` subclass silently using its parent's variant attribute patterns. The compiled patterns were cached on a class attribute looked up through the MRO, so whichever renderer compiled first decided the patterns for every other one in the process, and a subclass overriding `get_image_variant_attributes_pattern` had its defaults ignored.
 - Cover every statement and branch in the test suite, and hold it there with `fail_under = 100`.
 - Test on Python 3.15 (release candidate) against Django 6.1 and `main`. The job is non-blocking and 3.15 is not yet advertised as supported.
