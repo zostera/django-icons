@@ -1,16 +1,20 @@
 # Changelog
 
-## Unreleased
+## 26.3 (2026-10-11)
 
 - **Breaking:** Drop support for Python 3.10, end of life since 2026-10-01. The floor is now Python 3.11.
+- Test on Python 3.15 (release candidate) against Django 6.1 and `main`. The job is non-blocking and 3.15 is not yet advertised as supported.
 - Fix an `ImageRenderer` subclass silently using its parent's variant attribute patterns. The compiled patterns were cached on a class attribute looked up through the MRO, so whichever renderer compiled first decided the patterns for every other one in the process, and a subclass overriding `get_image_variant_attributes_pattern` had its defaults ignored.
 - Cover every statement and branch in the test suite, and hold it there with `fail_under = 100`.
-- Test on Python 3.15 (release candidate) against Django 6.1 and `main`. The job is non-blocking and 3.15 is not yet advertised as supported.
-- Fail the CI gate when any job fails, not only the test matrix. A failing docs or packaging build could previously be merged.
 - Measure coverage over `src` only, not the test suite itself.
+- Harden the workflows after a `zizmor` audit: the Dependabot job decides from the pull request author rather than `github.actor`, which a `pull_request_target` workflow cannot trust; `ci.yml` runs with `contents: read` instead of the repository default; and the job that publishes to PyPI no longer restores a shared cache. Add `timeout-minutes` to the release and Dependabot jobs. MAINTAINING.md gains a dependency update policy saying what auto-merges and what waits for a person.
+- Fail the CI gate when any job fails, not only the test matrix. A failing docs or packaging build could previously be merged.
+- Fail `just lint` on invisible and bidirectional control characters, which do not show up in review (Trojan Source, CVE-2021-42574).
 - Add `just release-check` to list `src/` changes against changelog entries before a release.
 - Fix the release process in MAINTAINING.md: the version bump goes through a PR, not a direct push to protected `main`.
 - Note in MAINTAINING.md why the `Django` dependency carries no upper bound.
+- Add an AI assistance policy to CONTRIBUTING.md.
+- Add a `CLAUDE.md` shim so Claude Code loads `AGENTS.md`, and trim `AGENTS.md`.
 
 ## 26.2 (2026-08-28)
 
