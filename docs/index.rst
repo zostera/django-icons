@@ -16,4 +16,3 @@ Icons for Django
    templatetags
    settings
    changelog
-   
