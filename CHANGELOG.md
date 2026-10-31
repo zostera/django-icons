@@ -6,6 +6,8 @@
 - Fail `just build` when `uv.lock` does not name the version in `pyproject.toml`, and add `just relock` to fix it. `uv sync --frozen` does not check the project's own version, so a stale lock passed every packaging check.
 
 - Say in MAINTAINING.md that `just release-check` reporting no `Unreleased` entries straight after a cut means nothing is pending, not that the changelog was lost.
+- Add `.gitattributes` with `* text=auto`, so the repository stores text files with LF whatever the committing machine used. `.editorconfig` asked for this and could not enforce it.
+- Drop `max_line_length` for Python from `.editorconfig`. It said 88 while ruff enforces 120, so an editor honouring it flagged code that passes lint.
 ## 26.3 (2026-10-11)
 
 - **Breaking:** Drop support for Python 3.10, end of life since 2026-10-01. The floor is now Python 3.11.
